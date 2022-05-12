@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="17.0.1" class="java.beans.XMLDecoder">
+ <object class="co.uniquindio.edu.co.Marketplace.model.Marketplace" id="Marketplace0">
+  <void property="listaVendedores">
+   <void method="add">
+    <object class="co.uniquindio.edu.co.Marketplace.model.Vendedor">
+     <void property="apellidos">
+      <string>Crusso Dark</string>
+     </void>
+     <void property="cedula">
+      <string>301020</string>
+     </void>
+     <void property="direccion">
+      <string>Armenia</string>
+     </void>
+     <void property="nombre">
+      <string>Robinson</string>
+     </void>
+     <void property="usuario">
+      <string>robin</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="nit">
+   <string>900010101</string>
+  </void>
+  <void property="nombre">
+   <string>Marketplace</string>
+  </void>
+ </object>
+</java>

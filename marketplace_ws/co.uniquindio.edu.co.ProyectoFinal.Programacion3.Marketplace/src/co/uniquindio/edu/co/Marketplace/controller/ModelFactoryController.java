@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 
 public class ModelFactoryController {
 
-	Marketplace marketplace=null;
+	Marketplace marketplace = null;
 	LoginController loginController;
 	Aplicacion aplicacion;
 	Vendedor vendedorLogueado;
@@ -50,35 +50,35 @@ public class ModelFactoryController {
 	}
 
 	public ModelFactoryController() {
-		
-		//1. inicializar datos y luego guardarlo en archivos
+
+		// 1. inicializar datos y luego guardarlo en archivos
 //		iniciarSalvarDatosPrueba();
 
-		//2. Cargar los datos de los archivos
+		// 2. Cargar los datos de los archivos
 		cargarDatosDesdeArchivos();
+		
+		guardarRecursoXML();
 
-
-		//3. Guardar y Cargar el recurso serializable binario
+		// 3. Guardar y Cargar el recurso serializable binario
 //		guardarResourceBinario();
 //		cargarResourceBinario();
 
-		//4. Guardar y Cargar el recurso serializable XML
+		// 4. Guardar y Cargar el recurso serializable XML
 //		guardarResourceXML();
 //		cargarResourceXML();
 
-
 		// crear el administrador
-		
+
 		admin.setNombre("Tyler");
 		admin.setApellidos("Joseph");
 		admin.setUsuario("admin");
 		admin.setContrasena("11");
 		admin.setCedula("21p");
 		marketplace.getListaAdministradores().add(admin);
-		
+
 		if (marketplace == null) {
 			System.out.println("es null");
-			
+
 		}
 	}
 
@@ -110,13 +110,34 @@ public class ModelFactoryController {
 		}
 	}
 
+	public void guardarRecursoXML() {
+
+		Marketplace marketplace = new Marketplace();
+		marketplace.setNombre("Marketplace");
+		marketplace.setNit("900010101");
+
+		Vendedor vendedor = new Vendedor();
+		vendedor.setNombre("Robinson");
+		vendedor.setApellidos("Crusso Dark");
+		vendedor.setCedula("301020");
+		vendedor.setUsuario("robin");
+		vendedor.setDireccion("Armenia");
+
+		marketplace.getListaVendedores().add(vendedor);
+
+		Persistencia.guardarRecursoMarketPlaceXML(marketplace);
+	}
+
 	private void inicializarDatos() {
-		
+
 		marketplace = new Marketplace("Fakebook Marketplace", "178");
+
+	
 
 		/**
 		 * Vendedor 1
 		 */
+		
 		Vendedor vendedor = new Vendedor();
 		vendedor.setNombre("Kevin");
 		vendedor.setApellidos("Sánchez");
@@ -125,13 +146,14 @@ public class ModelFactoryController {
 		vendedor.setContrasena("11");
 		vendedor.setDireccion("Narnia del este");
 		vendedor.setId("1");
-		
 
 		Producto producto = new Producto();
 		producto.setNombre("Nevera");
 		producto.setImagen(new Image(this.getClass().getResourceAsStream("../resources/nevera.jpg")));
-		producto.setPrecio(1570000.30);;
-		producto.setEstado(Estado.PUBLICADO);;
+		producto.setPrecio(1570000.30);
+		;
+		producto.setEstado(Estado.PUBLICADO);
+		;
 		producto.setCategoria(Categoria.ELECTRODOMESTICOS);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String fechaPublicacion = sdf.format(new Date());
@@ -139,33 +161,33 @@ public class ModelFactoryController {
 		producto.setCodVendedor(vendedor.getCedula());
 		producto.setId("1");
 
-		
-		Comentario comentario = new Comentario("Fino señores",fechaPublicacion, vendedor.getNombre());
+		Comentario comentario = new Comentario("Fino señores", fechaPublicacion, vendedor.getNombre());
 		comentario.setId("1");
 		producto.getListaComentarios().add(comentario);
 		vendedor.getListaProductos().add(producto);
 		listaMuro.add(producto);
-		
 
 		marketplace.getListaVendedores().add(vendedor);
-		
+
 		/**
 		 * Vendedor 2
 		 */
 		vendedor = new Vendedor();
 		vendedor.setNombre("Didier");
-		vendedor.setApellidos("no c");
+		vendedor.setApellidos("Grisales");
 		vendedor.setCedula("1519");
 		vendedor.setUsuario("kaka2");
 		vendedor.setContrasena("11");
 		vendedor.setDireccion("Narnia del oeste");
 		vendedor.setId("2");
-		
+
 		producto = new Producto();
 		producto.setNombre("Xbox");
 		producto.setImagen(new Image(this.getClass().getResourceAsStream("../resources/xbox.jpg")));
-		producto.setPrecio(1900000.50);;
-		producto.setEstado(Estado.PUBLICADO);;
+		producto.setPrecio(1900000.50);
+		;
+		producto.setEstado(Estado.PUBLICADO);
+		;
 		producto.setCategoria(Categoria.TECNOLOGIA);
 		sdf = new SimpleDateFormat("yyyy/MM/dd");
 		fechaPublicacion = sdf.format(new Date());
@@ -173,17 +195,15 @@ public class ModelFactoryController {
 		producto.setCodVendedor(vendedor.getCedula());
 		producto.setId("2");
 
-		
-		comentario = new Comentario("Viva playStation",fechaPublicacion, vendedor.getNombre());
+		comentario = new Comentario("Viva playStation", fechaPublicacion, vendedor.getNombre());
 		comentario.setId("2");
 		producto.getListaComentarios().add(comentario);
-		
+
 		vendedor.getListaProductos().add(producto);
 		listaMuro.add(producto);
 
-
 		marketplace.getListaVendedores().add(vendedor);
-		
+
 		/**
 		 * Vendedor 3
 		 */
@@ -195,12 +215,14 @@ public class ModelFactoryController {
 		vendedor.setContrasena("11");
 		vendedor.setDireccion("Narnia del sur");
 		vendedor.setId("3");
-		
+
 		producto = new Producto();
 		producto.setNombre("MacBook");
 		producto.setImagen(new Image(this.getClass().getResourceAsStream("../resources/mac.jpg")));
-		producto.setPrecio(3120000.70);;
-		producto.setEstado(Estado.PUBLICADO);;
+		producto.setPrecio(3120000.70);
+		;
+		producto.setEstado(Estado.PUBLICADO);
+		;
 		producto.setCategoria(Categoria.TECNOLOGIA);
 		sdf = new SimpleDateFormat("yyyy/MM/dd");
 		fechaPublicacion = sdf.format(new Date());
@@ -208,22 +230,17 @@ public class ModelFactoryController {
 		producto.setCodVendedor(vendedor.getCedula());
 		producto.setId("3");
 
-		
-		comentario = new Comentario("Potente",fechaPublicacion, vendedor.getNombre());
+		comentario = new Comentario("Potente", fechaPublicacion, vendedor.getNombre());
 		comentario.setId("3");
 		producto.getListaComentarios().add(comentario);
-		
+
 		vendedor.getListaProductos().add(producto);
 		listaMuro.add(producto);
 
-
 		marketplace.getListaVendedores().add(vendedor);
-		
-		
+
 //        if (vendedorLogueado!=null) {
-			
-	
-		
+
 //		
 //		producto = new Producto();
 //		producto.setNombre("Nevera");
@@ -318,10 +335,10 @@ public class ModelFactoryController {
 
 	}
 
-	public ArrayList<Comentario> obtenerComentario(){
+	public ArrayList<Comentario> obtenerComentario() {
 		ArrayList<Comentario> liscom = new ArrayList<>();
 
-		liscom=productoActual.getListaComentarios();
+		liscom = productoActual.getListaComentarios();
 
 		return liscom;
 

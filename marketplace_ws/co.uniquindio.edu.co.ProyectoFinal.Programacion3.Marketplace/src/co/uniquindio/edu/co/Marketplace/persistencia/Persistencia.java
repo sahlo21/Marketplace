@@ -24,21 +24,23 @@ public class Persistencia {
 	/**
 	 * Kevin
 	 */
-	public static final String RUTA_ARCHIVO_VENDEDORES= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoVendedores.txt";
-	public static final String RUTA_ARCHIVO_PRODUCTOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoProductos.txt";
-	public static final String RUTA_ARCHIVO_COMENTARIOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoComentarios.txt";
-	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//exceptionsMarketplaceLog.txt";
-	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//marketplaceLog.txt";
-	public static final String RUTA_ARCHIVO_LOG_LOGIN ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//registroLogin.txt";
+//	public static final String RUTA_ARCHIVO_VENDEDORES= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoVendedores.txt";
+//	public static final String RUTA_ARCHIVO_PRODUCTOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoProductos.txt";
+//	public static final String RUTA_ARCHIVO_COMENTARIOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoComentarios.txt";
+//	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//exceptionsMarketplaceLog.txt";
+//	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//marketplaceLog.txt";
+//	public static final String RUTA_ARCHIVO_LOG_LOGIN ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//registroLogin.txt";
 
 	/**
 	 * Didier
 	 */
-	//	public static final String RUTA_ARCHIVO_VENDEDORES = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoVendedores.txt";
-	//	public static final String RUTA_ARCHIVO_PRODUCTOS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoProductos.txt";
-	//	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\exceptionsMarketplaceLog.txt";
-	//	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\marketplaceLog.txt";
-	//	public static final String RUTA_ARCHIVO_LOG_LOGIN = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\registroLogin.txt";
+	public static final String RUTA_ARCHIVO_VENDEDORES = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoVendedores.txt";
+	public static final String RUTA_ARCHIVO_PRODUCTOS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoProductos.txt";
+	public static final String RUTA_ARCHIVO_COMENTARIOS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoComentarios.txt";
+	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\exceptionsMarketplaceLog.txt";
+	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\marketplaceLog.txt";
+	public static final String RUTA_ARCHIVO_LOG_LOGIN = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\registroLogin.txt";
+	public static final String RUTA_ARCHIVO_MODELXML = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\model.xml";
 
 	// public static final String RUTA_ARCHIVO_OBJETOS =
 	// "src/resources/archivoObjetos.txt";
@@ -209,20 +211,23 @@ public class Persistencia {
 
 		for (Vendedor vendedor : listaVendedores) {
 			contenido += vendedor.getNombre() + "@" + vendedor.getApellidos() + "@" + vendedor.getCedula() + "@"
-					+ vendedor.getDireccion() + "@" + vendedor.getUsuario() + "@" + vendedor.getContrasena() +  "@" + vendedor.getId() +"\n";
+					+ vendedor.getDireccion() + "@" + vendedor.getUsuario() + "@" + vendedor.getContrasena() + "@"
+					+ vendedor.getId() + "\n";
 			ArrayList<Producto> listaProductos;
-			listaProductos=vendedor.getListaProductos();
+			listaProductos = vendedor.getListaProductos();
 			for (Producto producto : listaProductos) {
-				contenidoProducto += producto.getNombre() + "@" + producto.getImagen() + "@" + producto.getPrecio() + "@"
-						+ producto.getEstado() + "@" + producto.getCategoria() + "@" + producto.getFechaPublicacion() + "@" + producto.getCodVendedor()  + "@" + producto.getId() + "\n";
+				contenidoProducto += producto.getNombre() + "@" + producto.getImagen() + "@" + producto.getPrecio()
+						+ "@" + producto.getEstado() + "@" + producto.getCategoria() + "@"
+						+ producto.getFechaPublicacion() + "@" + producto.getCodVendedor() + "@" + producto.getId()
+						+ "\n";
 				ArrayList<Comentario> listaComentarios;
-				listaComentarios=producto.getListaComentarios();
+				listaComentarios = producto.getListaComentarios();
 				for (Comentario comentario : listaComentarios) {
-					contenidoComentario += comentario.getTexto()+ "@" + comentario.getFecha() + "@" + comentario.getUserVendedor()+  "@" + comentario.getId() + "\n";
+					contenidoComentario += comentario.getTexto() + "@" + comentario.getFecha() + "@"
+							+ comentario.getUserVendedor() + "@" + comentario.getId() + "\n";
 
 				}
 				ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_COMENTARIOS, contenidoComentario, false);
-
 
 			}
 			ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_PRODUCTOS, contenidoProducto, false);
@@ -231,7 +236,6 @@ public class Persistencia {
 
 	}
 
-
 	public static void cargarDatosArchivos(Marketplace marketplace) throws FileNotFoundException, IOException {
 
 		// cargar archivo de vendedores
@@ -239,9 +243,7 @@ public class Persistencia {
 		ArrayList<Producto> productosCargados = cargarProductos();
 		ArrayList<Comentario> comentariosCargados = cargarComentarios();
 
-
-
-			marketplace.getListaVendedores().addAll(vendedoresCargados);
+		marketplace.getListaVendedores().addAll(vendedoresCargados);
 		for (Vendedor vendedor : vendedoresCargados) {
 			for (Producto producto : productosCargados) {
 				for (Comentario comentario : comentariosCargados) {
@@ -250,241 +252,251 @@ public class Persistencia {
 					}
 				}
 				if (vendedor.getId().equals(producto.getId())) {
-                    vendedor.getListaProductos().add(producto);
+					vendedor.getListaProductos().add(producto);
 				}
-
 
 			}
 		}
-
-
-
-			}
-
-
-			// cargar archivo objetos
-
-			// cargar archivo empleados
-
-			// cargar archivo prestamo
-
-		
-
-		public static ArrayList<Vendedor> cargarVendedor() throws FileNotFoundException, IOException {
-			ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
-
-			ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_VENDEDORES);
-			String linea = "";
-
-			for (int i = 0; i < contenido.size(); i++) {
-				linea = contenido.get(i);
-				Vendedor vendedor = new Vendedor();
-				vendedor.setNombre(linea.split("@")[0]);
-				vendedor.setApellidos(linea.split("@")[1]);
-				vendedor.setCedula(linea.split("@")[2]);
-				vendedor.setDireccion(linea.split("@")[3]);
-				vendedor.setUsuario(linea.split("@")[4]);
-				vendedor.setContrasena(linea.split("@")[5]);
-
-				vendedores.add(vendedor);
-			}
-			return vendedores;
-		}
-		public static ArrayList<Producto> cargarProductos() throws FileNotFoundException, IOException {
-			ArrayList<Producto> productos = new ArrayList<Producto>();
-
-			ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_PRODUCTOS);
-			String linea = "";
-
-			for (int i = 0; i < contenido.size(); i++) {
-				linea = contenido.get(i);
-				Producto producto = new Producto();
-				producto.setNombre(linea.split("@")[0]);
-				producto.setImagen(null);
-				producto.setPrecio(Double.parseDouble(linea.split("@")[2]));
-				if (linea.split("@")[3].equals("PUBLICADO")) {
-					producto.setEstado(Estado.PUBLICADO);
-
-				}else if (linea.split("@")[3].equals("VENDIDO")) {
-					producto.setEstado(Estado.VENDIDO);
-
-				}else if (linea.split("@")[3].equals("CANCELADO")) {
-					producto.setEstado(Estado.CANCELADO);
-				}
-
-				if (linea.split("@")[4].equals("ACCESORIOS")) {
-					producto.setCategoria(Categoria.ACCESORIOS);
-
-
-				}else if (linea.split("@")[4].equals("ELECTRODOMESTICOS")) {
-					producto.setCategoria(Categoria.ELECTRODOMESTICOS);
-
-
-				}else if (linea.split("@")[4].equals("HOGAR")) {
-					producto.setCategoria(Categoria.HOGAR);
-				}
-				else if (linea.split("@")[4].equals("TECNOLOGIA")) {
-					producto.setCategoria(Categoria.TECNOLOGIA);
-				}else if (linea.split("@")[4].equals("VEHICULOS")) {
-					producto.setCategoria(Categoria.VEHICULOS);
-				}
-				producto.setCodVendedor(linea.split("@")[5]);
-				producto.setId(linea.split("@")[6]);
-
-				productos.add(producto);
-			}
-			return productos;
-		}
-		public static ArrayList<Comentario> cargarComentarios() throws FileNotFoundException, IOException {
-			ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
-
-			ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_COMENTARIOS);
-			String linea = "";
-
-			for (int i = 0; i < contenido.size(); i++) {
-				linea = contenido.get(i);
-				Comentario comentario = new Comentario();
-				comentario.setTexto(linea.split("@")[0]);
-				comentario.setFecha(linea.split("@")[1]);
-				comentario.setUserVendedor(linea.split("@")[2]);
-				comentario.setId(linea.split("@")[3]);
-
-
-				comentarios.add(comentario);
-			}
-			return comentarios;
-		}
-		//
-		//
-		// public static boolean iniciarSesion(String usuario, String contrasenia)
-		// throws FileNotFoundException, IOException, UsuarioExcepcion {
-		//
-		// if(validarUsuario(usuario,contrasenia)) {
-		// return true;
-		// }else {
-		// throw new UsuarioExcepcion("Usuario no existe");
-		// }
-		//
-		// }
-		//
-		// private static boolean validarUsuario(String usuario, String contrasenia)
-		// throws FileNotFoundException, IOException
-		// {
-		// ArrayList<Usuario> usuarios =
-		// Persistencia.cargarUsuarios(RUTA_ARCHIVO_USUARIOS);
-		//
-		// for (int indiceUsuario = 0; indiceUsuario < usuarios.size(); indiceUsuario++)
-		// {
-		// Usuario usuarioAux = usuarios.get(indiceUsuario);
-		// if(usuarioAux.getUsuario().equalsIgnoreCase(usuario) &&
-		// usuarioAux.getContrasenia().equalsIgnoreCase(contrasenia)) {
-		// return true;
-		// }
-		// }
-		// return false;
-		// }
-		//
-		// public static ArrayList<Usuario> cargarUsuarios(String ruta) throws
-		// FileNotFoundException, IOException {
-		// ArrayList<Usuario> usuarios =new ArrayList<Usuario>();
-		//
-		// ArrayList<String> contenido = ArchivoUtil.leerArchivo(ruta);
-		// String linea="";
-		//
-		// for (int i = 0; i < contenido.size(); i++) {
-		// linea = contenido.get(i);
-		//
-		// Usuario usuario = new Usuario();
-		// usuario.setUsuario(linea.split(",")[0]);
-		// usuario.setContrasenia(linea.split(",")[1]);
-		//
-		// usuarios.add(usuario);
-		// }
-		// return usuarios;
-		// }
-		//
-		//
-		//// ----------------------SAVES------------------------
-		//
-		// /**
-		// * Guarda en un archivo de texto todos la información de las personas
-		// almacenadas en el ArrayList
-		// * @param objetos
-		// * @param ruta
-		// * @throws IOException
-		// */
-		//
-		// public static void guardarObjetos(ArrayList<Cliente> listaClientes, String
-		// ruta) throws IOException {
-		// String contenido = "";
-		//
-		// for(Cliente clienteAux:listaClientes) {
-		// contenido+=
-		// clienteAux.getNombre()+","+clienteAux.getApellido()+","+clienteAux.getCedula()+clienteAux.getDireccion()
-		// +","+clienteAux.getCorreo()+","+clienteAux.getFechaNacimiento()+","+clienteAux.getTelefono()+"\n";
-		// }
-		// ArchivoUtil.guardarArchivo(ruta, contenido, true);
-		// }
-		//
-		//
-		//
-		//
-		//
-		// //------------------------------------SERIALIZACIÓN y XML
-		//
-		//
-		// public static Banco cargarRecursoBancoBinario() {
-		//
-		// Banco banco = null;
-		//
-		// try {
-		// banco =
-		// (Banco)ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_BANCO_BINARIO);
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// return banco;
-		// }
-		//
-		// public static void guardarRecursoBancoBinario(Banco banco) {
-		//
-		// try {
-		// ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_BANCO_BINARIO,
-		// banco);
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
-		//
-		//
-		// public static Banco cargarRecursoBancoXML() {
-		//
-		// Banco banco = null;
-		//
-		// try {
-		// banco =
-		// (Banco)ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BANCO_XML);
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// return banco;
-		//
-		// }
-		//
-		//
-		//
-		// public static void guardarRecursoBancoXML(Banco banco) {
-		//
-		// try {
-		// ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BANCO_XML,
-		// banco);
-		// } catch (Exception e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// }
 
 	}
+
+	// cargar archivo objetos
+
+	// cargar archivo empleados
+
+	// cargar archivo prestamo
+
+	public static ArrayList<Vendedor> cargarVendedor() throws FileNotFoundException, IOException {
+		ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
+
+		ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_VENDEDORES);
+		String linea = "";
+
+		for (int i = 0; i < contenido.size(); i++) {
+			linea = contenido.get(i);
+			Vendedor vendedor = new Vendedor();
+			vendedor.setNombre(linea.split("@")[0]);
+			vendedor.setApellidos(linea.split("@")[1]);
+			vendedor.setCedula(linea.split("@")[2]);
+			vendedor.setDireccion(linea.split("@")[3]);
+			vendedor.setUsuario(linea.split("@")[4]);
+			vendedor.setContrasena(linea.split("@")[5]);
+
+			vendedores.add(vendedor);
+		}
+		return vendedores;
+	}
+
+	public static ArrayList<Producto> cargarProductos() throws FileNotFoundException, IOException {
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+
+		ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_PRODUCTOS);
+		String linea = "";
+
+		for (int i = 0; i < contenido.size(); i++) {
+			linea = contenido.get(i);
+			Producto producto = new Producto();
+			producto.setNombre(linea.split("@")[0]);
+			producto.setImagen(null);
+			producto.setPrecio(Double.parseDouble(linea.split("@")[2]));
+			if (linea.split("@")[3].equals("PUBLICADO")) {
+				producto.setEstado(Estado.PUBLICADO);
+
+			} else if (linea.split("@")[3].equals("VENDIDO")) {
+				producto.setEstado(Estado.VENDIDO);
+
+			} else if (linea.split("@")[3].equals("CANCELADO")) {
+				producto.setEstado(Estado.CANCELADO);
+			}
+
+			if (linea.split("@")[4].equals("ACCESORIOS")) {
+				producto.setCategoria(Categoria.ACCESORIOS);
+
+			} else if (linea.split("@")[4].equals("ELECTRODOMESTICOS")) {
+				producto.setCategoria(Categoria.ELECTRODOMESTICOS);
+
+			} else if (linea.split("@")[4].equals("HOGAR")) {
+				producto.setCategoria(Categoria.HOGAR);
+			} else if (linea.split("@")[4].equals("TECNOLOGIA")) {
+				producto.setCategoria(Categoria.TECNOLOGIA);
+			} else if (linea.split("@")[4].equals("VEHICULOS")) {
+				producto.setCategoria(Categoria.VEHICULOS);
+			}
+			producto.setCodVendedor(linea.split("@")[5]);
+			producto.setId(linea.split("@")[6]);
+
+			productos.add(producto);
+		}
+		return productos;
+	}
+
+	public static ArrayList<Comentario> cargarComentarios() throws FileNotFoundException, IOException {
+		ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
+
+		ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_COMENTARIOS);
+		String linea = "";
+
+		for (int i = 0; i < contenido.size(); i++) {
+			linea = contenido.get(i);
+			Comentario comentario = new Comentario();
+			comentario.setTexto(linea.split("@")[0]);
+			comentario.setFecha(linea.split("@")[1]);
+			comentario.setUserVendedor(linea.split("@")[2]);
+			comentario.setId(linea.split("@")[3]);
+
+			comentarios.add(comentario);
+		}
+		return comentarios;
+	}
+	//
+	//
+	// public static boolean iniciarSesion(String usuario, String contrasenia)
+	// throws FileNotFoundException, IOException, UsuarioExcepcion {
+	//
+	// if(validarUsuario(usuario,contrasenia)) {
+	// return true;
+	// }else {
+	// throw new UsuarioExcepcion("Usuario no existe");
+	// }
+	//
+	// }
+	//
+	// private static boolean validarUsuario(String usuario, String contrasenia)
+	// throws FileNotFoundException, IOException
+	// {
+	// ArrayList<Usuario> usuarios =
+	// Persistencia.cargarUsuarios(RUTA_ARCHIVO_USUARIOS);
+	//
+	// for (int indiceUsuario = 0; indiceUsuario < usuarios.size(); indiceUsuario++)
+	// {
+	// Usuario usuarioAux = usuarios.get(indiceUsuario);
+	// if(usuarioAux.getUsuario().equalsIgnoreCase(usuario) &&
+	// usuarioAux.getContrasenia().equalsIgnoreCase(contrasenia)) {
+	// return true;
+	// }
+	// }
+	// return false;
+	// }
+	//
+	// public static ArrayList<Usuario> cargarUsuarios(String ruta) throws
+	// FileNotFoundException, IOException {
+	// ArrayList<Usuario> usuarios =new ArrayList<Usuario>();
+	//
+	// ArrayList<String> contenido = ArchivoUtil.leerArchivo(ruta);
+	// String linea="";
+	//
+	// for (int i = 0; i < contenido.size(); i++) {
+	// linea = contenido.get(i);
+	//
+	// Usuario usuario = new Usuario();
+	// usuario.setUsuario(linea.split(",")[0]);
+	// usuario.setContrasenia(linea.split(",")[1]);
+	//
+	// usuarios.add(usuario);
+	// }
+	// return usuarios;
+	// }
+	//
+	//
+	//// ----------------------SAVES------------------------
+	//
+	// /**
+	// * Guarda en un archivo de texto todos la información de las personas
+	// almacenadas en el ArrayList
+	// * @param objetos
+	// * @param ruta
+	// * @throws IOException
+	// */
+	//
+	// public static void guardarObjetos(ArrayList<Cliente> listaClientes, String
+	// ruta) throws IOException {
+	// String contenido = "";
+	//
+	// for(Cliente clienteAux:listaClientes) {
+	// contenido+=
+	// clienteAux.getNombre()+","+clienteAux.getApellido()+","+clienteAux.getCedula()+clienteAux.getDireccion()
+	// +","+clienteAux.getCorreo()+","+clienteAux.getFechaNacimiento()+","+clienteAux.getTelefono()+"\n";
+	// }
+	// ArchivoUtil.guardarArchivo(ruta, contenido, true);
+	// }
+	//
+	//
+	//
+	//
+	//
+	// //------------------------------------SERIALIZACIÓN y XML
+	//
+	//
+	// public static Banco cargarRecursoBancoBinario() {
+	//
+	// Banco banco = null;
+	//
+	// try {
+	// banco =
+	// (Banco)ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_BANCO_BINARIO);
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// return banco;
+	// }
+	//
+	// public static void guardarRecursoBancoBinario(Banco banco) {
+	//
+	// try {
+	// ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_BANCO_BINARIO,
+	// banco);
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
+	//
+	//
+	// public static Banco cargarRecursoBancoXML() {
+	//
+	// Banco banco = null;
+	//
+	// try {
+	// banco =
+	// (Banco)ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BANCO_XML);
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// return banco;
+	//
+	// }
+	//
+	//
+	//
+	// public static void guardarRecursoBancoXML(Banco banco) {
+	//
+	// try {
+	// ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BANCO_XML,
+	// banco);
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// }
+
+	public static void guardarRecursoMarketPlaceXML(Marketplace marketplace) {
+		try {
+			ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELXML, marketplace);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Marketplace cargarRecursoMarketplaceXML() {
+		Marketplace marketplace = null;
+		try {
+			marketplace = (Marketplace) ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELXML);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return marketplace;
+	}
+
+}
