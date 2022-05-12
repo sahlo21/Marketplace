@@ -348,12 +348,20 @@ public class ModelFactoryController {
 	public MeGusta crearMeGusta(String codVendedorLike) {
 		MeGusta meGusta = null;
 		meGusta = productoActual.crearMeGusta(codVendedorLike);
+		if (meGusta != null) {
+			guardarMarketplaceLog("Me gusta creado", 1, "Crear me gusta", vendedorLogueado.getNombre(),
+					vendedorLogueado.getCedula());
+		}
 		return meGusta;
 	}
 
 	public Comentario crearComentario(String texto, String fecha, String userVendedor) {
 		Comentario comentario = null;
 		comentario = productoActual.crearComentario(texto, fecha, userVendedor);
+		if (comentario != null) {
+			guardarMarketplaceLog("Comentario creado", 1, "Crear comentario", vendedorLogueado.getNombre(),
+					vendedorLogueado.getCedula());
+		}
 		return comentario;
 	}
 
@@ -393,6 +401,8 @@ public class ModelFactoryController {
 	}
 
 	public void eliminarMeGusta(String codVendedorLike) {
+		guardarMarketplaceLog("Me gusta eliminado", 1, "Eliminar me gusta", vendedorLogueado.getNombre(),
+				vendedorLogueado.getCedula());
 		productoActual.eliminarMeGusta(codVendedorLike);
 
 	}
