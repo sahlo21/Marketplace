@@ -57,7 +57,7 @@ public class ModelFactoryController {
 		// 2. Cargar los datos de los archivos
 		cargarDatosDesdeArchivos();
 		
-		guardarRecursoXML();
+//		guardarRecursoXML();
 
 		// 3. Guardar y Cargar el recurso serializable binario
 //		guardarResourceBinario();
@@ -109,8 +109,8 @@ public class ModelFactoryController {
 		marketplace = new Marketplace("Fakebook Marketplace", "178");
 
 		try {
-
-			listaMuro.addAll(Persistencia.cargarDatosArchivos(getMarketplace()));
+            listaMuro.clear();
+			this.listaMuro.addAll(Persistencia.cargarDatosArchivos(getMarketplace()));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -139,8 +139,6 @@ public class ModelFactoryController {
 	private void inicializarDatos() {
 
 		marketplace = new Marketplace("Fakebook Marketplace", "178");
-
-	
 
 		/**
 		 * Vendedor 1
@@ -247,30 +245,6 @@ public class ModelFactoryController {
 
 		marketplace.getListaVendedores().add(vendedor);
 
-//        if (vendedorLogueado!=null) {
-
-//		
-//		producto = new Producto();
-//		producto.setNombre("Nevera");
-//		producto.setImagen(null);
-//		producto.setPrecio(1212.0);;
-//		producto.setEstado(Estado.PUBLICADO);;
-//		producto.setCategoria(Categoria.ELECTRODOMESTICOS);
-//		producto.setFechaPublicacion(new Date());
-//		producto.setCodVendedor(vendedorLogueado.getCedula());
-//		
-//		vendedorLogueado.getListaProductos().add(producto);
-//		producto = new Producto();
-//		producto.setNombre("Xbox");
-//		producto.setImagen(null);
-//		producto.setPrecio(1212.0);;
-//		producto.setEstado(Estado.PUBLICADO);;
-//		producto.setCategoria(Categoria.TECNOLOGIA);
-//		producto.setFechaPublicacion(new Date());
-//		producto.setCodVendedor(vendedorLogueado.getCedula());
-//		
-//		vendedorLogueado.getListaProductos().add(producto);
-//        }
 	}
 
 	public void guardarMarketplaceLog(String mensaje, int nivel, String accion, String nombreUsuario, String codigo) {

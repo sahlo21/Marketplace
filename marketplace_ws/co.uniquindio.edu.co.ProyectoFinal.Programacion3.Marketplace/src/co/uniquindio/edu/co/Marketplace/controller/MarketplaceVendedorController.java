@@ -54,6 +54,7 @@ public class MarketplaceVendedorController implements Initializable{
 
 	Aplicacion aplicacion;
 	Producto productoSeleccionado;
+	Producto productoSeleccionadoMuro;
 	ArrayList<Producto> listaProductos = new ArrayList<>();
 	ArrayList<Vendedor> listaVendedores = new ArrayList<>();
 	ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
@@ -212,7 +213,7 @@ public class MarketplaceVendedorController implements Initializable{
 	}
 	@FXML
 	void abrirProductoAction(ActionEvent event) {
-		if(productoSeleccionado!=null){
+		if(productoSeleccionadoMuro!=null){
 
 			abrirProducto();
 		}else{
@@ -238,13 +239,15 @@ public class MarketplaceVendedorController implements Initializable{
 
 			// Cojo el controlador
 			ProductoController controlador = loader.getController();
+			tableProductos.getSelectionModel().clearSelection();
 
 
-			controlador.initAttributtes(productoSeleccionado);
+			controlador.initAttributtes(productoSeleccionadoMuro);
+			tableProductos.getSelectionModel().clearSelection();
 
-
-			modelFactoryController.setProductoActual(productoSeleccionado);
-
+			modelFactoryController.setProductoActual(productoSeleccionadoMuro);
+//			productoSeleccionado = null;
+			tableProductos.getSelectionModel().clearSelection();
 			// Creo el Scene
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
@@ -315,7 +318,7 @@ public class MarketplaceVendedorController implements Initializable{
 		cbCategoria.getItems().addAll(Categoria.ACCESORIOS, Categoria.ELECTRODOMESTICOS, Categoria.HOGAR, Categoria.TECNOLOGIA, Categoria.VEHICULOS);
 		tableMuro.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection) ->{
 
-			productoSeleccionado = newSelection;
+			productoSeleccionadoMuro = newSelection;
 
 
 		});
