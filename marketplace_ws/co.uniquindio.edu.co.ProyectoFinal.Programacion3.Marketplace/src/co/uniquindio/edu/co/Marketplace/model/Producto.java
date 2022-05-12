@@ -1,5 +1,6 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
+import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,8 +9,13 @@ import javax.swing.text.DateFormatter;
 
 import javafx.scene.image.Image;
 
-public class Producto {
+public class Producto implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	String nombre;
 	Image imagen;
 	Double precio;
@@ -40,7 +46,7 @@ public class Producto {
 		this.fechaPublicacion = fechaPublicacion;
 	}
 	public Producto(){
-		super();
+
 
 	}
 

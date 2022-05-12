@@ -1,25 +1,35 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
-public class MeGusta {
-String codVendedor;
+import java.io.Serializable;
 
-public MeGusta(String codVendedor) {
-	super();
-	this.codVendedor = codVendedor;
-}
+public class MeGusta implements Serializable {
+	/**
+		 * 
+		 */
+	private static final long serialVersionUID = 1L;
 
-public String getCodVendedor() {
-	return codVendedor;
-}
+	String codVendedor;
 
-public void setCodVendedor(String codVendedor) {
-	this.codVendedor = codVendedor;
-}
+	public MeGusta() {
 
-@Override
-public String toString() {
-	return "MeGusta [codVendedor=" + codVendedor + "]";
-}
+	}
 
+	public MeGusta(String codVendedor) {
+		super();
+		this.codVendedor = codVendedor;
+	}
+
+	public String getCodVendedor() {
+		return codVendedor;
+	}
+
+	public void setCodVendedor(String codVendedor) {
+		this.codVendedor = codVendedor;
+	}
+
+	@Override
+	public String toString() {
+		return "MeGusta [codVendedor=" + codVendedor + "]";
+	}
 
 }

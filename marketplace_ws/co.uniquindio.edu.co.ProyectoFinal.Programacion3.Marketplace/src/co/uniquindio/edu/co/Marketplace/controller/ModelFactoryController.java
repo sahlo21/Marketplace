@@ -57,17 +57,17 @@ public class ModelFactoryController {
 		// 2. Cargar los datos de los archivos
 		cargarDatosDesdeArchivos();
 
-		guardarRecursosMarketplace();
+		//guardarRecursosMarketplace();
 
 //		guardarRecursoXML();
 
 		// 3. Guardar y Cargar el recurso serializable binario
-//		guardarResourceBinario();
-//		cargarResourceBinario();
+		guardarResourceBinario();
+		cargarResourceBinario();
 
 		// 4. Guardar y Cargar el recurso serializable XML
-//		guardarResourceXML();
-//		cargarResourceXML();
+		guardarResourceXML();
+		cargarResourceXML();
 
 		// crear el administrador
 
@@ -82,6 +82,22 @@ public class ModelFactoryController {
 			System.out.println("es null");
 
 		}
+	}
+
+	private void cargarResourceXML() {
+		Persistencia.cargarRecursoMarketplaceXML();
+	}
+
+	private void guardarResourceXML() {
+		Persistencia.guardarRecursoMarketPlaceXML(marketplace);
+	}
+
+	private void cargarResourceBinario() {
+		Persistencia.cargarRecursosMarketplaceBinario();
+	}
+
+	private void guardarResourceBinario() {
+		Persistencia.guardarRecursosMarketplaceBinario(marketplace);
 	}
 
 	private void iniciarSalvarDatosPrueba() {
@@ -120,24 +136,24 @@ public class ModelFactoryController {
 		}
 	}
 
-	public void guardarRecursosMarketplace() {
-
-		Marketplace marketplace = new Marketplace();
-		marketplace.setNombre("Marketplace");
-		marketplace.setNit("900010101");
-
-		Vendedor vendedor = new Vendedor();
-		vendedor.setNombre("Robinson");
-		vendedor.setApellidos("Crusso Dark");
-		vendedor.setCedula("301020");
-		vendedor.setUsuario("robin");
-		vendedor.setDireccion("Armenia");
-
-		marketplace.getListaVendedores().add(vendedor);
-
-		Persistencia.guardarRecursoMarketPlaceXML(marketplace);
-		Persistencia.guardarRecursosMarketplaceBinario(marketplace);
-	}
+//	public void guardarRecursosMarketplace() {
+//
+//		Marketplace marketplace = new Marketplace();
+//		marketplace.setNombre("Marketplace");
+//		marketplace.setNit("900010101");
+//
+//		Vendedor vendedor = new Vendedor();
+//		vendedor.setNombre("Robinson");
+//		vendedor.setApellidos("Crusso Dark");
+//		vendedor.setCedula("301020");
+//		vendedor.setUsuario("robin");
+//		vendedor.setDireccion("Armenia");
+//
+//		marketplace.getListaVendedores().add(vendedor);
+//
+//		Persistencia.guardarRecursoMarketPlaceXML(marketplace);
+//		Persistencia.guardarRecursosMarketplaceBinario(marketplace);
+//	}
 
 	private void inicializarDatos() {
 

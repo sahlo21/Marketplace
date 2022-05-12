@@ -442,3 +442,5 @@ may. 12, 2022 2:03:14 A. M. co.uniquindio.edu.co.Marketplace.persistencia.Archiv
 INFO: Iniciar de sesión administrador, Inicio de sesión correcto Usuario: Tyler Cedula: 21p, 2022-05-12
 may. 12, 2022 2:04:58 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFO: Iniciar de sesión administrador, Inicio de sesión correcto Usuario: Tyler Cedula: 21p, 2022-05-12
+may. 12, 2022 2:31:56 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Iniciar de sesión administrador, Inicio de sesión correcto Usuario: Tyler Cedula: 21p, 2022-05-12

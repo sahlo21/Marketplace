@@ -1,8 +1,14 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Comentario {
+public class Comentario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	String texto;
 	String fecha;
 	String userVendedor;
@@ -22,7 +28,7 @@ public class Comentario {
 
 
 	public Comentario() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
