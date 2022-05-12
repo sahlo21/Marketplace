@@ -96,13 +96,21 @@ public class ModelFactoryController {
 		}
 	}
 
+	public ArrayList<Producto> getListaMuro() {
+		return listaMuro;
+	}
+
+	public void setListaMuro(ArrayList<Producto> listaMuro) {
+		this.listaMuro = listaMuro;
+	}
+
 	private void cargarDatosDesdeArchivos() {
 
 		marketplace = new Marketplace("Fakebook Marketplace", "178");
 
 		try {
 
-			Persistencia.cargarDatosArchivos(getMarketplace());
+			listaMuro.addAll(Persistencia.cargarDatosArchivos(getMarketplace()));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -92,8 +92,10 @@ public class Comentario {
 
 	@Override
 	public String toString() {
-		return "Comentario [texto=" + texto + ", fecha=" + fecha + ", userVendedor=" + userVendedor + "]";
+		return "Comentario [texto=" + texto + ", fecha=" + fecha + ", userVendedor=" + userVendedor + ", id=" + id
+				+ "]";
 	}
+
 
 	/*
 	 * (non-Javadoc)

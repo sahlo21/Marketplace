@@ -266,18 +266,14 @@ public class Producto {
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
+
+
 	@Override
 	public String toString() {
 		return "Producto [nombre=" + nombre + ", imagen=" + imagen + ", precio=" + precio + ", estado=" + estado
 				+ ", categoria=" + categoria + ", fechaPublicacion=" + fechaPublicacion + ", codVendedor=" + codVendedor
-				+ ", listaMeGustas=" + listaMeGustas + ", listaComentarios=" + listaComentarios + "]";
+				+ ", id=" + id + "]";
 	}
-
 	/*
 	 * (non-Javadoc)
 	 * 

@@ -158,13 +158,13 @@ public class Vendedor extends Usuario {
 
 
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
+
+
 	@Override
 	public String toString() {
-		return "Vendedor [cedula=" + cedula + ", direccion=" + direccion + ", listaProductos=" + listaProductos
-				+ ", listaContactos=" + listaContactos + ", listaMensajes=" + listaMensajes + "]";
+		return "Vendedor [cedula=" + cedula + ", direccion=" + direccion + ", id=" + id + ", nombre=" + nombre
+				+ ", apellidos=" + apellidos + ", usuario=" + usuario + ", contrasena=" + contrasena + "]";
 	}
 
 

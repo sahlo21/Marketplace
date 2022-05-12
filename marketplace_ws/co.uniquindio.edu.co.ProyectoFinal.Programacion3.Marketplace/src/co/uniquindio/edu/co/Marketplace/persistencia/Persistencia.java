@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import co.uniquindio.edu.co.Marketplace.controller.ModelFactoryController;
 import co.uniquindio.edu.co.Marketplace.model.Categoria;
 import co.uniquindio.edu.co.Marketplace.model.Comentario;
 import co.uniquindio.edu.co.Marketplace.model.Estado;
@@ -24,23 +25,24 @@ public class Persistencia {
 	/**
 	 * Kevin
 	 */
-//	public static final String RUTA_ARCHIVO_VENDEDORES= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoVendedores.txt";
-//	public static final String RUTA_ARCHIVO_PRODUCTOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoProductos.txt";
-//	public static final String RUTA_ARCHIVO_COMENTARIOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoComentarios.txt";
-//	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//exceptionsMarketplaceLog.txt";
-//	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//marketplaceLog.txt";
-//	public static final String RUTA_ARCHIVO_LOG_LOGIN ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//registroLogin.txt";
+	public static final String RUTA_ARCHIVO_VENDEDORES= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoVendedores.txt";
+	public static final String RUTA_ARCHIVO_PRODUCTOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoProductos.txt";
+	public static final String RUTA_ARCHIVO_COMENTARIOS= "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//archivos//archivoComentarios.txt";
+	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//exceptionsMarketplaceLog.txt";
+	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//marketplaceLog.txt";
+	public static final String RUTA_ARCHIVO_LOG_LOGIN ="C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//log//registroLogin.txt";
+	public static final String RUTA_ARCHIVO_MODELXML = "C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//td//persistencia//model.xml";
 
 	/**
 	 * Didier
 	 */
-	public static final String RUTA_ARCHIVO_VENDEDORES = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoVendedores.txt";
-	public static final String RUTA_ARCHIVO_PRODUCTOS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoProductos.txt";
-	public static final String RUTA_ARCHIVO_COMENTARIOS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoComentarios.txt";
-	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\exceptionsMarketplaceLog.txt";
-	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\marketplaceLog.txt";
-	public static final String RUTA_ARCHIVO_LOG_LOGIN = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\registroLogin.txt";
-	public static final String RUTA_ARCHIVO_MODELXML = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\model.xml";
+	//	public static final String RUTA_ARCHIVO_VENDEDORES = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoVendedores.txt";
+	//	public static final String RUTA_ARCHIVO_PRODUCTOS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoProductos.txt";
+	//	public static final String RUTA_ARCHIVO_COMENTARIOS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\archivos\\archivoComentarios.txt";
+	//	public static final String RUTA_ARCHIVO_LOG_EXCEPTIONS = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\exceptionsMarketplaceLog.txt";
+	//	public static final String RUTA_ARCHIVO_LOG_MARKETPLACE = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\marketplaceLog.txt";
+	//	public static final String RUTA_ARCHIVO_LOG_LOGIN = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\log\\registroLogin.txt";
+	//	public static final String RUTA_ARCHIVO_MODELXML = "C:\\Users\\Daniel Guiral\\Documents\\GitHub\\Marketplace\\td\\persistencia\\model.xml";
 
 	// public static final String RUTA_ARCHIVO_OBJETOS =
 	// "src/resources/archivoObjetos.txt";
@@ -208,6 +210,7 @@ public class Persistencia {
 		String contenido = "";
 		String contenidoProducto = "";
 		String contenidoComentario = "";
+		System.out.println("lsita guardar vedne:"+listaVendedores);
 
 		for (Vendedor vendedor : listaVendedores) {
 			contenido += vendedor.getNombre() + "@" + vendedor.getApellidos() + "@" + vendedor.getCedula() + "@"
@@ -217,9 +220,9 @@ public class Persistencia {
 			listaProductos = vendedor.getListaProductos();
 			for (Producto producto : listaProductos) {
 				contenidoProducto += producto.getNombre() + "@" + producto.getImagen() + "@" + producto.getPrecio()
-						+ "@" + producto.getEstado() + "@" + producto.getCategoria() + "@"
-						+ producto.getFechaPublicacion() + "@" + producto.getCodVendedor() + "@" + producto.getId()
-						+ "\n";
+				+ "@" + producto.getEstado() + "@" + producto.getCategoria() + "@"
+				+ producto.getFechaPublicacion() + "@" + producto.getCodVendedor() + "@" + producto.getId()
+				+ "\n";
 				ArrayList<Comentario> listaComentarios;
 				listaComentarios = producto.getListaComentarios();
 				for (Comentario comentario : listaComentarios) {
@@ -236,29 +239,44 @@ public class Persistencia {
 
 	}
 
-	public static void cargarDatosArchivos(Marketplace marketplace) throws FileNotFoundException, IOException {
+
+	public static ArrayList<Producto> cargarDatosArchivos(Marketplace marketplace) throws FileNotFoundException, IOException {
 
 		// cargar archivo de vendedores
 		ArrayList<Vendedor> vendedoresCargados = cargarVendedor();
 		ArrayList<Producto> productosCargados = cargarProductos();
 		ArrayList<Comentario> comentariosCargados = cargarComentarios();
+		System.out.println(vendedoresCargados);
+		System.out.println(productosCargados);
+		System.out.println(comentariosCargados);
+
+		ArrayList<Producto> listaMuro = new ArrayList<>();
+
+
 
 		marketplace.getListaVendedores().addAll(vendedoresCargados);
 		for (Vendedor vendedor : vendedoresCargados) {
 			for (Producto producto : productosCargados) {
-				for (Comentario comentario : comentariosCargados) {
-					if (producto.getId().equals(comentario.getId())) {
-						producto.getListaComentarios().add(comentario);
-					}
-				}
+
 				if (vendedor.getId().equals(producto.getId())) {
 					vendedor.getListaProductos().add(producto);
+					listaMuro.add(producto);
+					for (Comentario comentario : comentariosCargados) {
+						if (producto.getId().equals(comentario.getId())) {
+							producto.getListaComentarios().add(comentario);
+						}
+					}
 				}
+
+
 
 			}
 		}
 
+
+		return listaMuro;
 	}
+
 
 	// cargar archivo objetos
 
@@ -281,6 +299,8 @@ public class Persistencia {
 			vendedor.setDireccion(linea.split("@")[3]);
 			vendedor.setUsuario(linea.split("@")[4]);
 			vendedor.setContrasena(linea.split("@")[5]);
+			vendedor.setId(linea.split("@")[6]);
+
 
 			vendedores.add(vendedor);
 		}
@@ -298,38 +318,44 @@ public class Persistencia {
 			Producto producto = new Producto();
 			producto.setNombre(linea.split("@")[0]);
 			producto.setImagen(null);
-			producto.setPrecio(Double.parseDouble(linea.split("@")[2]));
-			if (linea.split("@")[3].equals("PUBLICADO")) {
-				producto.setEstado(Estado.PUBLICADO);
+			producto.setPrecio(Double.parseDouble(linea.split("@")[3]));
 
-			} else if (linea.split("@")[3].equals("VENDIDO")) {
+
+			if (linea.split("@")[4].equals("PUBLICADO")) {
+				producto.setEstado(Estado.PUBLICADO);
+				System.out.println("lina slit 4"+linea.split("@")[4]);
+
+			}else if (linea.split("@")[4].equals("VENDIDO")) {
 				producto.setEstado(Estado.VENDIDO);
 
-			} else if (linea.split("@")[3].equals("CANCELADO")) {
+			}else if (linea.split("@")[4].equals("CANCELADO")) {
 				producto.setEstado(Estado.CANCELADO);
 			}
 
 			if (linea.split("@")[4].equals("ACCESORIOS")) {
 				producto.setCategoria(Categoria.ACCESORIOS);
 
-			} else if (linea.split("@")[4].equals("ELECTRODOMESTICOS")) {
+
+			}else if (linea.split("@")[5].equals("ELECTRODOMESTICOS")) {
 				producto.setCategoria(Categoria.ELECTRODOMESTICOS);
 
-			} else if (linea.split("@")[4].equals("HOGAR")) {
+
+			}else if (linea.split("@")[5].equals("HOGAR")) {
 				producto.setCategoria(Categoria.HOGAR);
-			} else if (linea.split("@")[4].equals("TECNOLOGIA")) {
+			}
+			else if (linea.split("@")[5].equals("TECNOLOGIA")) {
 				producto.setCategoria(Categoria.TECNOLOGIA);
-			} else if (linea.split("@")[4].equals("VEHICULOS")) {
+			}else if (linea.split("@")[5].equals("VEHICULOS")) {
 				producto.setCategoria(Categoria.VEHICULOS);
 			}
-			producto.setCodVendedor(linea.split("@")[5]);
-			producto.setId(linea.split("@")[6]);
+			producto.setFechaPublicacion(linea.split("@")[6]);
+			producto.setCodVendedor(linea.split("@")[7]);
+			producto.setId(linea.split("@")[8]);
 
 			productos.add(producto);
 		}
 		return productos;
 	}
-
 	public static ArrayList<Comentario> cargarComentarios() throws FileNotFoundException, IOException {
 		ArrayList<Comentario> comentarios = new ArrayList<Comentario>();
 
@@ -343,6 +369,7 @@ public class Persistencia {
 			comentario.setFecha(linea.split("@")[1]);
 			comentario.setUserVendedor(linea.split("@")[2]);
 			comentario.setId(linea.split("@")[3]);
+
 
 			comentarios.add(comentario);
 		}
