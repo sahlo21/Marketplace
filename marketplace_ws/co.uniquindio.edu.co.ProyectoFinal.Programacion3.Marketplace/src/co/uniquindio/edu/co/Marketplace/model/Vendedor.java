@@ -1,5 +1,6 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
+import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,8 +8,13 @@ import java.util.Date;
 import javafx.scene.image.Image;
 
 
-public class Vendedor extends Usuario {
+public class Vendedor extends Usuario implements Serializable{
 	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	String cedula;
 	String direccion;
@@ -17,9 +23,8 @@ public class Vendedor extends Usuario {
 	ArrayList<Vendedor> listaContactos = new ArrayList<>();
 	ArrayList<Mensaje> listaMensajes = new ArrayList<>();
 	
-	public Vendedor() {
-		super();
-
+	public Vendedor() {		
+		
 	}
 	
 	

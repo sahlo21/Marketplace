@@ -1,12 +1,18 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
+import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 
-public class Marketplace {
+public class Marketplace implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	String nombre;
 	String nit;
 	ArrayList<Vendedor> listaVendedores = new ArrayList<>();

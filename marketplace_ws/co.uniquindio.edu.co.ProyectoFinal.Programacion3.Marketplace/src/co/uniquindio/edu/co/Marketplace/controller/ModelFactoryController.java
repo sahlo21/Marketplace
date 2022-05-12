@@ -56,7 +56,9 @@ public class ModelFactoryController {
 
 		// 2. Cargar los datos de los archivos
 		cargarDatosDesdeArchivos();
-		
+
+		guardarRecursosMarketplace();
+
 //		guardarRecursoXML();
 
 		// 3. Guardar y Cargar el recurso serializable binario
@@ -109,7 +111,7 @@ public class ModelFactoryController {
 		marketplace = new Marketplace("Fakebook Marketplace", "178");
 
 		try {
-            listaMuro.clear();
+			listaMuro.clear();
 			this.listaMuro.addAll(Persistencia.cargarDatosArchivos(getMarketplace()));
 
 		} catch (IOException e) {
@@ -118,7 +120,7 @@ public class ModelFactoryController {
 		}
 	}
 
-	public void guardarRecursoXML() {
+	public void guardarRecursosMarketplace() {
 
 		Marketplace marketplace = new Marketplace();
 		marketplace.setNombre("Marketplace");
@@ -134,6 +136,7 @@ public class ModelFactoryController {
 		marketplace.getListaVendedores().add(vendedor);
 
 		Persistencia.guardarRecursoMarketPlaceXML(marketplace);
+		Persistencia.guardarRecursosMarketplaceBinario(marketplace);
 	}
 
 	private void inicializarDatos() {
@@ -143,7 +146,7 @@ public class ModelFactoryController {
 		/**
 		 * Vendedor 1
 		 */
-		
+
 		Vendedor vendedor = new Vendedor();
 		vendedor.setNombre("Kevin");
 		vendedor.setApellidos("Sánchez");
