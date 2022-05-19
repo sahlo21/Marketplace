@@ -450,3 +450,103 @@ may 12, 2022 2:10:33 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-12
 may 12, 2022 2:10:45 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-12
+may 19, 2022 2:28:31 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 2:29:30 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 2:30:35 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 2:34:30 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 2:47:12 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión , Inicio de sesión fallido Usuario: kaka Cedula: No aplica, 2022-05-19
+may 19, 2022 2:47:17 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión , Inicio de sesión fallido Usuario: kaka Cedula: No aplica, 2022-05-19
+may 19, 2022 2:48:05 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión , Inicio de sesión fallido Usuario: kaka Cedula: No aplica, 2022-05-19
+may 19, 2022 2:48:11 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión , Inicio de sesión fallido Usuario: kaka2 Cedula: No aplica, 2022-05-19
+may 19, 2022 2:48:51 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 2:49:07 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión , Inicio de sesión fallido Usuario:  Cedula: No aplica, 2022-05-19
+may 19, 2022 2:49:26 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 2:52:20 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:04:37 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:18:02 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:19:58 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:25:03 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:26:31 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:26:54 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:27:15 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:27:23 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Christian Cedula: 1529, 2022-05-19
+may 19, 2022 3:27:48 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Christian Cedula: 1529, 2022-05-19
+may 19, 2022 3:27:53 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:29:30 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:29:37 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:30:32 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:30:57 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:31:04 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:31:16 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:31:26 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:31:42 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:31:49 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Christian Cedula: 1529, 2022-05-19
+may 19, 2022 3:32:10 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Christian Cedula: 1529, 2022-05-19
+may 19, 2022 3:32:16 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Christian Cedula: 1529, 2022-05-19
+may 19, 2022 3:32:28 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Christian Cedula: 1529, 2022-05-19
+may 19, 2022 3:32:34 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:37:43 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:37:49 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:37:59 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:38:05 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:38:24 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:38:33 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:40:55 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:41:17 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:41:23 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:41:33 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19
+may 19, 2022 3:41:38 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:43:15 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:43:21 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:43:31 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesión vendedor, Cierre de sesión correcto Usuario: Kevin Cedula: 1006341989, 2022-05-19
+may 19, 2022 3:43:37 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Iniciar de sesión vendedor, Inicio de sesión correcto Usuario: Didier Cedula: 1519, 2022-05-19

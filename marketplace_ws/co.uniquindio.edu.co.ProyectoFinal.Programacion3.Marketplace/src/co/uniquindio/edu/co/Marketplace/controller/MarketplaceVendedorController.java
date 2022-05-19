@@ -240,7 +240,7 @@ public class MarketplaceVendedorController implements Initializable{
 			ProductoController controlador = loader.getController();
 
 
-			controlador.initAttributtes(productoSeleccionado);
+			controlador.initAttributtes(productoSeleccionado, modelFactoryController.getVendedorLogueado());
 
 
 			modelFactoryController.setProductoActual(productoSeleccionado);
@@ -255,6 +255,7 @@ public class MarketplaceVendedorController implements Initializable{
 
 
 			stage.showAndWait();
+			
 
 
 

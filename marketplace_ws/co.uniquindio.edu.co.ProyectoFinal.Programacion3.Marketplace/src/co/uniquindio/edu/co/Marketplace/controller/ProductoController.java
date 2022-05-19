@@ -183,15 +183,7 @@ public class ProductoController implements Initializable {
 
 	}
 
-	// MeGusta flag =modelFactoryController.buscarLike();
-	// System.out.println("flag "+flag);
-	//
-	// if (flag != null) {
-	// buttonLike.setStyle("-fx-background-color: #FF3380");
-	//
-	// }else {
-	// buttonLike.setStyle("-fx-background-color: #0080ff;");
-	// }
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -203,9 +195,20 @@ public class ProductoController implements Initializable {
 
 	}
 
-	public void initAttributtes(Producto productoSeleccionado) {
+	public void initAttributtes(Producto productoSeleccionado, Vendedor vendedorActual) {
 		this.productoSeleccionado = productoSeleccionado;
 		if (productoSeleccionado != null) {
+			ArrayList<MeGusta> listaMeGustaAux = new ArrayList<>();
+			listaMeGustaAux=productoSeleccionado.getListaMeGustas();
+			System.out.println("liasdjas: "+listaMeGustaAux);
+			
+			for (MeGusta meGusta : listaMeGustaAux) {
+				if (meGusta.getCodVendedor().equals(vendedorActual.getCedula())) {
+					 buttonLike.setStyle("-fx-background-color: #FF3380");
+				}else{
+					 buttonLike.setStyle("-fx-background-color: #0080ff");
+				}	
+			}
 			labelNombreProducto.setText(labelNombreProducto.getText() + productoSeleccionado.getNombre());
 			labelPrecioProducto.setText(labelPrecioProducto.getText() + productoSeleccionado.getPrecio());
 			labelCategoriaProducto.setText(labelCategoriaProducto.getText() + productoSeleccionado.getCategoria());
@@ -214,6 +217,7 @@ public class ProductoController implements Initializable {
 			listaComentariosData.addAll(productoSeleccionado.getListaComentarios());
 			tableComentarios.getItems().clear();
 			tableComentarios.setItems(listaComentariosData);
+		
 		} else {
 			mostrarMensajeError("Producto no seleccionado\nDebe seleccionar un producto");
 

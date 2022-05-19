@@ -24,3 +24,5 @@ may 11, 2022 1:05:25 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 GRAVE: Inicio de sesión, NoSeleccionTerminosException Usuario: kaka Cedula: No aplica, 2022-05-11
 may 11, 2022 1:15:12 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 GRAVE: Agregar producto, ValorNoNumericException Usuario: Kevin Cedula: 1006341989, 2022-05-11
+may 19, 2022 2:49:07 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Inicio de sesión, NoSeleccionTerminosException Usuario:  Cedula: No aplica, 2022-05-19

@@ -52,22 +52,22 @@ public class ModelFactoryController {
 	public ModelFactoryController() {
 
 		// 1. inicializar datos y luego guardarlo en archivos
-//		iniciarSalvarDatosPrueba();
+		iniciarSalvarDatosPrueba();
 
 		// 2. Cargar los datos de los archivos
-		cargarDatosDesdeArchivos();
+//		cargarDatosDesdeArchivos();
 
 		//guardarRecursosMarketplace();
 
 //		guardarRecursoXML();
 
 		// 3. Guardar y Cargar el recurso serializable binario
-		guardarResourceBinario();
-		cargarResourceBinario();
+//		guardarResourceBinario();
+//		cargarResourceBinario();
 
 		// 4. Guardar y Cargar el recurso serializable XML
-		guardarResourceXML();
-		cargarResourceXML();
+//		guardarResourceXML();
+//		cargarResourceXML();
 
 		// crear el administrador
 
@@ -519,9 +519,11 @@ public class ModelFactoryController {
 		this.productoActual = productoActual;
 	}
 
-	public MeGusta buscarLike(String code) {
+	public MeGusta buscarLike(String cod) {
+		System.out.println("prodmodel: +"+cod);
 		MeGusta mg = null;
-		mg = productoActual.buscarMeGusta(code);
+		mg = productoActual.buscarMeGusta(cod);
+		System.out.println("mg:"+mg);
 
 		return mg;
 	}
