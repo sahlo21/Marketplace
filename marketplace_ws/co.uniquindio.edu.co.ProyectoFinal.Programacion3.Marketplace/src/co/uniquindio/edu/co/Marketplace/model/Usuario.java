@@ -70,17 +70,17 @@ public class Usuario {
 		return contrasena;
 	}
 	/**
-	 * @param contrasena the contraseña to set
+	 * @param contrasena the contraseï¿½a to set
 	 */
-	public void setContrasena(String contraseña) {
-		this.contrasena = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", apellidos=" + apellidos + ", usuario=" + usuario + ", contraseña="
+		return "Persona [nombre=" + nombre + ", apellidos=" + apellidos + ", usuario=" + usuario + ", contraseï¿½a="
 				+ contrasena + "]";
 	}
 	/* (non-Javadoc)

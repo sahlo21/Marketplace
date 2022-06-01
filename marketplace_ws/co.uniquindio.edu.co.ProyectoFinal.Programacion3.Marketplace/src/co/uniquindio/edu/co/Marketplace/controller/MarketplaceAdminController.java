@@ -6,8 +6,7 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -19,9 +18,7 @@ import co.uniquindio.edu.co.Marketplace.Exceptions.PassIsEqualToUserException;
 import co.uniquindio.edu.co.Marketplace.Exceptions.VendedorExistenteException;
 import co.uniquindio.edu.co.Marketplace.Exceptions.VendedorNoSeleccionadoException;
 
-import co.uniquindio.edu.co.Marketplace.model.Categoria;
-import co.uniquindio.edu.co.Marketplace.model.Estado;
-import co.uniquindio.edu.co.Marketplace.model.Producto;
+
 import co.uniquindio.edu.co.Marketplace.model.TipoUsuario;
 import co.uniquindio.edu.co.Marketplace.model.Vendedor;
 import co.uniquindio.edu.co.Marketplace.persistencia.Persistencia;
@@ -207,31 +204,31 @@ public class MarketplaceAdminController implements Initializable {
 		String nombre = txtNombreVendedor.getText();
 		String apellidos = txtApellidoVendedor.getText();
 		String usuario = txtUsuarioVendedor.getText();
-		String contraseña = txtContrasenaVendedor.getText();
+		String contrasena = txtContrasenaVendedor.getText();
 		String cedula = txtCedulaVendedor.getText();
 		String direccion = txtDireccionVendedor.getText();
 		TipoUsuario tipoUsuario=TipoUsuario.VENDEDOR;
 
-		if (datosValidosVendedor(nombre, apellidos, usuario, contraseña, cedula, direccion) == true) {
+		if (datosValidosVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion) == true) {
 			if(nombre.length()<=2){
                 Persistencia.guardarExceptionsLog("NombreCortoException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
 				throw new NombreCortoException("El nombre del  estudiante es muy corto");
 
 			}
 			
-			if (usuario.equals(contraseña)) {
+			if (usuario.equals(contrasena)) {
                 Persistencia.guardarExceptionsLog("PassIsEqualToUserException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
 
-				throw new PassIsEqualToUserException("Por su seguridad el nombre de usuario y la contraseña no pueden ser iguales");
+				throw new PassIsEqualToUserException("Por su seguridad el nombre de usuario y la contraseï¿½a no pueden ser iguales");
 			}
 			
-			Vendedor vendedor = modelFactoryController.crearVendedor(nombre, apellidos, usuario, contraseña, cedula, direccion);
+			Vendedor vendedor = modelFactoryController.crearVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion);
 
 			if (vendedor != null) {
 
 				listaVendedoresData.add(vendedor);
 				limpiarCasillasVendedores();
-				mostrarMensaje("Notificación Vendedor", null, "El vendedor se ha creado con éxito",AlertType.INFORMATION);
+				mostrarMensaje("Notificaciï¿½n Vendedor", null, "El vendedor se ha creado con ï¿½xito",AlertType.INFORMATION);
 
 			} else {
                 Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
@@ -250,7 +247,7 @@ public class MarketplaceAdminController implements Initializable {
 		String nombre = txtNombreVendedor.getText();
 		String apellidos = txtApellidoVendedor.getText();
 		String usuario = txtUsuarioVendedor.getText();
-		String contraseña = txtContrasenaVendedor.getText();
+		String contrasena = txtContrasenaVendedor.getText();
 		String cedula = txtCedulaVendedor.getText();
 		String direccion = txtDireccionVendedor.getText();
 
@@ -259,15 +256,15 @@ public class MarketplaceAdminController implements Initializable {
 		if (vendedorSeleccionado != null) {
 			if (mostrarMensajeConfirmacion("Desea actualizar a: " + vendedorSeleccionado.getNombre())) {
 				
-					if (datosValidosVendedor(nombre, apellidos, usuario, contraseña, cedula, direccion)) {
+					if (datosValidosVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion)) {
 
 						flagcProductoActualizado = modelFactoryController.actualizarVendedor(vendedorSeleccionado.getCedula(),
-								nombre, apellidos, usuario, contraseña, cedula, direccion);
+								nombre, apellidos, usuario, contrasena, cedula, direccion);
 						if (flagcProductoActualizado == true) {
 
 							tableVendedores.refresh();
 
-							mostrarMensaje("Notificación Vendedor", null, "El vendedor se ha actualizado con éxito",
+							mostrarMensaje("Notificaciï¿½n Vendedor", null, "El vendedor se ha actualizado con ï¿½xito",
 									AlertType.INFORMATION);
 						}else {
 			                Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Actualizar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
@@ -277,7 +274,7 @@ public class MarketplaceAdminController implements Initializable {
 						}
 					} else {
 
-						mostrarMensaje("Notificación Vendedor", "Vendedor no ha sido actualizado", null,
+						mostrarMensaje("Notificaciï¿½n Vendedor", "Vendedor no ha sido actualizado", null,
 								AlertType.ERROR);
 					}
 				
@@ -306,11 +303,11 @@ public class MarketplaceAdminController implements Initializable {
 					vendedorSeleccionado = null;
 					tableVendedores.getSelectionModel().clearSelection();
 					limpiarCasillasVendedores();
-					mostrarMensaje("Notificación Vendedor", "Vendedor eliminado",
-							"El vendedor se ha eliminado con éxito", AlertType.INFORMATION);
+					mostrarMensaje("Notificaciï¿½n Vendedor", "Vendedor eliminado",
+							"El vendedor se ha eliminado con ï¿½xito", AlertType.INFORMATION);
 
 				} else {
-					mostrarMensaje("Notificación Vendedor", "Vendedor no eliminado", "El vendedor no  existe",
+					mostrarMensaje("Notificaciï¿½n Vendedor", "Vendedor no eliminado", "El vendedor no  existe",
 							AlertType.ERROR);
 
 				}
@@ -325,8 +322,8 @@ public class MarketplaceAdminController implements Initializable {
 
 	}
 
-	private boolean datosValidosVendedor(String nombre, String apellidos, String usuario, String contraseña,
-			String cedula, String dirección) {
+	private boolean datosValidosVendedor(String nombre, String apellidos, String usuario, String contrasena,
+			String cedula, String direccion) {
 
 		String mensaje = "";
 
@@ -339,17 +336,17 @@ public class MarketplaceAdminController implements Initializable {
 		if (usuario == null || usuario.equals(""))
 			mensaje += "El usuario del vendedor es invalido \n";
 
-		if (contraseña == null || contraseña.equals(""))
-			mensaje += "La contraseña del vendedor es invalida \n";
+		if (contrasena == null || contrasena.equals(""))
+			mensaje += "La contraseï¿½a del vendedor es invalida \n";
 
 
-		if (dirección == null || dirección.equals(""))
-			mensaje += "La dirección del vendedor es invalida \n";
+		if (direccion == null || direccion.equals(""))
+			mensaje += "La direcciï¿½n del vendedor es invalida \n";
 
 		if (mensaje.equals("")) {
 			return true;
 		} else {
-			mostrarMensaje("Notificación vendedor", "Datos invalidos", mensaje, AlertType.WARNING);
+			mostrarMensaje("Notificaciï¿½n vendedor", "Datos invalidos", mensaje, AlertType.WARNING);
 			return false;
 		}
 	}
@@ -376,7 +373,7 @@ public class MarketplaceAdminController implements Initializable {
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
-		alert.setTitle("Confirmación");
+		alert.setTitle("Confirmaciï¿½n");
 		alert.setContentText(mensaje);
 		Optional<ButtonType> action = alert.showAndWait();
 

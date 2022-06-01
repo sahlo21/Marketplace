@@ -40,11 +40,11 @@ public class ModelFactoryController {
 	// ------------------------------------------------
 	// Clase estatica oculta. Tan solo se instanciara el singleton una vez
 	private static class SingletonHolder {
-		// El constructor de Singleton puede ser llamado desde aquí al ser protected
+		// El constructor de Singleton puede ser llamado desde aquï¿½ al ser protected
 		private final static ModelFactoryController eINSTANCE = new ModelFactoryController();
 	}
 
-	// Método para obtener la instancia de nuestra clase
+	// Mï¿½todo para obtener la instancia de nuestra clase
 	public static ModelFactoryController getInstance() {
 		return SingletonHolder.eINSTANCE;
 	}
@@ -165,7 +165,7 @@ public class ModelFactoryController {
 
 		Vendedor vendedor = new Vendedor();
 		vendedor.setNombre("Kevin");
-		vendedor.setApellidos("Sánchez");
+		vendedor.setApellidos("Sï¿½nchez");
 		vendedor.setCedula("1006341989");
 		vendedor.setUsuario("kaka");
 		vendedor.setContrasena("11");
@@ -186,7 +186,7 @@ public class ModelFactoryController {
 		producto.setCodVendedor(vendedor.getCedula());
 		producto.setId("1");
 
-		Comentario comentario = new Comentario("Fino señores", fechaPublicacion, vendedor.getNombre());
+		Comentario comentario = new Comentario("Fino seï¿½ores", fechaPublicacion, vendedor.getNombre());
 		comentario.setId("1");
 		producto.getListaComentarios().add(comentario);
 		vendedor.getListaProductos().add(producto);
@@ -290,12 +290,12 @@ public class ModelFactoryController {
 
 	}
 
-	public Vendedor crearVendedor(String nombre, String apellidos, String usuario, String contraseña, String cedula,
+	public Vendedor crearVendedor(String nombre, String apellidos, String usuario, String contrasena, String cedula,
 			String direccion) {
 
 		Vendedor vendedor = null;
 
-		vendedor = marketplace.crearVendedor(nombre, apellidos, usuario, contraseña, cedula, direccion);
+		vendedor = marketplace.crearVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion);
 		if (vendedor != null) {
 			guardarMarketplaceLog("Vendedor creado", 1, "Crear vendedor", admin.getNombre(), admin.getCedula());
 		}
@@ -304,11 +304,11 @@ public class ModelFactoryController {
 	}
 
 	public boolean actualizarVendedor(String codigoActual, String nombre, String apellidos, String usuario,
-			String contraseña, String cedula, String direccion) {
+			String contrasena, String cedula, String direccion) {
 
 		boolean flagProductoActualizado = false;
 
-		flagProductoActualizado = marketplace.actualizarVendedor(codigoActual, nombre, apellidos, usuario, contraseña,
+		flagProductoActualizado = marketplace.actualizarVendedor(codigoActual, nombre, apellidos, usuario, contrasena,
 				cedula, direccion);
 		if (flagProductoActualizado != false) {
 
@@ -441,18 +441,18 @@ public class ModelFactoryController {
 		listaAdministradores.addAll(obtenerAdministrador());
 		for (Vendedor vendedor : listaVendedores) {
 			if (usuario.equals(vendedor.getUsuario()) && contrasena.equals(vendedor.getContrasena())) {
-				guardarRegistroLogin("Inicio de sesión correcto", 1, "Iniciar de sesión vendedor", vendedor.getNombre(),
+				guardarRegistroLogin("Inicio de sesiï¿½n correcto", 1, "Iniciar de sesiï¿½n vendedor", vendedor.getNombre(),
 						vendedor.getCedula());
 				return vendedor;
 			}
 		}
 		for (Administrador administrador : listaAdministradores) {
 			if (administrador.getUsuario().equals(usuario) && administrador.getContrasena().equals(contrasena)) {
-				guardarRegistroLogin("Inicio de sesión correcto", 1, "Iniciar de sesión administrador",
+				guardarRegistroLogin("Inicio de sesiï¿½n correcto", 1, "Iniciar de sesiï¿½n administrador",
 						administrador.getNombre(), administrador.getCedula());
 				return administrador;
 			} else {
-				guardarRegistroLogin("Inicio de sesión fallido", 1, "Iniciar de sesión ", usuario, "No aplica");
+				guardarRegistroLogin("Inicio de sesiï¿½n fallido", 1, "Iniciar de sesiï¿½n ", usuario, "No aplica");
 			}
 		}
 		return user;
@@ -484,14 +484,14 @@ public class ModelFactoryController {
 	}
 
 	void cerrarSesionVendedor(Aplicacion aplicacion2) {
-		guardarRegistroLogin("Cierre de sesión correcto", 1, "Cerrar sesión vendedor", vendedorLogueado.getNombre(),
+		guardarRegistroLogin("Cierre de sesiï¿½n correcto", 1, "Cerrar sesiï¿½n vendedor", vendedorLogueado.getNombre(),
 				vendedorLogueado.getCedula());
 
 		aplicacion2.showLogin();
 	}
 
 	void cerrarSesionAdmin(Aplicacion aplicacion2) {
-		guardarRegistroLogin("Cierre de sesión fallido", 1, "Cerrar sesión administrador", admin.getNombre(),
+		guardarRegistroLogin("Cierre de sesiï¿½n fallido", 1, "Cerrar sesiï¿½n administrador", admin.getNombre(),
 				admin.getCedula());
 
 		aplicacion2.showLogin();

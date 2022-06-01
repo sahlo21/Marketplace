@@ -134,7 +134,7 @@ public class Marketplace implements Serializable{
 		return true;
 	}
 
-	public Vendedor crearVendedor(String nombre, String apellidos, String usuario, String contraseña, String cedula, String direccion) {
+	public Vendedor crearVendedor(String nombre, String apellidos, String usuario, String contrasena, String cedula, String direccion) {
 		Vendedor vendedor = null;
 
 		vendedor = buscarVendedor(cedula);
@@ -143,14 +143,14 @@ public class Marketplace implements Serializable{
 			
 
 
-			vendedor = new Vendedor(nombre,  apellidos,  usuario,  contraseña, cedula,  direccion);
+			vendedor = new Vendedor(nombre,  apellidos,  usuario,  contrasena, cedula,  direccion);
 
 
 			vendedor.setNombre(nombre);
 			vendedor.setApellidos(apellidos);
 			vendedor.setCedula(cedula);
 			vendedor.setUsuario(usuario);
-			vendedor.setContrasena(contraseña);
+			vendedor.setContrasena(contrasena);
 			vendedor.setDireccion(direccion);
 			
 
@@ -186,7 +186,7 @@ public class Marketplace implements Serializable{
 
 
 
-	public boolean actualizarVendedor(String codigoActual, String nombre, String apellidos, String usuario, String contraseña, String cedula, String direccion) {
+	public boolean actualizarVendedor(String codigoActual, String nombre, String apellidos, String usuario, String contrasena, String cedula, String direccion) {
 		Vendedor vendedor = null;
 
 		vendedor = buscarVendedor(codigoActual);
@@ -198,7 +198,7 @@ public class Marketplace implements Serializable{
 			vendedor.setApellidos(apellidos);
 			vendedor.setCedula(cedula);
 			vendedor.setUsuario(usuario);
-			vendedor.setContrasena(contraseña);
+			vendedor.setContrasena(contrasena);
 			vendedor.setDireccion(direccion);
 
 			return true;
