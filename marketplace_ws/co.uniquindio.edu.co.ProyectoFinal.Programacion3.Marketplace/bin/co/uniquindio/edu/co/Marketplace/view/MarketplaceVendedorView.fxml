@@ -170,11 +170,11 @@
                                                       <Font name="Tahoma Bold" size="14.0" />
                                                    </font>
                                                 </Button>
-                                                <TableView layoutX="59.0" layoutY="55.0" prefHeight="483.0" prefWidth="680.0">
+                                                <TableView fx:id="tableMensaje" layoutX="59.0" layoutY="55.0" prefHeight="483.0" prefWidth="680.0">
                                                   <columns>
-                                                    <TableColumn prefWidth="147.0" text="Usuario" />
-                                                    <TableColumn prefWidth="156.0" text="Fecha" />
-                                                      <TableColumn prefWidth="377.0" text="Mensaje" />
+                                                    <TableColumn fx:id="columnRemitente" prefWidth="147.0" text="Usuario" />
+                                                    <TableColumn fx:id="columnFechaMensaje" prefWidth="156.0" text="Fecha" />
+                                                      <TableColumn fx:id="columnMensaje" prefWidth="377.0" text="Mensaje" />
                                                   </columns>
                                                 </TableView>
                                              </children>

@@ -4,18 +4,22 @@ import java.time.format.DateTimeFormatter;
 
 public class Mensaje {
 	String texto;
-	DateTimeFormatter fecha;
-	Vendedor vendedor ;
+	String fecha;
+	String nombreVendedor;
+	
+	Vendedor vendedorRemitente ;
 	/**
 	 * @param texto
 	 * @param fecha
-	 * @param vendedor
+	 * @param vendedorReceptor
+	 * @param vendedorRemitente
 	 */
-	public Mensaje(String texto, DateTimeFormatter fecha, Vendedor vendedor) {
+	public Mensaje(String texto, String fecha, Vendedor vendedorRemitente, String nombreVendedor) {
 		super();
 		this.texto = texto;
 		this.fecha = fecha;
-		this.vendedor = vendedor;
+		this.nombreVendedor=nombreVendedor;
+		this.vendedorRemitente = vendedorRemitente;
 	}
 	/**
 	 * @return the texto
@@ -32,75 +36,47 @@ public class Mensaje {
 	/**
 	 * @return the fecha
 	 */
-	public DateTimeFormatter getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(DateTimeFormatter fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
+	
+	
 	/**
-	 * @return the vendedor
+	 * @return the nombreVendedor
 	 */
-	public Vendedor getVendedor() {
-		return vendedor;
+	public String getNombreVendedor() {
+		return nombreVendedor;
 	}
 	/**
-	 * @param vendedor the vendedor to set
+	 * @param nombreVendedor the nombreVendedor to set
 	 */
-	public void setVendedor(Vendedor vendedor) {
-		this.vendedor = vendedor;
+	public void setNombreVendedor(String nombreVendedor) {
+		this.nombreVendedor = nombreVendedor;
+	}
+	/**
+	 * @return the vendedorRemitente
+	 */
+	public Vendedor getVendedorRemitente() {
+		return vendedorRemitente;
+	}
+	/**
+	 * @param vendedorRemitente the vendedorRemitente to set
+	 */
+	public void setVendedorRemitente(Vendedor vendedorRemitente) {
+		this.vendedorRemitente = vendedorRemitente;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Mensaje [texto=" + texto + ", fecha=" + fecha + ", vendedor=" + vendedor + "]";
+		return "Mensaje [texto=" + texto + ", fecha=" + fecha + ", vendedorRemitente=" + vendedorRemitente + "]";
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
-		result = prime * result + ((texto == null) ? 0 : texto.hashCode());
-		result = prime * result + ((vendedor == null) ? 0 : vendedor.hashCode());
-		return result;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Mensaje other = (Mensaje) obj;
-		if (fecha == null) {
-			if (other.fecha != null)
-				return false;
-		} else if (!fecha.equals(other.fecha))
-			return false;
-		if (texto == null) {
-			if (other.texto != null)
-				return false;
-		} else if (!texto.equals(other.texto))
-			return false;
-		if (vendedor == null) {
-			if (other.vendedor != null)
-				return false;
-		} else if (!vendedor.equals(other.vendedor))
-			return false;
-		return true;
-	}
-	
 	
 }

@@ -13,6 +13,7 @@ import co.uniquindio.edu.co.Marketplace.model.Comentario;
 import co.uniquindio.edu.co.Marketplace.model.Estado;
 import co.uniquindio.edu.co.Marketplace.model.Marketplace;
 import co.uniquindio.edu.co.Marketplace.model.MeGusta;
+import co.uniquindio.edu.co.Marketplace.model.Mensaje;
 import co.uniquindio.edu.co.Marketplace.model.Producto;
 import co.uniquindio.edu.co.Marketplace.model.TipoUsuario;
 import co.uniquindio.edu.co.Marketplace.model.Usuario;
@@ -165,7 +166,7 @@ public class ModelFactoryController {
 
 		Vendedor vendedor = new Vendedor();
 		vendedor.setNombre("Kevin");
-		vendedor.setApellidos("S�nchez");
+		vendedor.setApellidos("Sanchez");
 		vendedor.setCedula("1006341989");
 		vendedor.setUsuario("kaka");
 		vendedor.setContrasena("11");
@@ -330,6 +331,10 @@ public class ModelFactoryController {
 		return this.vendedorLogueado.getListaProductos();
 
 	}
+	public ArrayList<Mensaje> obtenerMensajes() {
+		return this.vendedorLogueado.getListaMensajes();
+	}
+
 
 	public ArrayList<Producto> obtenerMuro() {
 		return listaMuro;
@@ -383,6 +388,19 @@ public class ModelFactoryController {
 		return producto;
 
 	}
+	public void crearMensaje(String textoMensaje, String fechaComentario, String vendedorMensaje, Vendedor vendedorRemitente) {
+		// TODO Auto-generated method stub
+		Mensaje msj = null;
+		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
+			if (vendedorSelect.getCedula().equals(vendedorMensaje)) {
+				vendedorSelect.crearMensaje(textoMensaje, fechaComentario, vendedorRemitente);
+			}
+		}
+
+		
+		
+	}
+	
 
 	public boolean actualizarProducto(String nombreActual, String nombre, Image imagen, Double precio, Estado estado,
 			Categoria categoria, String fechaPublicacion) {
@@ -527,5 +545,8 @@ public class ModelFactoryController {
 
 		return mg;
 	}
+
+	
+	
 
 }

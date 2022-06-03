@@ -118,37 +118,5 @@ public class Comentario implements Serializable{
 		return result;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@SuppressWarnings("unlikely-arg-type")
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Mensaje other = (Mensaje) obj;
-		if (fecha == null) {
-			if (other.fecha != null)
-				return false;
-		} else if (!fecha.equals(other.fecha))
-			return false;
-		if (texto == null) {
-			if (other.texto != null)
-				return false;
-		} else if (!texto.equals(other.texto))
-			return false;
-		if (userVendedor == null) {
-			if (other.vendedor != null)
-				return false;
-		} else if (!userVendedor.equals(other.vendedor))
-			return false;
-		return true;
-	}
 
 }

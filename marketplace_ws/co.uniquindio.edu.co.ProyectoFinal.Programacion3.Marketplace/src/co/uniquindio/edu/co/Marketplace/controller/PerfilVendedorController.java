@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 public class PerfilVendedorController implements Initializable {
 	
 	ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
-	
+	Vendedor vendedorSeleccionado;
 
 
     @FXML
@@ -84,7 +84,8 @@ public class PerfilVendedorController implements Initializable {
 			Parent root = loader.load();
 			// Cojo el controlador
 			ChatVendedorController controlador = loader.getController();
-			//           controlador.setAplicacion(aplicacion);
+			controlador.setVendedorSeleccionado(vendedorSeleccionado);
+
 			//           controlador.initAttributtes(personas);
 
 			
@@ -116,6 +117,8 @@ public class PerfilVendedorController implements Initializable {
 
     public void initAttributtes(Vendedor vendedorSeleccionado) {
 		if(vendedorSeleccionado!=null){
+	    	this.vendedorSeleccionado=vendedorSeleccionado;
+
 		System.out.println("productoSeleccionado: "+vendedorSeleccionado);
 		labelNombreVendedor.setText(labelNombreVendedor.getText() + vendedorSeleccionado.getNombre());
 		labelApellidoVendedor.setText(labelApellidoVendedor.getText() + vendedorSeleccionado.getApellidos());

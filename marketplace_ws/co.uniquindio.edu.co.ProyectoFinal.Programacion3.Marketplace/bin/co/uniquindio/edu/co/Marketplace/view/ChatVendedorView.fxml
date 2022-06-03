@@ -21,12 +21,12 @@
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtMensaje" layoutX="34.0" layoutY="71.0" prefHeight="200.0" prefWidth="407.0" promptText="Redacte su mensaje" />
             <Button layoutX="149.0" layoutY="299.0" mnemonicParsing="false" onAction="#enviarMensajeAction" prefHeight="28.0" prefWidth="173.0" style="-fx-background-color: #0080ff;" text="Enviar mensaje" textFill="WHITE">
                <font>
                   <Font name="Tahoma Bold" size="14.0" />
                </font>
             </Button>
+            <TextField fx:id="txtMensaje" alignment="TOP_LEFT" layoutX="30.0" layoutY="64.0" prefHeight="221.0" prefWidth="420.0" promptText="Redacte su mensaje" />
          </children>
       </AnchorPane>
    </center>

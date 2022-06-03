@@ -318,6 +318,33 @@ public class Vendedor extends Usuario implements Serializable{
 		}
 	}
 
+
+
+
+
+	public void crearMensaje(String textoMensaje, String fechaComentario,
+			Vendedor vendedorRemitente) {
+		
+		Mensaje msj = null;
+
+		
+
+		
+
+			msj = new Mensaje( textoMensaje,  fechaComentario,  vendedorRemitente, vendedorRemitente.getNombre());
+
+			msj.setFecha(fechaComentario);
+			msj.setTexto(textoMensaje);
+			msj.setVendedorRemitente(vendedorRemitente);
+			msj.setNombreVendedor(vendedorRemitente.getNombre()+" "+vendedorRemitente.getApellidos());
+			
+
+			getListaMensajes().add(msj);
+			System.out.println("lista msj: "+listaMensajes);
+			
+			
+	}
+
 	
 
 

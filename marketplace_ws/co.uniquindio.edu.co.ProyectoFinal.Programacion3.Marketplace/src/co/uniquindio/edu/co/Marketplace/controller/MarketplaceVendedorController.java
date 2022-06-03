@@ -22,6 +22,7 @@ import co.uniquindio.edu.co.Marketplace.Exceptions.ValorNoNumericException;
 import co.uniquindio.edu.co.Marketplace.Exceptions.VendedorNoSeleccionadoException;
 import co.uniquindio.edu.co.Marketplace.model.Categoria;
 import co.uniquindio.edu.co.Marketplace.model.Estado;
+import co.uniquindio.edu.co.Marketplace.model.Mensaje;
 import co.uniquindio.edu.co.Marketplace.model.Producto;
 import co.uniquindio.edu.co.Marketplace.model.Vendedor;
 import co.uniquindio.edu.co.Marketplace.persistencia.Persistencia;
@@ -54,10 +55,14 @@ public class MarketplaceVendedorController implements Initializable{
 
 	Aplicacion aplicacion;
 	Producto productoSeleccionado;
+	Mensaje msjSeleccionado;
+
 	ArrayList<Producto> listaProductos = new ArrayList<>();
 	ArrayList<Vendedor> listaVendedores = new ArrayList<>();
 	ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
 	ObservableList<Producto> listaMuro = FXCollections.observableArrayList();
+	ObservableList<Mensaje> listaMensaje = FXCollections.observableArrayList();
+
 	//	ObservableList<Vendedor> listaVendedoresData = FXCollections.observableArrayList();
 
 	private ModelFactoryController modelFactoryController;
@@ -120,6 +125,17 @@ public class MarketplaceVendedorController implements Initializable{
 	private TableColumn<Producto, Estado> columnEstadoProducto;
 
 	@FXML
+	private TableView<Mensaje> tableMensaje;
+	@FXML
+	private TableColumn<Mensaje, String> columnFechaMensaje;
+
+	@FXML
+	private TableColumn<Mensaje, String> columnMensaje;
+
+	@FXML
+	private TableColumn<Mensaje, String> columnRemitente;
+
+	@FXML
 	private Label lblUserAdmin;
 	@FXML
 	private Label lblFecha;
@@ -154,14 +170,14 @@ public class MarketplaceVendedorController implements Initializable{
 
 	@FXML
 	void agregarProductoAction(ActionEvent event) {
-		
-			try {
-				agregarProducto();
-			} catch (ProductoExistenteException | ValorNoNumericException e) {
-				// TODO Auto-generated catch block
-				mostrarMensajeError(e.getMessage());
-			}
-		
+
+		try {
+			agregarProducto();
+		} catch (ProductoExistenteException | ValorNoNumericException e) {
+			// TODO Auto-generated catch block
+			mostrarMensajeError(e.getMessage());
+		}
+
 	}
 
 
@@ -188,16 +204,16 @@ public class MarketplaceVendedorController implements Initializable{
 		}
 
 	}
-	
+
 	@FXML
 	void aceptarSolicitudAction(ActionEvent event) {
 
-	
+
 	}
 	@FXML
 	void enviarSolicitudAction(ActionEvent event) {
 
-	
+
 	}
 
 	@FXML
@@ -219,9 +235,9 @@ public class MarketplaceVendedorController implements Initializable{
 			mostrarMensajeError("Producto no seleccionado\n\nDebe seleccionar un producto");
 
 		}
-		
-//		aplicacion.showProducto(productoSeleccionado);
-//		modelFactoryController.setProductoActual(productoSeleccionado);
+
+		//		aplicacion.showProducto(productoSeleccionado);
+		//		modelFactoryController.setProductoActual(productoSeleccionado);
 	}
 
 
@@ -255,7 +271,7 @@ public class MarketplaceVendedorController implements Initializable{
 
 
 			stage.showAndWait();
-			
+
 
 
 
@@ -273,7 +289,49 @@ public class MarketplaceVendedorController implements Initializable{
 
 	@FXML
 	void responderMensajeAction(ActionEvent event) {
+		if (msjSeleccionado!=null) {
+		try {
+			// Cargo la vista
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ChatVendedorView.fxml"));
 
+			// Cargo la ventana
+			Parent root = loader.load();
+			// Cojo el controlador
+			ChatVendedorController controlador = loader.getController();
+			
+				
+			
+			controlador.setVendedorSeleccionado(msjSeleccionado.getVendedorRemitente());
+
+			
+
+
+
+
+
+
+			// Creo el Scene
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setScene(scene);
+			stage.setTitle("Chat");
+			stage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/email.png")));
+
+
+
+			stage.showAndWait();
+
+		} catch (IOException ex) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setHeaderText(null);
+			alert.setTitle("Error");
+			alert.setContentText(ex.getMessage());
+			alert.showAndWait();
+		}
+		}else{
+			mostrarMensajeError("Por favor seleccione un mensaje");
+		}
 	}
 
 
@@ -291,7 +349,7 @@ public class MarketplaceVendedorController implements Initializable{
 
 		columnPrecioProducto.setCellValueFactory(new PropertyValueFactory<Producto, String>("precio"));
 		columnNombreProducto.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
-//		columnImagenProducto.setCellValueFactory(new PropertyValueFactory<Producto, Image>("imagen"));
+		//		columnImagenProducto.setCellValueFactory(new PropertyValueFactory<Producto, Image>("imagen"));
 		columnEstadoProducto.setCellValueFactory(new PropertyValueFactory<Producto, Estado>("estado"));
 		columnCategoriaProducto.setCellValueFactory(new PropertyValueFactory<Producto, Categoria>("categoria"));
 		columnFechaPublicacion.setCellValueFactory(new PropertyValueFactory<Producto, Date>("fechaPublicacion"));
@@ -307,8 +365,8 @@ public class MarketplaceVendedorController implements Initializable{
 		columnPrecioMuro.setCellValueFactory(new PropertyValueFactory<>("precio"));
 		columnProductoMuro.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
 
-//		columnImagenMuro.setPrefWidth(80); 
-//		columnImagenMuro.setCellValueFactory(new PropertyValueFactory<>("imagen"));
+		//		columnImagenMuro.setPrefWidth(80); 
+		//		columnImagenMuro.setCellValueFactory(new PropertyValueFactory<>("imagen"));
 		//		columnImagenMuro.setCellValueFactory(new PropertyValueFactory<Producto, String>("imagen"));
 		columnEstadoMuro.setCellValueFactory(new PropertyValueFactory<Producto, Estado>("estado"));
 		columnCategoriaMuro.setCellValueFactory(new PropertyValueFactory<Producto, Categoria>("categoria"));
@@ -317,6 +375,16 @@ public class MarketplaceVendedorController implements Initializable{
 		tableMuro.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection) ->{
 
 			productoSeleccionado = newSelection;
+
+
+		});
+		columnRemitente.setCellValueFactory(new PropertyValueFactory<Mensaje, String>("nombreVendedor"));
+		columnFechaMensaje.setCellValueFactory(new PropertyValueFactory<Mensaje, String>("fecha"));
+		columnMensaje.setCellValueFactory(new PropertyValueFactory<Mensaje, String>("texto"));
+
+		tableMensaje.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection) ->{
+
+			msjSeleccionado = newSelection;
 
 
 		});
@@ -334,6 +402,12 @@ public class MarketplaceVendedorController implements Initializable{
 
 		return listaMuro;
 	}
+	public ObservableList<Mensaje> getListaMensajes() {
+
+		listaMensaje.addAll(modelFactoryController.obtenerMensajes());
+
+		return listaMensaje;
+	}
 
 
 	public void setAplicacion(Aplicacion aplicacion) {
@@ -342,6 +416,8 @@ public class MarketplaceVendedorController implements Initializable{
 		tableProductos.setItems(getListaProductoData());
 		tableMuro.getItems().clear();
 		tableMuro.setItems(getListaMuro());
+		tableMensaje.getItems().clear();
+		tableMensaje.setItems(getListaMensajes());
 
 
 
@@ -366,14 +442,14 @@ public class MarketplaceVendedorController implements Initializable{
 		Categoria categoria=cbCategoria.getValue();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String fechaPublicacion = sdf.format(new Date());
-		
-		
+
+
 		Estado estado = Estado.PUBLICADO;
 		String codVendedor=modelFactoryController.getVendedorLogueado().getCedula();
 
 		if(datosValidosProducto(nombre, imagen, precioAux, categoria) == true){
 			if (!(isNumericDouble(precioAux))) {
-	            Persistencia.guardarExceptionsLog("ValorNoNumericException", 3, "Agregar producto", modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+				Persistencia.guardarExceptionsLog("ValorNoNumericException", 3, "Agregar producto", modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
 
 				throw new ValorNoNumericException("El precio del producto debe ser un dato numerico");
 			}
@@ -390,9 +466,9 @@ public class MarketplaceVendedorController implements Initializable{
 				listaProductosData.add(producto);
 				listaMuro.add(producto);
 				limpiarCasillasProductos();
-				mostrarMensaje("Notificación Producto", "Producto publicado", "El producto se ha publicado con éxito", AlertType.INFORMATION);
+				mostrarMensaje("Notificaciï¿½n Producto", "Producto publicado", "El producto se ha publicado con ï¿½xito", AlertType.INFORMATION);
 			}else{
-                Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Agregar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+				Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Agregar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
 
 				throw new ProductoExistenteException("El producto: "+nombre+" ya se encuentra registrado");
 
@@ -431,21 +507,21 @@ public class MarketplaceVendedorController implements Initializable{
 						tableProductos.refresh();
 						tableMuro.refresh();
 						//					limpiarCasillasProductos();
-						mostrarMensaje("Notificación Producto", "Producto actualizado", "El producto se ha actualizado con éxito", AlertType.INFORMATION);
+						mostrarMensaje("Notificaciï¿½n Producto", "Producto actualizado", "El producto se ha actualizado con ï¿½xito", AlertType.INFORMATION);
 					}else{
-		                Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Actualizar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+						Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Actualizar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
 
 						throw new ProductoExistenteException("El producto: "+nombre+" ya se encuentra registrado");
 
 					}
 				}else{
 
-					mostrarMensaje("Notificación Producto", "Producto no ha sido publicado","El producto no se puede actualizar", AlertType.ERROR);
+					mostrarMensaje("Notificaciï¿½n Producto", "Producto no ha sido publicado","El producto no se puede actualizar", AlertType.ERROR);
 				}
 			}
 
 		}else{
-            Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Actualizar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+			Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Actualizar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
 
 			throw new ProductoNoSeleccionadoException("Producto no seleccionado\nDebe seleccionar un producto");
 		}
@@ -474,12 +550,12 @@ public class MarketplaceVendedorController implements Initializable{
 					listaMuro.addAll(modelFactoryController.obtenerMuro());
 					tableMuro.setItems(listaMuro);
 
-					mostrarMensaje("Notificación Producto", "Producto eliminado", "El producto se ha eliminado con éxito", AlertType.INFORMATION);
+					mostrarMensaje("Notificaciï¿½n Producto", "Producto eliminado", "El producto se ha eliminado con ï¿½xito", AlertType.INFORMATION);
 
 				}
 			}
 		}else{
-            Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Eliminar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+			Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Eliminar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
 
 			throw new ProductoNoSeleccionadoException("Producto no seleccionado\nDebe seleccionar un producto");
 		}
@@ -528,7 +604,7 @@ public class MarketplaceVendedorController implements Initializable{
 		if(mensaje.equals("")){
 			return true;
 		}else{
-			mostrarMensaje("Notificación producto", "Datos invalidos", mensaje, AlertType.WARNING);
+			mostrarMensaje("Notificaciï¿½n producto", "Datos invalidos", mensaje, AlertType.WARNING);
 			return false;
 		}
 	}
@@ -547,7 +623,7 @@ public class MarketplaceVendedorController implements Initializable{
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
-		alert.setTitle("Confirmación");
+		alert.setTitle("Confirmaciï¿½n");
 		alert.setContentText(mensaje);
 		Optional<ButtonType> action = alert.showAndWait();
 
