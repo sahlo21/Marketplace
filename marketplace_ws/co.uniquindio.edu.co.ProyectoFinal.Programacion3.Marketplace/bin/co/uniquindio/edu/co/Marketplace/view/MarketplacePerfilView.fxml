@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.Marketplace.controller.PerfilVendedorController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="48.0" style="-fx-background-color: #0080ff;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="46.0" style="-fx-background-color: #0080ff;" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="340.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="96.0" layoutY="139.0" mnemonicParsing="false" onAction="#agregarContactoAction" prefHeight="28.0" prefWidth="173.0" style="-fx-background-color: #0080ff;" text="Enviar solicitud" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Button>
+            <Separator layoutX="27.0" layoutY="113.0" prefHeight="0.0" prefWidth="653.0" style="-fx-background-color: #0080ff;" />
+            <Button layoutX="438.0" layoutY="139.0" mnemonicParsing="false" onAction="#enviarMensajeAction" prefHeight="28.0" prefWidth="173.0" style="-fx-background-color: #0080ff;" text="Enviar mensaje" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="295.0" layoutY="209.0" text="Publicaciones" textFill="#0080ff">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelNombreVendedor" layoutX="27.0" layoutY="67.0" text="Nombre: " AnchorPane.leftAnchor="27.0">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelApellidoVendedor" layoutX="369.0" layoutY="67.0" text="Apellidos: " AnchorPane.leftAnchor="369.0">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="27.0" layoutY="189.0" prefHeight="0.0" prefWidth="653.0" style="-fx-background-color: #0080ff;" />
+            <TableView fx:id="tablePublicaciones" layoutX="63.0" layoutY="253.0" prefHeight="247.0" prefWidth="580.0" style="-fx-border-color: #0080ff; -fx-border-width: 3px 3px;">
+               <columns>
+                  <TableColumn fx:id="columnImagenProducto" prefWidth="111.0" text="Producto" />
+                  <TableColumn fx:id="columnNombreProducto" prefWidth="112.0" text="Nombre" />
+                  <TableColumn fx:id="columnPrecioProducto" prefWidth="88.0" text="Precio" />
+                  <TableColumn fx:id="columnCategoriaProducto" prefWidth="117.0" text="Categoria" />
+                  <TableColumn fx:id="columnFechaPublicacion" prefWidth="147.0" text="Fecha Publicacion" />
+                  <TableColumn fx:id="columnEstadoProducto" prefWidth="190.0" text="Estado" />
+               </columns>
+            </TableView>
+            <Label layoutX="289.0" layoutY="14.0" text="Perfil Vendedor" textFill="#0080ff">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="27.0" layoutY="40.0" prefHeight="0.0" prefWidth="653.0" style="-fx-background-color: #0080ff;" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
