@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.Marketplace.controller.ChatVendedorController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="60.0" style="-fx-background-color: #0080ff;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="60.0" style="-fx-background-color: #0080ff;" BorderPane.alignment="CENTER" />
+   </right>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="218.0" layoutY="14.0" text="Chat" textFill="#0080ff">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="149.0" layoutY="299.0" mnemonicParsing="false" onAction="#enviarMensajeAction" prefHeight="28.0" prefWidth="173.0" style="-fx-background-color: #0080ff;" text="Enviar mensaje" textFill="WHITE">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font>
+            </Button>
+            <TextField fx:id="txtMensaje" alignment="TOP_LEFT" layoutX="30.0" layoutY="64.0" prefHeight="221.0" prefWidth="420.0" promptText="Redacte su mensaje" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
