@@ -26,10 +26,12 @@ public class Aplicacion extends Application {
 
 	private Stage primaryStage;
 
-	Marketplace marketplace= new Marketplace("Fakebook", "178");
+	LoginController logIn;
 
 
-	ModelFactoryController modelFactoryController = ModelFactoryController.getInstance(); 
+	ModelFactoryController modelFactoryController = ModelFactoryController.getInstance();
+
+	private int numInicios=0; 
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -48,6 +50,7 @@ public class Aplicacion extends Application {
 	}
 
 	public void showLogin() {
+		
 
 		try {
 
@@ -55,8 +58,9 @@ public class Aplicacion extends Application {
 			loader.setLocation(Aplicacion.class.getResource("view/Login.fxml"));
 
 			BorderPane rootLayout = (BorderPane) loader.load();
-			LoginController logIn = loader.getController();
-			logIn.setAplicacion(this);
+			logIn = loader.getController();
+			logIn.setAplicacion(this, numInicios);
+		
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Inicio de sesi�n");
@@ -68,6 +72,7 @@ public class Aplicacion extends Application {
 			 */
 
 			primaryStage.show();
+			numInicios++;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

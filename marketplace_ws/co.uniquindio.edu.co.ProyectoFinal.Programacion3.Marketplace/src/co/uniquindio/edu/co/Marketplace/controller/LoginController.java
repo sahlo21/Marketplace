@@ -47,6 +47,10 @@ public class LoginController implements Initializable{
 
 	@FXML
 	private Button buttonLogin;
+	@FXML
+	private Button buttonCargar;
+	
+	
 
 	@FXML
 	private TextField txtContrasenaIngreso;
@@ -63,13 +67,20 @@ public class LoginController implements Initializable{
 	DataOutputStream flujoSalida;
 	DataInputStream flujoEntrada;
 	int contador = 0;
+	boolean estadoCargareServer=false;
+	private int flagCargar;
+	
+	
 
 
 
 	public LoginController() {
 
-
 	}
+	
+
+	
+
 
 	@FXML
 	void cbCondiciones(ActionEvent event) {
@@ -78,6 +89,8 @@ public class LoginController implements Initializable{
 
 	@FXML
 	private Label wrongLogIn;
+
+	
 
 
 
@@ -91,6 +104,13 @@ public class LoginController implements Initializable{
 		}
 
 	}
+	public void cargarMarketplaceServerAction(ActionEvent event) {
+
+		modelFactoryController.cargarMarketplaceServer();
+		buttonCargar.setDisable(true);
+		
+	}
+	
 
 	void inicioSesion() throws IOException, NoSeleccionTerminosException, IngresoIncorrectoException {
 
@@ -112,19 +132,19 @@ public class LoginController implements Initializable{
 					mostrarMensajeInformacion("Bienvenido administrador");
 					aplicacion.showAdministrador();
 				}else {
-		            Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesión", usuario, "No aplica");
+		            Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesiï¿½n", usuario, "No aplica");
 
-					throw new IngresoIncorrectoException("Ha ingresado mal el usuario y/o contraseña.");
+					throw new IngresoIncorrectoException("Ha ingresado mal el usuario y/o contraseï¿½a.");
 
 
 				}
 
 
 			} else {
-				mostrarMensajeError("Ha ingresado mal el usuario y/o contraseña.");		}
+				mostrarMensajeError("Ha ingresado mal el usuario y/o contraseï¿½a.");		}
 
 		}else{
-            Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesión", usuario, "No aplica");
+            Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesiï¿½n", usuario, "No aplica");
 
 			throw new NoSeleccionTerminosException("Por favor, acepte los terminos y condiciones.");
 		}
@@ -172,9 +192,16 @@ public class LoginController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		modelFactoryController = ModelFactoryController.getInstance();
+		
 	}
-	public void setAplicacion(Aplicacion mainAux) {
+	public void setAplicacion(Aplicacion mainAux, int flagCargar) {
 		aplicacion= mainAux;
+		this.flagCargar=flagCargar;
+		System.out.println(this.flagCargar);
+		if (flagCargar!=0) {
+			buttonCargar.setDisable(true);
+
+		}
 	}
 
 

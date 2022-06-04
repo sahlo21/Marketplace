@@ -65,6 +65,35 @@ public class ModelFactoryController {
 	}
 
 	public ModelFactoryController() {
+
+		// 1. inicializar datos y luego guardarlo en archivos
+//		iniciarSalvarDatosPrueba();
+
+		// 2. Cargar los datos de los archivos
+//		cargarDatosDesdeArchivos();
+
+		//guardarRecursosMarketplace();
+
+//		guardarRecursoXML();
+
+		// 3. Guardar y Cargar el recurso serializable binario
+//		guardarResourceBinario();
+//		cargarResourceBinario();
+
+		// 4. Guardar y Cargar el recurso serializable XML
+//		guardarResourceXML();
+//		cargarResourceXML();
+
+		// crear el administrador
+
+
+
+		if (marketplace == null) {
+			System.out.println("es null");
+
+		}
+	}
+	public void cargarMarketplaceServer(){
 		try{
 			miSocket =  new Socket("localhost", 8081);
 
@@ -96,39 +125,6 @@ public class ModelFactoryController {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-
-		// 1. inicializar datos y luego guardarlo en archivos
-//		iniciarSalvarDatosPrueba();
-
-		// 2. Cargar los datos de los archivos
-//		cargarDatosDesdeArchivos();
-
-		//guardarRecursosMarketplace();
-
-//		guardarRecursoXML();
-
-		// 3. Guardar y Cargar el recurso serializable binario
-//		guardarResourceBinario();
-//		cargarResourceBinario();
-
-		// 4. Guardar y Cargar el recurso serializable XML
-//		guardarResourceXML();
-//		cargarResourceXML();
-
-		// crear el administrador
-
-		admin.setNombre("Tyler");
-		admin.setApellidos("Joseph");
-		admin.setUsuario("admin");
-		admin.setContrasena("11");
-		admin.setCedula("21p");
-		marketplace.getListaAdministradores().add(admin);
-
-		if (marketplace == null) {
-			System.out.println("es null");
-
 		}
 	}
 
