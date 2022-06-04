@@ -495,6 +495,19 @@ public class ModelFactoryController {
 		return null;
 
 	}
+	
+	public void crearSolicitud(Vendedor vendedorSolicitud, String vendedorDestino, boolean respuesta) {
+		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
+			if (vendedorSelect.getCedula().equals(vendedorDestino)) {
+				System.out.println("Singletion Vendedor soli "+vendedorSolicitud.getNombre());
+				System.out.println("Singleton Vendedor destino "+ vendedorSelect.getNombre());
+				vendedorSelect.crearSolicitud(vendedorSolicitud, vendedorSolicitud.getNombre(),
+						vendedorSolicitud.getApellidos(), vendedorDestino, respuesta);
+				
+			}
+		}
+		
+	}
 
 	public Usuario ingreso(String usuario, String contrasena) {
 		Usuario user = null;
@@ -590,6 +603,8 @@ public class ModelFactoryController {
 
 		return mg;
 	}
+
+
 
 	
 	

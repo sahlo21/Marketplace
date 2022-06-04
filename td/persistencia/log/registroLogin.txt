@@ -748,3 +748,33 @@ jun 04, 2022 3:28:23 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 INFORMACIÃ“N: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Christian Cedula: 1529, -06-04
 jun 04, 2022 4:01:15 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFORMACIÃ“N: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 2:29:28 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 2:39:20 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Didier Cedula: 1519, -06-04
+jun. 04, 2022 2:44:00 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 2:50:17 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Iniciar de sesiï¿½n vendedor, Inicio de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 2:55:01 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 3:02:37 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Iniciar de sesiï¿½n vendedor, Inicio de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 5:44:33 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Iniciar de sesiï¿½n vendedor, Inicio de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 5:44:50 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 5:44:57 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Iniciar de sesiï¿½n vendedor, Inicio de sesiï¿½n correcto Usuario: Didier Cedula: 1519, -06-04
+jun. 04, 2022 5:59:27 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 6:00:11 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Didier Cedula: 1519, -06-04
+jun. 04, 2022 6:01:27 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Didier Cedula: 1519, -06-04
+jun. 04, 2022 6:02:35 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Iniciar de sesiï¿½n vendedor, Inicio de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 6:03:02 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, -06-04
+jun. 04, 2022 6:03:06 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Iniciar de sesiï¿½n vendedor, Inicio de sesiï¿½n correcto Usuario: Didier Cedula: 1519, -06-04
