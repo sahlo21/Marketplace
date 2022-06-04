@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 public class Marketplace implements Serializable{
+	
+	ArrayList<Producto> listaMuro = new ArrayList<>();
+
 
 	/**
 	 * 
@@ -31,6 +34,18 @@ public class Marketplace implements Serializable{
 		
 	}
 
+	/**
+	 * @return the listaMuro
+	 */
+	public ArrayList<Producto> getListaMuro() {
+		return listaMuro;
+	}
+	/**
+	 * @param listaMuro the listaMuro to set
+	 */
+	public void setListaMuro(ArrayList<Producto> listaMuro) {
+		this.listaMuro = listaMuro;
+	}
 	/**
 	 * @return the nombre
 	 */
@@ -92,13 +107,14 @@ public class Marketplace implements Serializable{
 		this.listaAdministradores = listaAdministradores;
 	}
 	
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Marketplace [nombre=" + nombre + ", nit=" + nit + ", listaVendedores=" + listaVendedores
-				+ ", listaAdministradores=" + listaAdministradores + "]";
+		return "Marketplace [listaMuro=" + listaMuro + ", nombre=" + nombre + ", nit=" + nit + ", listaVendedores="
+				+ listaVendedores + ", listaAdministradores=" + listaAdministradores + "]";
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

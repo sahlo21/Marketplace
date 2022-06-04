@@ -2,6 +2,8 @@ package co.uniquindio.edu.co.Marketplace.controller;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
@@ -10,6 +12,8 @@ import java.util.ResourceBundle;
 
 
 import co.uniquindio.edu.co.Marketplace.MainServer;
+import co.uniquindio.edu.co.Marketplace.model.Marketplace;
+import co.uniquindio.edu.co.Marketplace.persistencia.Persistencia;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +31,8 @@ public class ServerController implements Runnable {
 	Socket socket;
 	DataInputStream flujoEntrada;
 	DataOutputStream flujoSalida;
+	ObjectOutputStream flujoSalidaObject;
+	ObjectInputStream flujoEntradaObject;
 	String texto;
 
 
@@ -90,6 +96,7 @@ public class ServerController implements Runnable {
 		try{
 
 			server = new ServerSocket(8081);
+			System.out.println("Esperando cliente");
 
 			while(true){
 				
@@ -98,10 +105,18 @@ public class ServerController implements Runnable {
 				
 				flujoEntrada = new DataInputStream(socket.getInputStream());
 				flujoSalida = new DataOutputStream(socket.getOutputStream());
+				flujoSalidaObject = new ObjectOutputStream(socket.getOutputStream());
+				flujoEntradaObject = new ObjectInputStream(socket.getInputStream());
 
-				flujoSalida.writeUTF("oli todo bien?");
+				
 				texto=flujoEntrada.readUTF();
+				
+				Marketplace market=Persistencia.cargarRecursoMarketplaceXML();
 
+				System.out.println(market);
+				
+				flujoSalidaObject.writeObject(market);
+				
 				
 				informes.appendText("\n"+""+texto);
 

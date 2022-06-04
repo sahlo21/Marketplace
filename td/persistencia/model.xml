@@ -22,6 +22,146 @@
     </object>
    </void>
   </void>
+  <void property="listaMuro">
+   <void method="add">
+    <object class="co.uniquindio.edu.co.Marketplace.model.Producto" id="Producto0">
+     <void property="categoria">
+      <object class="java.lang.Enum" method="valueOf">
+       <class>co.uniquindio.edu.co.Marketplace.model.Categoria</class>
+       <string>ELECTRODOMESTICOS</string>
+      </object>
+     </void>
+     <void property="codVendedor">
+      <string>1006341989</string>
+     </void>
+     <void property="estado">
+      <object class="java.lang.Enum" id="Estado0" method="valueOf">
+       <class>co.uniquindio.edu.co.Marketplace.model.Estado</class>
+       <string>PUBLICADO</string>
+      </object>
+     </void>
+     <void property="fechaPublicacion">
+      <string>2022/06/04</string>
+     </void>
+     <void property="id">
+      <string>1</string>
+     </void>
+     <void property="listaComentarios">
+      <void method="add">
+       <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
+        <void property="fecha">
+         <string>2022/06/04</string>
+        </void>
+        <void property="id">
+         <string>1</string>
+        </void>
+        <void property="texto">
+         <string>Fino se�ores</string>
+        </void>
+        <void property="userVendedor">
+         <string>Kevin</string>
+        </void>
+       </object>
+      </void>
+     </void>
+     <void property="nombre">
+      <string>Nevera</string>
+     </void>
+     <void property="precio">
+      <double>1570000.3</double>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.uniquindio.edu.co.Marketplace.model.Producto" id="Producto1">
+     <void property="categoria">
+      <object class="java.lang.Enum" id="Categoria0" method="valueOf">
+       <class>co.uniquindio.edu.co.Marketplace.model.Categoria</class>
+       <string>TECNOLOGIA</string>
+      </object>
+     </void>
+     <void property="codVendedor">
+      <string>1519</string>
+     </void>
+     <void property="estado">
+      <object idref="Estado0"/>
+     </void>
+     <void property="fechaPublicacion">
+      <string>2022/06/04</string>
+     </void>
+     <void property="id">
+      <string>2</string>
+     </void>
+     <void property="listaComentarios">
+      <void method="add">
+       <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
+        <void property="fecha">
+         <string>2022/06/04</string>
+        </void>
+        <void property="id">
+         <string>2</string>
+        </void>
+        <void property="texto">
+         <string>Viva playStation</string>
+        </void>
+        <void property="userVendedor">
+         <string>Didier</string>
+        </void>
+       </object>
+      </void>
+     </void>
+     <void property="nombre">
+      <string>Xbox</string>
+     </void>
+     <void property="precio">
+      <double>1900000.5</double>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="co.uniquindio.edu.co.Marketplace.model.Producto" id="Producto2">
+     <void property="categoria">
+      <object idref="Categoria0"/>
+     </void>
+     <void property="codVendedor">
+      <string>1529</string>
+     </void>
+     <void property="estado">
+      <object idref="Estado0"/>
+     </void>
+     <void property="fechaPublicacion">
+      <string>2022/06/04</string>
+     </void>
+     <void property="id">
+      <string>3</string>
+     </void>
+     <void property="listaComentarios">
+      <void method="add">
+       <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
+        <void property="fecha">
+         <string>2022/06/04</string>
+        </void>
+        <void property="id">
+         <string>3</string>
+        </void>
+        <void property="texto">
+         <string>Potente</string>
+        </void>
+        <void property="userVendedor">
+         <string>Christian</string>
+        </void>
+       </object>
+      </void>
+     </void>
+     <void property="nombre">
+      <string>MacBook</string>
+     </void>
+     <void property="precio">
+      <double>3120000.7</double>
+     </void>
+    </object>
+   </void>
+  </void>
   <void property="listaVendedores">
    <void method="add">
     <object class="co.uniquindio.edu.co.Marketplace.model.Vendedor" id="Vendedor0">
@@ -42,53 +182,7 @@
      </void>
      <void property="listaProductos">
       <void method="add">
-       <object class="co.uniquindio.edu.co.Marketplace.model.Producto" id="Producto0">
-        <void property="categoria">
-         <object class="java.lang.Enum" method="valueOf">
-          <class>co.uniquindio.edu.co.Marketplace.model.Categoria</class>
-          <string>ELECTRODOMESTICOS</string>
-         </object>
-        </void>
-        <void property="codVendedor">
-         <string>1006341989</string>
-        </void>
-        <void property="estado">
-         <object class="java.lang.Enum" id="Estado0" method="valueOf">
-          <class>co.uniquindio.edu.co.Marketplace.model.Estado</class>
-          <string>PUBLICADO</string>
-         </object>
-        </void>
-        <void property="fechaPublicacion">
-         <string>2022/06/04</string>
-        </void>
-        <void property="id">
-         <string>1</string>
-        </void>
-        <void property="listaComentarios">
-         <void method="add">
-          <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
-           <void property="fecha">
-            <string>2022/06/04</string>
-           </void>
-           <void property="id">
-            <string>1</string>
-           </void>
-           <void property="texto">
-            <string>Fino se�ores</string>
-           </void>
-           <void property="userVendedor">
-            <string>Kevin</string>
-           </void>
-          </object>
-         </void>
-        </void>
-        <void property="nombre">
-         <string>Nevera</string>
-        </void>
-        <void property="precio">
-         <double>1570000.3</double>
-        </void>
-       </object>
+       <object idref="Producto0"/>
       </void>
      </void>
      <void property="nombre">
@@ -118,50 +212,7 @@
      </void>
      <void property="listaProductos">
       <void method="add">
-       <object class="co.uniquindio.edu.co.Marketplace.model.Producto" id="Producto1">
-        <void property="categoria">
-         <object class="java.lang.Enum" id="Categoria0" method="valueOf">
-          <class>co.uniquindio.edu.co.Marketplace.model.Categoria</class>
-          <string>TECNOLOGIA</string>
-         </object>
-        </void>
-        <void property="codVendedor">
-         <string>1519</string>
-        </void>
-        <void property="estado">
-         <object idref="Estado0"/>
-        </void>
-        <void property="fechaPublicacion">
-         <string>2022/06/04</string>
-        </void>
-        <void property="id">
-         <string>2</string>
-        </void>
-        <void property="listaComentarios">
-         <void method="add">
-          <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
-           <void property="fecha">
-            <string>2022/06/04</string>
-           </void>
-           <void property="id">
-            <string>2</string>
-           </void>
-           <void property="texto">
-            <string>Viva playStation</string>
-           </void>
-           <void property="userVendedor">
-            <string>Didier</string>
-           </void>
-          </object>
-         </void>
-        </void>
-        <void property="nombre">
-         <string>Xbox</string>
-        </void>
-        <void property="precio">
-         <double>1900000.5</double>
-        </void>
-       </object>
+       <object idref="Producto1"/>
       </void>
      </void>
      <void property="nombre">
@@ -191,47 +242,7 @@
      </void>
      <void property="listaProductos">
       <void method="add">
-       <object class="co.uniquindio.edu.co.Marketplace.model.Producto" id="Producto2">
-        <void property="categoria">
-         <object idref="Categoria0"/>
-        </void>
-        <void property="codVendedor">
-         <string>1529</string>
-        </void>
-        <void property="estado">
-         <object idref="Estado0"/>
-        </void>
-        <void property="fechaPublicacion">
-         <string>2022/06/04</string>
-        </void>
-        <void property="id">
-         <string>3</string>
-        </void>
-        <void property="listaComentarios">
-         <void method="add">
-          <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
-           <void property="fecha">
-            <string>2022/06/04</string>
-           </void>
-           <void property="id">
-            <string>3</string>
-           </void>
-           <void property="texto">
-            <string>Potente</string>
-           </void>
-           <void property="userVendedor">
-            <string>Christian</string>
-           </void>
-          </object>
-         </void>
-        </void>
-        <void property="nombre">
-         <string>MacBook</string>
-        </void>
-        <void property="precio">
-         <double>3120000.7</double>
-        </void>
-       </object>
+       <object idref="Producto2"/>
       </void>
      </void>
      <void property="nombre">

@@ -75,6 +75,7 @@ public class BaseDatos {
 		comentario.setId("1");
 		producto.getListaComentarios().add(comentario);
 		vendedor.getListaProductos().add(producto);
+		marketplace.getListaMuro().add(producto);
 
 
 		marketplace.getListaVendedores().add(vendedor);
@@ -110,6 +111,7 @@ public class BaseDatos {
 		producto.getListaComentarios().add(comentario);
 
 		vendedor.getListaProductos().add(producto);
+		marketplace.getListaMuro().add(producto);
 
 		marketplace.getListaVendedores().add(vendedor);
 
@@ -144,6 +146,7 @@ public class BaseDatos {
 		producto.getListaComentarios().add(comentario);
 
 		vendedor.getListaProductos().add(producto);
+		marketplace.getListaMuro().add(producto);
 
 		marketplace.getListaVendedores().add(vendedor);
 

@@ -34,14 +34,14 @@ public class ModelFactoryController {
 	Socket miSocket;
 
 
-//	ObjectOutputStream flujoSalida;
-//	ObjectInputStream flujoEntrada;
+	ObjectOutputStream flujoSalidaObject;
+	ObjectInputStream flujoEntradaObject;
 
 	DataOutputStream flujoSalidaData;
 	DataInputStream flujoEntradaData;
 
 
-	Marketplace marketplace = null;
+	Marketplace marketplace =new Marketplace();
 	LoginController loginController;
 	Aplicacion aplicacion;
 	Vendedor vendedorLogueado;
@@ -70,21 +70,21 @@ public class ModelFactoryController {
 
 			System.out.println("Conectado cliente");
 
-//
-//			flujoSalida = new ObjectOutputStream(miSocket.getOutputStream());
-//			flujoEntrada = new ObjectInputStream(miSocket.getInputStream());
 
+			flujoSalidaObject = new ObjectOutputStream(miSocket.getOutputStream());
+			flujoEntradaObject = new ObjectInputStream(miSocket.getInputStream());
 			flujoSalidaData = new DataOutputStream(miSocket.getOutputStream());
 			flujoEntradaData = new DataInputStream(miSocket.getInputStream());
 
 			//Se reciben los datos que vienen desde el servidor
 
 
-			String a=flujoEntradaData.readUTF();
-			System.out.println(a);
-			flujoSalidaData.writeUTF("melo");
 			
-
+			flujoSalidaData.writeUTF("Cliente conectado correctamente");
+			
+			marketplace=(Marketplace) flujoEntradaObject.readObject();
+			System.out.println(marketplace);
+            listaMuro=marketplace.getListaMuro();
 
 			flujoEntradaData.close();
 			flujoSalidaData.close();
@@ -93,11 +93,14 @@ public class ModelFactoryController {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 
 		// 1. inicializar datos y luego guardarlo en archivos
-		iniciarSalvarDatosPrueba();
+//		iniciarSalvarDatosPrueba();
 
 		// 2. Cargar los datos de los archivos
 //		cargarDatosDesdeArchivos();

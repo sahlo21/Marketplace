@@ -308,3 +308,5 @@ may 19, 2022 3:43:09 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 INFORMACIÓN: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, 2022-05-19
 may 19, 2022 3:43:43 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFORMACIÓN: Eliminar me gusta, Me gusta eliminado Usuario: Didier Cedula: 1519, 2022-05-19
+jun 04, 2022 2:37:27 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÃ“N: Crear vendedor, Vendedor creado Usuario: Tyler Cedula: 21p, -06-04

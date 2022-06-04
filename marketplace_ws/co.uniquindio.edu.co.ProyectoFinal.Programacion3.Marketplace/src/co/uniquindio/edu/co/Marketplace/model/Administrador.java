@@ -1,7 +1,13 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
-public class Administrador extends Usuario{
+import java.io.Serializable;
 
+public class Administrador extends Usuario implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String cedula;
 	
 

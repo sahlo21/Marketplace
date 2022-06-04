@@ -1,5 +1,7 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
-public enum Estado {
+import java.io.Serializable;
+
+public enum Estado implements Serializable{
 	VENDIDO, PUBLICADO, CANCELADO;
 }
