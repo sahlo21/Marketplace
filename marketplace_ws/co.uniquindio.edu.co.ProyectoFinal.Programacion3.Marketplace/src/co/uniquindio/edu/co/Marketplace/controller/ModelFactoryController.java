@@ -1,6 +1,11 @@
 package co.uniquindio.edu.co.Marketplace.controller;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -26,6 +31,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class ModelFactoryController {
+	Socket miSocket;
+
+
+//	ObjectOutputStream flujoSalida;
+//	ObjectInputStream flujoEntrada;
+
+	DataOutputStream flujoSalidaData;
+	DataInputStream flujoEntradaData;
+
 
 	Marketplace marketplace = null;
 	LoginController loginController;
@@ -51,6 +65,36 @@ public class ModelFactoryController {
 	}
 
 	public ModelFactoryController() {
+		try{
+			miSocket =  new Socket("localhost", 8081);
+
+			System.out.println("Conectado cliente");
+
+//
+//			flujoSalida = new ObjectOutputStream(miSocket.getOutputStream());
+//			flujoEntrada = new ObjectInputStream(miSocket.getInputStream());
+
+			flujoSalidaData = new DataOutputStream(miSocket.getOutputStream());
+			flujoEntradaData = new DataInputStream(miSocket.getInputStream());
+
+			//Se reciben los datos que vienen desde el servidor
+
+
+			String a=flujoEntradaData.readUTF();
+			System.out.println(a);
+			flujoSalidaData.writeUTF("melo");
+			
+
+
+			flujoEntradaData.close();
+			flujoSalidaData.close();
+			miSocket.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 
 		// 1. inicializar datos y luego guardarlo en archivos
 		iniciarSalvarDatosPrueba();

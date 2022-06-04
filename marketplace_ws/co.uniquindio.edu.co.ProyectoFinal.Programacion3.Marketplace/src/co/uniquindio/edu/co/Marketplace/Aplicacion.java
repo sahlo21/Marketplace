@@ -59,7 +59,7 @@ public class Aplicacion extends Application {
 			logIn.setAplicacion(this);
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Inicio de sesión");
+			primaryStage.setTitle("Inicio de sesiï¿½n");
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("resources/iconMarketplace.png")));
 
 			/*

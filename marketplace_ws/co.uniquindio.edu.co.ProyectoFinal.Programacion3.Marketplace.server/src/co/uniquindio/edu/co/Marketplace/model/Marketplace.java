@@ -91,12 +91,14 @@ public class Marketplace implements Serializable{
 	public void setListaAdministradores(ArrayList<Administrador> listaAdministradores) {
 		this.listaAdministradores = listaAdministradores;
 	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Marketplace [nombre=" + nombre + ", nit=" + nit + "]";
+		return "Marketplace [nombre=" + nombre + ", nit=" + nit + ", listaVendedores=" + listaVendedores
+				+ ", listaAdministradores=" + listaAdministradores + "]";
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

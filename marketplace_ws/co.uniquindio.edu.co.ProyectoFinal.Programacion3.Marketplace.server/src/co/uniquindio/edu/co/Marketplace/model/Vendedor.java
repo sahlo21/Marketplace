@@ -154,22 +154,19 @@ public class Vendedor extends Usuario implements Serializable{
 	}
 
 
-	
 
 
 
 
 
 
-
-
-
-
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Vendedor [cedula=" + cedula + ", direccion=" + direccion + ", id=" + id + ", nombre=" + nombre
-				+ ", apellidos=" + apellidos + ", usuario=" + usuario + ", contrasena=" + contrasena + "]";
+		return "Vendedor [cedula=" + cedula + ", direccion=" + direccion + ", id=" + id + ", listaProductos="
+				+ listaProductos + ", listaContactos=" + listaContactos + ", listaMensajes=" + listaMensajes + "]";
 	}
 
 
