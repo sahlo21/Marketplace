@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-import co.uniquindio.edu.co.Marketplace.controller.LoginController;
-import co.uniquindio.edu.co.Marketplace.controller.MarketplaceAdminController;
-import co.uniquindio.edu.co.Marketplace.controller.MarketplaceVendedorController;
+import co.uniquindio.edu.co.Marketplace.controller.ServerController;
+
 import co.uniquindio.edu.co.Marketplace.controller.ModelFactoryController;
-import co.uniquindio.edu.co.Marketplace.controller.ProductoController;
 import co.uniquindio.edu.co.Marketplace.model.Categoria;
 import co.uniquindio.edu.co.Marketplace.model.Estado;
 import co.uniquindio.edu.co.Marketplace.model.Marketplace;
@@ -36,8 +34,8 @@ public class Aplicacion extends Application {
 
 		try {
 			this.primaryStage = primaryStage;
-			this.primaryStage.setTitle("Fakebook marketplace");
-			showLogin();
+			this.primaryStage.setTitle("Server marketplace");
+			showServer();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -47,7 +45,7 @@ public class Aplicacion extends Application {
 		launch(args);
 	}
 
-	public void showLogin() {
+	public void showServer() {
 
 		try {
 
@@ -55,11 +53,11 @@ public class Aplicacion extends Application {
 			loader.setLocation(Aplicacion.class.getResource("view/Login.fxml"));
 
 			BorderPane rootLayout = (BorderPane) loader.load();
-			LoginController logIn = loader.getController();
+			ServerController logIn = loader.getController();
 			logIn.setAplicacion(this);
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Inicio de sesión");
+			primaryStage.setTitle("Inicio de sesiï¿½n");
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("resources/iconMarketplace.png")));
 
 			/*
@@ -74,78 +72,7 @@ public class Aplicacion extends Application {
 		}
 	}
 
-	public void showAdministrador() {
-
-		try {
-
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Aplicacion.class.getResource("view/MarketplaceAdminView.fxml"));
-
-			BorderPane rootLayout = (BorderPane) loader.load();
-			MarketplaceAdminController administradorController = loader.getController();
-			administradorController.setAplicacion(this);
-			Scene scene = new Scene(rootLayout);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Portal administrativo");
-
-			primaryStage.show();
-
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-//	public void showProducto(Producto productoSeleccionado) {
-//
-//		try {
-//
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(Aplicacion.class.getResource("view/MarketplaceProductoView.fxml"));
-//
-//			BorderPane rootLayout = (BorderPane) loader.load();
-//			ProductoController controller = loader.getController();
-//			controller.setAplicacion(this);
-//
-//			controller.initAttributtes(productoSeleccionado);
-//			Scene scene = new Scene(rootLayout);
-//			primaryStage.setScene(scene);
-//			primaryStage.setTitle("Portal administrativo");
-//
-//			primaryStage.show();
-//
-//
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//	}	
-
-
-	public void showVendedor() {
-
-
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Aplicacion.class.getResource("view/MarketplaceVendedorView.fxml"));
-
-			BorderPane rootLayout = (BorderPane) loader.load();
-			MarketplaceVendedorController marketplaceVendedorController = loader.getController();
-			marketplaceVendedorController.setAplicacion(this);
-			Scene scene = new Scene(rootLayout);
-			primaryStage.setScene(scene);
-
-			primaryStage.setTitle("Portal de vendedor");
-
-			primaryStage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+	
 
 	public Stage getPrimaryStage() {
 		return primaryStage;

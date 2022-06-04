@@ -12,8 +12,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.uniquindio.edu.co.Marketplace.Aplicacion;
-import co.uniquindio.edu.co.Marketplace.Exceptions.IngresoIncorrectoException;
-import co.uniquindio.edu.co.Marketplace.Exceptions.NoSeleccionTerminosException;
+
 import co.uniquindio.edu.co.Marketplace.model.Administrador;
 import co.uniquindio.edu.co.Marketplace.model.Marketplace;
 import co.uniquindio.edu.co.Marketplace.model.Producto;
@@ -37,100 +36,23 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable{
+public class ServerController implements Initializable{
 
 
 
 
-	@FXML
-	private TextField txtUsuarioIngreso;
-
-	@FXML
-	private Button buttonLogin;
-
-	@FXML
-	private TextField txtContrasenaIngreso;
-
-	@FXML
-	private CheckBox cbCondiciones;
-
-	boolean flagLogin=false;
-	char tipoLogin;
+	
+	
 	Aplicacion aplicacion;
 	private ModelFactoryController modelFactoryController; 
-	ArrayList<Vendedor> listaVendedores = new ArrayList<>();
-	Socket miSocket;
-	DataOutputStream flujoSalida;
-	DataInputStream flujoEntrada;
-	int contador = 0;
+	
 
 
 
-	public LoginController() {
+	public ServerController() {
 
 
 	}
-
-	@FXML
-	void cbCondiciones(ActionEvent event) {
-
-	}
-
-	@FXML
-	private Label wrongLogIn;
-
-
-
-	public void iniciarSesionAction(ActionEvent event) throws IOException{
-
-		try {
-			inicioSesion();
-		} catch ( NoSeleccionTerminosException | IngresoIncorrectoException e) {
-			// TODO Auto-generated catch block
-			mostrarMensajeError(e.getMessage());
-		}
-
-	}
-
-	void inicioSesion() throws IOException, NoSeleccionTerminosException, IngresoIncorrectoException {
-
-		String usuario = txtUsuarioIngreso.getText().toString();
-		String contrasena = txtContrasenaIngreso.getText().toString();
-
-		Usuario usuarioObtenido = null;
-
-		usuarioObtenido = modelFactoryController.ingreso(usuario, contrasena);
-		if(cbCondiciones.isSelected()){
-			if (usuarioObtenido != null) {
-				if (usuarioObtenido instanceof Vendedor) {
-					Vendedor vendedor = (Vendedor) usuarioObtenido;
-					mostrarMensajeInformacion("Bienvenido: "+vendedor.getNombre());
-					modelFactoryController.setVendedorLogueado(vendedor);
-					aplicacion.showVendedor();
-
-				} else if (usuarioObtenido instanceof Administrador) {
-					mostrarMensajeInformacion("Bienvenido administrador");
-					aplicacion.showAdministrador();
-				}else {
-		            Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesión", usuario, "No aplica");
-
-					throw new IngresoIncorrectoException("Ha ingresado mal el usuario y/o contraseña.");
-
-
-				}
-
-
-			} else {
-				mostrarMensajeError("Ha ingresado mal el usuario y/o contraseña.");		}
-
-		}else{
-            Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesión", usuario, "No aplica");
-
-			throw new NoSeleccionTerminosException("Por favor, acepte los terminos y condiciones.");
-		}
-
-	}
-
 
 	private boolean mostrarMensajeInformacion(String mensaje) {
 

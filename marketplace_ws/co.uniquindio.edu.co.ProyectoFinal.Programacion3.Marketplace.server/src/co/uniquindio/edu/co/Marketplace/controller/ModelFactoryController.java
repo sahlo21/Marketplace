@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 public class ModelFactoryController {
 
 	Marketplace marketplace = null;
-	LoginController loginController;
+	ServerController loginController;
 	Aplicacion aplicacion;
 	Vendedor vendedorLogueado;
 	Producto productoActual;
@@ -512,7 +512,7 @@ public class ModelFactoryController {
 		guardarRegistroLogin("Cierre de sesi�n fallido", 1, "Cerrar sesi�n administrador", admin.getNombre(),
 				admin.getCedula());
 
-		aplicacion2.showLogin();
+		aplicacion2.showServer();;
 	}
 
 	/**
