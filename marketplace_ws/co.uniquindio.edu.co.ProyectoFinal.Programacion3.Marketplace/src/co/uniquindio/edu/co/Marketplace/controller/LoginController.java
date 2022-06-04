@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.URL;
@@ -49,8 +50,8 @@ public class LoginController implements Initializable{
 	private Button buttonLogin;
 	@FXML
 	private Button buttonCargar;
-	
-	
+
+
 
 	@FXML
 	private TextField txtContrasenaIngreso;
@@ -64,22 +65,27 @@ public class LoginController implements Initializable{
 	private ModelFactoryController modelFactoryController; 
 	ArrayList<Vendedor> listaVendedores = new ArrayList<>();
 	Socket miSocket;
-	DataOutputStream flujoSalida;
-	DataInputStream flujoEntrada;
+
+
+	ObjectOutputStream flujoSalidaObject;
+	ObjectInputStream flujoEntradaObject;
+
+	DataOutputStream flujoSalidaData;
+	DataInputStream flujoEntradaData;
 	int contador = 0;
 	boolean estadoCargareServer=false;
 	private int flagCargar;
-	
-	
+
+
 
 
 
 	public LoginController() {
 
 	}
-	
 
-	
+
+
 
 
 	@FXML
@@ -90,7 +96,7 @@ public class LoginController implements Initializable{
 	@FXML
 	private Label wrongLogIn;
 
-	
+
 
 
 
@@ -108,18 +114,53 @@ public class LoginController implements Initializable{
 
 		modelFactoryController.cargarMarketplaceServer();
 		buttonCargar.setDisable(true);
-		
+
 	}
-	
+
 
 	void inicioSesion() throws IOException, NoSeleccionTerminosException, IngresoIncorrectoException {
-
+		if (!estadoCargareServer) {
+			mostrarMensajeInformacion("Le sugerimos cargar el programa para un mejor funcionamiento");
+		}
 		String usuario = txtUsuarioIngreso.getText().toString();
 		String contrasena = txtContrasenaIngreso.getText().toString();
 
 		Usuario usuarioObtenido = null;
+		try{
+			miSocket =  new Socket("localhost", 8081);
 
-		usuarioObtenido = modelFactoryController.ingreso(usuario, contrasena);
+			System.out.println("Conectado cliente");
+
+
+			flujoSalidaObject = new ObjectOutputStream(miSocket.getOutputStream());
+			flujoEntradaObject = new ObjectInputStream(miSocket.getInputStream());
+			flujoSalidaData = new DataOutputStream(miSocket.getOutputStream());
+			flujoEntradaData = new DataInputStream(miSocket.getInputStream());
+
+			//Se reciben los datos que vienen desde el servidor
+
+
+
+			flujoSalidaData.writeInt(1);
+			flujoSalidaData.writeUTF(usuario);
+			flujoSalidaData.writeUTF(contrasena);
+
+			usuarioObtenido=(Usuario) flujoEntradaObject.readObject();
+
+
+			flujoEntradaData.close();
+			flujoSalidaData.close();
+			flujoEntradaObject.close();
+			flujoSalidaObject.close();
+			miSocket.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(cbCondiciones.isSelected()){
 			if (usuarioObtenido != null) {
 				if (usuarioObtenido instanceof Vendedor) {
@@ -132,7 +173,7 @@ public class LoginController implements Initializable{
 					mostrarMensajeInformacion("Bienvenido administrador");
 					aplicacion.showAdministrador();
 				}else {
-		            Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesi�n", usuario, "No aplica");
+					Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesi�n", usuario, "No aplica");
 
 					throw new IngresoIncorrectoException("Ha ingresado mal el usuario y/o contrase�a.");
 
@@ -144,7 +185,7 @@ public class LoginController implements Initializable{
 				mostrarMensajeError("Ha ingresado mal el usuario y/o contrase�a.");		}
 
 		}else{
-            Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesi�n", usuario, "No aplica");
+			Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesi�n", usuario, "No aplica");
 
 			throw new NoSeleccionTerminosException("Por favor, acepte los terminos y condiciones.");
 		}
@@ -156,7 +197,7 @@ public class LoginController implements Initializable{
 
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setHeaderText(null);
-		alert.setTitle("Confirmacion");
+		alert.setTitle("Información");
 		alert.setContentText(mensaje);
 		Optional<ButtonType> action = alert.showAndWait();
 
@@ -192,7 +233,7 @@ public class LoginController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		modelFactoryController = ModelFactoryController.getInstance();
-		
+
 	}
 	public void setAplicacion(Aplicacion mainAux, int flagCargar) {
 		aplicacion= mainAux;

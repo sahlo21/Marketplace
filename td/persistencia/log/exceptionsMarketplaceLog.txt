@@ -30,3 +30,9 @@ jun 04, 2022 2:37:18 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 GRAVE: Agregar vendedor, VendedorExistenteException Usuario: Tyler Cedula: 21p, -06-04
 jun 04, 2022 2:57:00 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 GRAVE: Inicio de sesi�n, NoSeleccionTerminosException Usuario:  Cedula: No aplica, -06-04
+jun 04, 2022 4:01:30 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Inicio de sesi�n, NoSeleccionTerminosException Usuario:  Cedula: No aplica, -06-04
+jun 04, 2022 4:06:17 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Inicio de sesi�n, NoSeleccionTerminosException Usuario:  Cedula: No aplica, -06-04
+jun 04, 2022 4:09:54 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Inicio de sesi�n, NoSeleccionTerminosException Usuario:  Cedula: No aplica, -06-04

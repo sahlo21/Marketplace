@@ -746,3 +746,5 @@ jun 04, 2022 3:28:20 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 INFORMACIÓN: Iniciar de sesi�n vendedor, Inicio de sesi�n correcto Usuario: Christian Cedula: 1529, -06-04
 jun 04, 2022 3:28:23 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Christian Cedula: 1529, -06-04
+jun 04, 2022 4:01:15 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, -06-04

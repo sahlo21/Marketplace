@@ -108,8 +108,8 @@ public class ModelFactoryController {
 			//Se reciben los datos que vienen desde el servidor
 
 
-			
-			flujoSalidaData.writeUTF("Cliente conectado correctamente");
+			flujoSalidaData.writeInt(2);
+			flujoSalidaData.writeUTF("Datos correctamente al cliente");
 			
 			marketplace=(Marketplace) flujoEntradaObject.readObject();
 			System.out.println(marketplace);
@@ -117,6 +117,8 @@ public class ModelFactoryController {
 
 			flujoEntradaData.close();
 			flujoSalidaData.close();
+			flujoEntradaObject.close();
+			flujoSalidaObject.close();
 			miSocket.close();
 
 		} catch (IOException e) {
