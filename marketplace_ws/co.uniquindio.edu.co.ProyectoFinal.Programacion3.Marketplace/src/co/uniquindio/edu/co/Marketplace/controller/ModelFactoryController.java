@@ -20,6 +20,7 @@ import co.uniquindio.edu.co.Marketplace.model.Marketplace;
 import co.uniquindio.edu.co.Marketplace.model.MeGusta;
 import co.uniquindio.edu.co.Marketplace.model.Mensaje;
 import co.uniquindio.edu.co.Marketplace.model.Producto;
+import co.uniquindio.edu.co.Marketplace.model.Solicitud;
 import co.uniquindio.edu.co.Marketplace.model.TipoUsuario;
 import co.uniquindio.edu.co.Marketplace.model.Usuario;
 import co.uniquindio.edu.co.Marketplace.model.Vendedor;
@@ -397,6 +398,14 @@ public class ModelFactoryController {
 		return listaMuro;
 
 	}
+	
+	public ArrayList<Solicitud> obtenerSolicitudes() {
+		return this.vendedorLogueado.getListaSolicitud();
+	}
+
+	public ArrayList<Vendedor> obtenerAsociados() {
+		return this.vendedorLogueado.getListaContactos();
+	}
 
 	public ArrayList<Comentario> obtenerComentario() {
 		ArrayList<Comentario> liscom = new ArrayList<>();
@@ -453,12 +462,31 @@ public class ModelFactoryController {
 				vendedorSelect.crearMensaje(textoMensaje, fechaComentario, vendedorRemitente);
 			}
 		}
-
-		
-		
 	}
 	
 
+	public void crearSolicitud(Vendedor vendedorSolicitud, String vendedorDestino, boolean respuesta) {
+		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
+			if (vendedorSelect.getCedula().equals(vendedorDestino)) {
+				vendedorSelect.crearSolicitud(vendedorSolicitud, vendedorSolicitud.getNombre(),
+						vendedorSolicitud.getApellidos(), vendedorDestino, respuesta);
+				
+			}
+		}
+		
+	}
+	
+	public void aceptarSolicitud(Vendedor vendedorSolicitud, Vendedor vendedorAceptaLogeado) {
+		vendedorSolicitud.aceptarSolicitud(vendedorAceptaLogeado);
+		vendedorLogueado.aceptarSolicitud(vendedorSolicitud);
+	}
+	
+	public void eliminarSolicitud(Solicitud solicitud, Vendedor vendedor) {
+		vendedor.eliminarSolicitud(solicitud);
+	}
+
+	
+	
 	public boolean actualizarProducto(String nombreActual, String nombre, Image imagen, Double precio, Estado estado,
 			Categoria categoria, String fechaPublicacion) {
 
@@ -508,18 +536,6 @@ public class ModelFactoryController {
 
 	}
 	
-	public void crearSolicitud(Vendedor vendedorSolicitud, String vendedorDestino, boolean respuesta) {
-		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
-			if (vendedorSelect.getCedula().equals(vendedorDestino)) {
-				System.out.println("Singletion Vendedor soli "+vendedorSolicitud.getNombre());
-				System.out.println("Singleton Vendedor destino "+ vendedorSelect.getNombre());
-				vendedorSelect.crearSolicitud(vendedorSolicitud, vendedorSolicitud.getNombre(),
-						vendedorSolicitud.getApellidos(), vendedorDestino, respuesta);
-				
-			}
-		}
-		
-	}
 
 	public Usuario ingreso(String usuario, String contrasena) {
 		Usuario user = null;

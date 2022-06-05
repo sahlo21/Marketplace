@@ -314,8 +314,13 @@ public class Vendedor extends Usuario implements Serializable {
 
 	}
 
-	public void aceptarSolicitud() {
+	public void aceptarSolicitud(Vendedor vendedorAsociado) {
+		getListaContactos().add(vendedorAsociado);
+		System.out.println("Lista socios: " + listaContactos);
+	}
 
+	public void eliminarSolicitud(Solicitud solicitud) {
+		getListaSolicitud().remove(solicitud);
 	}
 
 	public void crearSolicitud(Vendedor vendedorSolicitud, String nombreSoli, String apellidoSoli,

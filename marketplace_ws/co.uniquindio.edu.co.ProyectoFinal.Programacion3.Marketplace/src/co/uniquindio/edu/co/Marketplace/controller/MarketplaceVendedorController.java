@@ -14,7 +14,6 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
 import co.uniquindio.edu.co.Marketplace.Aplicacion;
 import co.uniquindio.edu.co.Marketplace.Exceptions.ProductoExistenteException;
 import co.uniquindio.edu.co.Marketplace.Exceptions.ProductoNoSeleccionadoException;
@@ -24,6 +23,7 @@ import co.uniquindio.edu.co.Marketplace.model.Categoria;
 import co.uniquindio.edu.co.Marketplace.model.Estado;
 import co.uniquindio.edu.co.Marketplace.model.Mensaje;
 import co.uniquindio.edu.co.Marketplace.model.Producto;
+import co.uniquindio.edu.co.Marketplace.model.Solicitud;
 import co.uniquindio.edu.co.Marketplace.model.Vendedor;
 import co.uniquindio.edu.co.Marketplace.persistencia.Persistencia;
 import javafx.collections.FXCollections;
@@ -51,19 +51,24 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MarketplaceVendedorController implements Initializable{
+public class MarketplaceVendedorController implements Initializable {
 
 	Aplicacion aplicacion;
 	Producto productoSeleccionado;
 	Mensaje msjSeleccionado;
+	Solicitud soliSelec;
+	Vendedor vendedorSelect;
 
 	ArrayList<Producto> listaProductos = new ArrayList<>();
 	ArrayList<Vendedor> listaVendedores = new ArrayList<>();
 	ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
 	ObservableList<Producto> listaMuro = FXCollections.observableArrayList();
 	ObservableList<Mensaje> listaMensaje = FXCollections.observableArrayList();
+	ObservableList<Solicitud> listaSolicitud = FXCollections.observableArrayList();
+	ObservableList<Vendedor> listaAsociados = FXCollections.observableArrayList();
 
-	//	ObservableList<Vendedor> listaVendedoresData = FXCollections.observableArrayList();
+	// ObservableList<Vendedor> listaVendedoresData =
+	// FXCollections.observableArrayList();
 
 	private ModelFactoryController modelFactoryController;
 
@@ -136,6 +141,24 @@ public class MarketplaceVendedorController implements Initializable{
 	private TableColumn<Mensaje, String> columnRemitente;
 
 	@FXML
+	private TableView<Solicitud> tableSolicitudes;
+
+	@FXML
+	private TableColumn<Solicitud, String> columnNombreSolicitud;
+
+	@FXML
+	private TableColumn<Solicitud, String> columnApellidoSolicitud;
+
+	@FXML
+	private TableView<Vendedor> tableAsociados;
+
+	@FXML
+	private TableColumn<Vendedor, String> columnNombreAsociado;
+
+	@FXML
+	private TableColumn<Vendedor, String> columnApellidoAsociados;
+
+	@FXML
 	private Label lblUserAdmin;
 	@FXML
 	private Label lblFecha;
@@ -143,15 +166,10 @@ public class MarketplaceVendedorController implements Initializable{
 	@FXML
 	private Label lblHora;
 
-
-
-
-
 	@FXML
 	void cerrarSesionAction(ActionEvent event) {
 		modelFactoryController.cerrarSesionVendedor(aplicacion);
 	}
-
 
 	@FXML
 	void nuevoProductoAction(ActionEvent event) {
@@ -180,7 +198,6 @@ public class MarketplaceVendedorController implements Initializable{
 
 	}
 
-
 	@FXML
 	void seleccionarImagenAction(ActionEvent event) {
 
@@ -188,11 +205,8 @@ public class MarketplaceVendedorController implements Initializable{
 		fileChooser.setTitle("Buscar Imagen");
 
 		// Agregar filtros para facilitar la busqueda
-		fileChooser.getExtensionFilters().addAll(
-				new FileChooser.ExtensionFilter("All Images", "*.*"),
-				new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-				new FileChooser.ExtensionFilter("PNG", "*.png")
-				);
+		fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
+				new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
 
 		// Obtener la imagen seleccionada
 		File imgFile = fileChooser.showOpenDialog(aplicacion.getPrimaryStage());
@@ -207,43 +221,61 @@ public class MarketplaceVendedorController implements Initializable{
 
 	@FXML
 	void aceptarSolicitudAction(ActionEvent event) {
-
-
+		aceptarSolicitud();
 	}
+
 	@FXML
 	void enviarSolicitudAction(ActionEvent event) {
-
 
 	}
 
 	@FXML
 	void eliminarProductoAction(ActionEvent event) {
 
-		try{
+		try {
 			eliminarProducto();
 		} catch (ProductoNoSeleccionadoException e) {
 			// TODO Auto-generated catch block
 			mostrarMensajeError(e.getMessage());
 		}
 	}
+
 	@FXML
 	void abrirProductoAction(ActionEvent event) {
-		if(productoSeleccionado!=null){
+		if (productoSeleccionado != null) {
 
 			abrirProducto();
-		}else{
+		} else {
 			mostrarMensajeError("Producto no seleccionado\n\nDebe seleccionar un producto");
 
 		}
 
-		//		aplicacion.showProducto(productoSeleccionado);
-		//		modelFactoryController.setProductoActual(productoSeleccionado);
+		// aplicacion.showProducto(productoSeleccionado);
+		// modelFactoryController.setProductoActual(productoSeleccionado);
 	}
 
+	private void aceptarSolicitud() {
 
+		Vendedor vendedorSolicitud = soliSelec.getVendedorSolicitud();
+		Vendedor vendedorAceptaLogeado = modelFactoryController.getVendedorLogueado();
+
+		System.out.println("Vendedor Solicitud : " + vendedorSolicitud.getNombre());
+		System.out.println("VEndedor Acepta soli : " + vendedorAceptaLogeado.getNombre());
+
+		if ((vendedorSolicitud != null) && (vendedorAceptaLogeado != null)) {
+			modelFactoryController.aceptarSolicitud(vendedorSolicitud, vendedorAceptaLogeado);
+			eliminarSolicitud(vendedorAceptaLogeado);
+		}
+	}
+
+	public void eliminarSolicitud(Vendedor vendedorAceptaLogeado) {
+
+		modelFactoryController.eliminarSolicitud(soliSelec, vendedorAceptaLogeado);
+		listaSolicitud.remove(soliSelec);
+
+	}
 
 	private void abrirProducto() {
-
 
 		try {
 			// Cargo la vista
@@ -255,9 +287,7 @@ public class MarketplaceVendedorController implements Initializable{
 			// Cojo el controlador
 			ProductoController controlador = loader.getController();
 
-
 			controlador.initAttributtes(productoSeleccionado, modelFactoryController.getVendedorLogueado());
-
 
 			modelFactoryController.setProductoActual(productoSeleccionado);
 
@@ -269,11 +299,7 @@ public class MarketplaceVendedorController implements Initializable{
 			stage.setTitle("Detalles producto");
 			stage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/iconMarketplace.png")));
 
-
 			stage.showAndWait();
-
-
-
 
 		} catch (IOException ex) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -284,80 +310,63 @@ public class MarketplaceVendedorController implements Initializable{
 		}
 
 	}
-
-
 
 	@FXML
 	void responderMensajeAction(ActionEvent event) {
-		if (msjSeleccionado!=null) {
-		try {
-			// Cargo la vista
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ChatVendedorView.fxml"));
+		if (msjSeleccionado != null) {
+			try {
+				// Cargo la vista
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ChatVendedorView.fxml"));
 
-			// Cargo la ventana
-			Parent root = loader.load();
-			// Cojo el controlador
-			ChatVendedorController controlador = loader.getController();
-			
-				
-			
-			controlador.setVendedorSeleccionado(msjSeleccionado.getVendedorRemitente());
+				// Cargo la ventana
+				Parent root = loader.load();
+				// Cojo el controlador
+				ChatVendedorController controlador = loader.getController();
 
-			
+				controlador.setVendedorSeleccionado(msjSeleccionado.getVendedorRemitente());
 
+				// Creo el Scene
+				Scene scene = new Scene(root);
+				Stage stage = new Stage();
+				stage.initModality(Modality.APPLICATION_MODAL);
+				stage.setScene(scene);
+				stage.setTitle("Chat");
+				stage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/email.png")));
 
+				stage.showAndWait();
 
-
-
-
-			// Creo el Scene
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setScene(scene);
-			stage.setTitle("Chat");
-			stage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/email.png")));
-
-
-
-			stage.showAndWait();
-
-		} catch (IOException ex) {
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setHeaderText(null);
-			alert.setTitle("Error");
-			alert.setContentText(ex.getMessage());
-			alert.showAndWait();
-		}
-		}else{
+			} catch (IOException ex) {
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setHeaderText(null);
+				alert.setTitle("Error");
+				alert.setContentText(ex.getMessage());
+				alert.showAndWait();
+			}
+		} else {
 			mostrarMensajeError("Por favor seleccione un mensaje");
 		}
 	}
-
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		modelFactoryController = ModelFactoryController.getInstance();
 
-
-
-		lblFecha.setText(lblFecha.getText()+LocalDate.now(Clock.systemDefaultZone ()));
-		lblHora.setText(lblHora.getText()+LocalTime.now());
-		lblUserAdmin.setText(modelFactoryController.getVendedorLogueado().getNombre()+" "+modelFactoryController.getVendedorLogueado().getApellidos());
-
-
+		lblFecha.setText(lblFecha.getText() + LocalDate.now(Clock.systemDefaultZone()));
+		lblHora.setText(lblHora.getText() + LocalTime.now());
+		lblUserAdmin.setText(modelFactoryController.getVendedorLogueado().getNombre() + " "
+				+ modelFactoryController.getVendedorLogueado().getApellidos());
 
 		columnPrecioProducto.setCellValueFactory(new PropertyValueFactory<Producto, String>("precio"));
 		columnNombreProducto.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
-		//		columnImagenProducto.setCellValueFactory(new PropertyValueFactory<Producto, Image>("imagen"));
+		// columnImagenProducto.setCellValueFactory(new PropertyValueFactory<Producto,
+		// Image>("imagen"));
 		columnEstadoProducto.setCellValueFactory(new PropertyValueFactory<Producto, Estado>("estado"));
 		columnCategoriaProducto.setCellValueFactory(new PropertyValueFactory<Producto, Categoria>("categoria"));
 		columnFechaPublicacion.setCellValueFactory(new PropertyValueFactory<Producto, Date>("fechaPublicacion"));
 
-		tableProductos.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection) ->{
+		tableProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 
 			productoSeleccionado = newSelection;
-
 
 			mostrarInformacionProducto(productoSeleccionado);
 
@@ -365,27 +374,45 @@ public class MarketplaceVendedorController implements Initializable{
 		columnPrecioMuro.setCellValueFactory(new PropertyValueFactory<>("precio"));
 		columnProductoMuro.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
 
-		//		columnImagenMuro.setPrefWidth(80); 
-		//		columnImagenMuro.setCellValueFactory(new PropertyValueFactory<>("imagen"));
-		//		columnImagenMuro.setCellValueFactory(new PropertyValueFactory<Producto, String>("imagen"));
+		// columnImagenMuro.setPrefWidth(80);
+		// columnImagenMuro.setCellValueFactory(new PropertyValueFactory<>("imagen"));
+		// columnImagenMuro.setCellValueFactory(new PropertyValueFactory<Producto,
+		// String>("imagen"));
 		columnEstadoMuro.setCellValueFactory(new PropertyValueFactory<Producto, Estado>("estado"));
 		columnCategoriaMuro.setCellValueFactory(new PropertyValueFactory<Producto, Categoria>("categoria"));
 		columnFechaMuro.setCellValueFactory(new PropertyValueFactory<Producto, Date>("fechaPublicacion"));
-		cbCategoria.getItems().addAll(Categoria.ACCESORIOS, Categoria.ELECTRODOMESTICOS, Categoria.HOGAR, Categoria.TECNOLOGIA, Categoria.VEHICULOS);
-		tableMuro.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection) ->{
+		cbCategoria.getItems().addAll(Categoria.ACCESORIOS, Categoria.ELECTRODOMESTICOS, Categoria.HOGAR,
+				Categoria.TECNOLOGIA, Categoria.VEHICULOS);
+		tableMuro.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 
 			productoSeleccionado = newSelection;
-
 
 		});
 		columnRemitente.setCellValueFactory(new PropertyValueFactory<Mensaje, String>("nombreVendedor"));
 		columnFechaMensaje.setCellValueFactory(new PropertyValueFactory<Mensaje, String>("fecha"));
 		columnMensaje.setCellValueFactory(new PropertyValueFactory<Mensaje, String>("texto"));
 
-		tableMensaje.getSelectionModel().selectedItemProperty().addListener((obs,oldSelection,newSelection) ->{
+		tableMensaje.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 
 			msjSeleccionado = newSelection;
 
+		});
+
+		columnNombreSolicitud.setCellValueFactory(new PropertyValueFactory<Solicitud, String>("nombreSoli"));
+		columnApellidoSolicitud.setCellValueFactory(new PropertyValueFactory<Solicitud, String>("apellidoSoli"));
+
+		tableSolicitudes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+
+			soliSelec = newSelection;
+
+		});
+
+		columnNombreAsociado.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("nombre"));
+		columnApellidoAsociados.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("apellidos"));
+
+		tableAsociados.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+
+			vendedorSelect = newSelection;
 
 		});
 	}
@@ -396,12 +423,14 @@ public class MarketplaceVendedorController implements Initializable{
 
 		return listaProductosData;
 	}
+
 	public ObservableList<Producto> getListaMuro() {
 
 		listaMuro.addAll(modelFactoryController.obtenerMuro());
 
 		return listaMuro;
 	}
+
 	public ObservableList<Mensaje> getListaMensajes() {
 
 		listaMensaje.addAll(modelFactoryController.obtenerMensajes());
@@ -409,213 +438,232 @@ public class MarketplaceVendedorController implements Initializable{
 		return listaMensaje;
 	}
 
+	public ObservableList<Solicitud> getListaSolicitud() {
+
+		listaSolicitud.addAll(modelFactoryController.obtenerSolicitudes());
+
+		return listaSolicitud;
+	}
+
+	public ObservableList<Vendedor> getListaAsociados() {
+
+		listaAsociados.addAll(modelFactoryController.obtenerAsociados());
+
+		return listaAsociados;
+	}
 
 	public void setAplicacion(Aplicacion aplicacion) {
-		this.aplicacion=aplicacion;
+		this.aplicacion = aplicacion;
 		tableProductos.getItems().clear();
 		tableProductos.setItems(getListaProductoData());
 		tableMuro.getItems().clear();
 		tableMuro.setItems(getListaMuro());
 		tableMensaje.getItems().clear();
 		tableMensaje.setItems(getListaMensajes());
-
-
+		tableSolicitudes.getItems().clear();
+		tableSolicitudes.setItems(getListaSolicitud());
+		tableAsociados.getItems().clear();
+		tableAsociados.setItems(getListaAsociados());
 
 	}
+
 	private void mostrarInformacionProducto(Producto productoSeleccionado) {
 
-
-		if(productoSeleccionado != null){
+		if (productoSeleccionado != null) {
 			txtNombreProducto.setText(productoSeleccionado.getNombre());
 			txtPrecioProducto.setText(String.valueOf(productoSeleccionado.getPrecio()));
 			ivImagen.setImage(productoSeleccionado.getImagen());
 			cbCategoria.setValue(productoSeleccionado.getCategoria());
 
-
 		}
 	}
+
 	private void agregarProducto() throws ProductoExistenteException, ValorNoNumericException {
 
-		String nombre=txtNombreProducto.getText();
-		Image imagen= ivImagen.getImage();
-		String precioAux=txtPrecioProducto.getText();;
-		Categoria categoria=cbCategoria.getValue();
+		String nombre = txtNombreProducto.getText();
+		Image imagen = ivImagen.getImage();
+		String precioAux = txtPrecioProducto.getText();
+		;
+		Categoria categoria = cbCategoria.getValue();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String fechaPublicacion = sdf.format(new Date());
 
-
 		Estado estado = Estado.PUBLICADO;
-		String codVendedor=modelFactoryController.getVendedorLogueado().getCedula();
+		String codVendedor = modelFactoryController.getVendedorLogueado().getCedula();
 
-		if(datosValidosProducto(nombre, imagen, precioAux, categoria) == true){
+		if (datosValidosProducto(nombre, imagen, precioAux, categoria) == true) {
 			if (!(isNumericDouble(precioAux))) {
-				Persistencia.guardarExceptionsLog("ValorNoNumericException", 3, "Agregar producto", modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+				Persistencia.guardarExceptionsLog("ValorNoNumericException", 3, "Agregar producto",
+						modelFactoryController.getVendedorLogueado().getNombre(),
+						modelFactoryController.getVendedorLogueado().getCedula());
 
 				throw new ValorNoNumericException("El precio del producto debe ser un dato numerico");
 			}
 			double precio = Double.parseDouble(txtPrecioProducto.getText());
 
-
 			Producto producto = null;
 
+			producto = modelFactoryController.crearProducto(nombre, imagen, precio, estado, categoria, fechaPublicacion,
+					codVendedor);
 
-			producto = modelFactoryController.crearProducto(nombre,  imagen,  precio,  estado, categoria, fechaPublicacion, codVendedor);
-
-			if(producto != null){
+			if (producto != null) {
 
 				listaProductosData.add(producto);
 				listaMuro.add(producto);
 				limpiarCasillasProductos();
-				mostrarMensaje("Notificaci�n Producto", "Producto publicado", "El producto se ha publicado con �xito", AlertType.INFORMATION);
-			}else{
-				Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Agregar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+				mostrarMensaje("Notificaci�n Producto", "Producto publicado",
+						"El producto se ha publicado con �xito", AlertType.INFORMATION);
+			} else {
+				Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Agregar producto",
+						modelFactoryController.getVendedorLogueado().getNombre(),
+						modelFactoryController.getVendedorLogueado().getCedula());
 
-				throw new ProductoExistenteException("El producto: "+nombre+" ya se encuentra registrado");
+				throw new ProductoExistenteException("El producto: " + nombre + " ya se encuentra registrado");
 
 			}
-
-
 
 		}
 	}
 
-	private void actualizarProducto() throws ProductoNoSeleccionadoException, ProductoExistenteException  {
+	private void actualizarProducto() throws ProductoNoSeleccionadoException, ProductoExistenteException {
 
-		String nombre=txtNombreProducto.getText();
-		Image imagen= ivImagen.getImage();
-		String precioAux=txtPrecioProducto.getText();;
-		Categoria categoria=cbCategoria.getValue();
+		String nombre = txtNombreProducto.getText();
+		Image imagen = ivImagen.getImage();
+		String precioAux = txtPrecioProducto.getText();
+		;
+		Categoria categoria = cbCategoria.getValue();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String fechaPublicacion = sdf.format(new Date());
 
 		Estado estado = Estado.PUBLICADO;
 
-
 		boolean flagcProductoActualizado = false;
 
-
-
-		if(productoSeleccionado != null){
+		if (productoSeleccionado != null) {
 			if (mostrarMensajeConfirmacion("Desea actualizar a: " + productoSeleccionado.getNombre())) {
-				if(datosValidosProducto(nombre, imagen, precioAux, categoria)== true){
+				if (datosValidosProducto(nombre, imagen, precioAux, categoria) == true) {
 
 					double precio = Double.parseDouble(txtPrecioProducto.getText());
 
-					flagcProductoActualizado = modelFactoryController.actualizarProducto(productoSeleccionado.getNombre(), nombre,  imagen,  precio,  estado, categoria, fechaPublicacion);
-					if(flagcProductoActualizado == true){
+					flagcProductoActualizado = modelFactoryController.actualizarProducto(
+							productoSeleccionado.getNombre(), nombre, imagen, precio, estado, categoria,
+							fechaPublicacion);
+					if (flagcProductoActualizado == true) {
 
 						tableProductos.refresh();
 						tableMuro.refresh();
-						//					limpiarCasillasProductos();
-						mostrarMensaje("Notificaci�n Producto", "Producto actualizado", "El producto se ha actualizado con �xito", AlertType.INFORMATION);
-					}else{
-						Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Actualizar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+						// limpiarCasillasProductos();
+						mostrarMensaje("Notificaci�n Producto", "Producto actualizado",
+								"El producto se ha actualizado con �xito", AlertType.INFORMATION);
+					} else {
+						Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Actualizar producto",
+								modelFactoryController.getVendedorLogueado().getNombre(),
+								modelFactoryController.getVendedorLogueado().getCedula());
 
-						throw new ProductoExistenteException("El producto: "+nombre+" ya se encuentra registrado");
+						throw new ProductoExistenteException("El producto: " + nombre + " ya se encuentra registrado");
 
 					}
-				}else{
+				} else {
 
-					mostrarMensaje("Notificaci�n Producto", "Producto no ha sido publicado","El producto no se puede actualizar", AlertType.ERROR);
+					mostrarMensaje("Notificaci�n Producto", "Producto no ha sido publicado",
+							"El producto no se puede actualizar", AlertType.ERROR);
 				}
 			}
 
-		}else{
-			Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Actualizar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+		} else {
+			Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Actualizar producto",
+					modelFactoryController.getVendedorLogueado().getNombre(),
+					modelFactoryController.getVendedorLogueado().getCedula());
 
 			throw new ProductoNoSeleccionadoException("Producto no seleccionado\nDebe seleccionar un producto");
 		}
 
-
-
 	}
 
-
-	private void eliminarProducto()throws ProductoNoSeleccionadoException {
+	private void eliminarProducto() throws ProductoNoSeleccionadoException {
 
 		boolean flagProductoEliminado = false;
 
-		if(productoSeleccionado != null){
+		if (productoSeleccionado != null) {
 			if (mostrarMensajeConfirmacion("Desea eliminar a: " + productoSeleccionado.getNombre())) {
 
-				flagProductoEliminado  = modelFactoryController.eliminarProducto(productoSeleccionado.getNombre());
-				if(flagProductoEliminado  == true){
+				flagProductoEliminado = modelFactoryController.eliminarProducto(productoSeleccionado.getNombre());
+				if (flagProductoEliminado == true) {
 
 					listaProductosData.remove(productoSeleccionado);
 					listaMuro.remove(productoSeleccionado);
 					productoSeleccionado = null;
 					tableProductos.getSelectionModel().clearSelection();
-					limpiarCasillasProductos();					
-					listaMuro.clear();	
+					limpiarCasillasProductos();
+					listaMuro.clear();
 					listaMuro.addAll(modelFactoryController.obtenerMuro());
 					tableMuro.setItems(listaMuro);
 
-					mostrarMensaje("Notificaci�n Producto", "Producto eliminado", "El producto se ha eliminado con �xito", AlertType.INFORMATION);
+					mostrarMensaje("Notificaci�n Producto", "Producto eliminado",
+							"El producto se ha eliminado con �xito", AlertType.INFORMATION);
 
 				}
 			}
-		}else{
-			Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Eliminar producto",  modelFactoryController.getVendedorLogueado().getNombre(), modelFactoryController.getVendedorLogueado().getCedula());
+		} else {
+			Persistencia.guardarExceptionsLog("ProductoNoSeleccionadoException", 3, "Eliminar producto",
+					modelFactoryController.getVendedorLogueado().getNombre(),
+					modelFactoryController.getVendedorLogueado().getCedula());
 
 			throw new ProductoNoSeleccionadoException("Producto no seleccionado\nDebe seleccionar un producto");
 		}
 	}
 
-
-
-
 	public static boolean isNumericDouble(String str) {
 		try {
 			Double.parseDouble(str);
 			return true;
-		} catch(NumberFormatException e){
+		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
+
 	public static boolean isNumericInt(String str) {
 		try {
 			Integer.parseInt(str);
 			return true;
-		} catch(NumberFormatException e){
+		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
-	private boolean datosValidosProducto(String nombre, Image imagen, String precioAux,
-			Categoria categoria) {
+
+	private boolean datosValidosProducto(String nombre, Image imagen, String precioAux, Categoria categoria) {
 
 		String mensaje = "";
 
-		if(nombre == null || nombre.equals(""))
+		if (nombre == null || nombre.equals(""))
 			mensaje += "El nombre del producto es invalido \n";
 
-		if(precioAux == null || precioAux.equals(""))
+		if (precioAux == null || precioAux.equals(""))
 			mensaje += "El precio del producto es invalido \n";
 
-		if(categoria == null || categoria.equals(""))
+		if (categoria == null || categoria.equals(""))
 
 			mensaje += "El categoria del producto es invalido \n";
 
-		if(imagen==null){
+		if (imagen == null) {
 			mensaje += "Por favor seleccione un imagen \n";
 
 		}
 
-
-		if(mensaje.equals("")){
+		if (mensaje.equals("")) {
 			return true;
-		}else{
+		} else {
 			mostrarMensaje("Notificaci�n producto", "Datos invalidos", mensaje, AlertType.WARNING);
 			return false;
 		}
 	}
+
 	private void limpiarCasillasProductos() {
 
 		txtNombreProducto.setText("");
 		txtPrecioProducto.setText("");
 		cbCategoria.setValue(null);
 		ivImagen.setImage(null);
-
-
 
 	}
 
@@ -634,7 +682,6 @@ public class MarketplaceVendedorController implements Initializable{
 		}
 	}
 
-
 	private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
 		Alert alert = new Alert(alertType);
 		alert.setTitle(titulo);
@@ -642,7 +689,6 @@ public class MarketplaceVendedorController implements Initializable{
 		alert.setContentText(contenido);
 		alert.showAndWait();
 	}
-
 
 	private boolean mostrarMensajeError(String mensaje) {
 
@@ -659,15 +705,12 @@ public class MarketplaceVendedorController implements Initializable{
 		}
 	}
 
-
 	public Producto getProductoSeleccionado() {
 		return productoSeleccionado;
 	}
 
-
 	public void setProductoSeleccionado(Producto productoSeleccionado) {
 		this.productoSeleccionado = productoSeleccionado;
 	}
-
 
 }
