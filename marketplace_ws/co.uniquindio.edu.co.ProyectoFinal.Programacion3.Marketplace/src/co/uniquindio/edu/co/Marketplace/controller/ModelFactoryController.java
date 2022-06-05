@@ -42,7 +42,7 @@ public class ModelFactoryController {
 
 
 	Marketplace marketplace =new Marketplace();
-	LoginController loginController;
+	LoginControllerN loginController;
 	Aplicacion aplicacion;
 	Vendedor vendedorLogueado;
 	Producto productoActual;
@@ -85,7 +85,12 @@ public class ModelFactoryController {
 //		cargarResourceXML();
 
 		// crear el administrador
-
+		admin.setNombre("Tyler");
+		admin.setApellidos("Joseph");
+		admin.setUsuario("admin");
+		admin.setContrasena("11");
+		admin.setCedula("21p");
+		marketplace.getListaAdministradores().add(admin);
 
 
 		if (marketplace == null) {
@@ -114,6 +119,13 @@ public class ModelFactoryController {
 			marketplace=(Marketplace) flujoEntradaObject.readObject();
 			System.out.println(marketplace);
             listaMuro=marketplace.getListaMuro();
+            admin.setNombre("Tyler");
+    		admin.setApellidos("Joseph");
+    		admin.setUsuario("admin");
+    		admin.setContrasena("11");
+    		admin.setCedula("21p");
+    		marketplace.getListaAdministradores().add(admin);
+
 
 			flujoEntradaData.close();
 			flujoSalidaData.close();
