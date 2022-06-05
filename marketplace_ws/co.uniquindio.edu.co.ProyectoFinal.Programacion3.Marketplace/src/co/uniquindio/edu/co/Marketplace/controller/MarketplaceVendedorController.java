@@ -61,14 +61,13 @@ public class MarketplaceVendedorController implements Initializable {
 
 	ArrayList<Producto> listaProductos = new ArrayList<>();
 	ArrayList<Vendedor> listaVendedores = new ArrayList<>();
+
 	ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
 	ObservableList<Producto> listaMuro = FXCollections.observableArrayList();
 	ObservableList<Mensaje> listaMensaje = FXCollections.observableArrayList();
 	ObservableList<Solicitud> listaSolicitud = FXCollections.observableArrayList();
 	ObservableList<Vendedor> listaAsociados = FXCollections.observableArrayList();
-
-	// ObservableList<Vendedor> listaVendedoresData =
-	// FXCollections.observableArrayList();
+	ObservableList<Vendedor> listaRedVendedoresData = FXCollections.observableArrayList();
 
 	private ModelFactoryController modelFactoryController;
 
@@ -159,6 +158,15 @@ public class MarketplaceVendedorController implements Initializable {
 	private TableColumn<Vendedor, String> columnApellidoAsociados;
 
 	@FXML
+	private TableView<Vendedor> tableVendedoresRed;
+
+	@FXML
+	private TableColumn<Vendedor, String> columnNombreVendedorRed;
+
+	@FXML
+	private TableColumn<Vendedor, String> columnApellidoVendedorRed;
+
+	@FXML
 	private Label lblUserAdmin;
 	@FXML
 	private Label lblFecha;
@@ -227,6 +235,27 @@ public class MarketplaceVendedorController implements Initializable {
 	@FXML
 	void enviarSolicitudAction(ActionEvent event) {
 
+		Vendedor vendedorSolicitud = modelFactoryController.getVendedorLogueado();
+		
+		if (vendedorSelect != null) {
+			if (validarSolicitudExistente(vendedorSolicitud, vendedorSelect)) {
+				if (vendedorSolicitud.getCedula() != vendedorSelect.getCedula()) {
+					if (!(vendedorSolicitud.getListaContactos().contains(vendedorSelect))) {
+						modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSelect.getCedula(), false);
+						mostrarMensaje("Notifocacion de Solicitud", "Solicitud enviada",
+								"Solicitud Enviada con Exito a: " + vendedorSelect.getNombre(), AlertType.INFORMATION);
+					} else {
+						mostrarMensajeError("El Usuario: " + vendedorSelect.getNombre() + " Ya esta Agregado");
+					}
+				} else {
+					mostrarMensajeError("No Puedes Agregarte a Ti Mismo.");
+				}
+			} else {
+				mostrarMensajeError("Ya enviaste una solicitud a este Usuario");
+			}
+		}else {
+			mostrarMensajeError("Por favor Seleciona un Vendedor de La Red");
+		}
 	}
 
 	@FXML
@@ -267,11 +296,14 @@ public class MarketplaceVendedorController implements Initializable {
 				modelFactoryController.aceptarSolicitud(vendedorSolicitud, vendedorAceptaLogeado);
 				eliminarSolicitud(vendedorAceptaLogeado);
 			}
-		}else {
+		} else {
 			mostrarMensajeError("Por favor Seleciona una Solicitud");
 		}
-		
-	
+
+	}
+
+	public boolean validarSolicitudExistente(Vendedor vendedorSolicitud, Vendedor vendedorSelect) {
+		return modelFactoryController.validarSolicitudExistente(vendedorSolicitud, vendedorSelect);
 	}
 
 	public void eliminarSolicitud(Vendedor vendedorAceptaLogeado) {
@@ -404,6 +436,14 @@ public class MarketplaceVendedorController implements Initializable {
 
 		});
 
+		columnNombreVendedorRed.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("nombre"));
+		columnApellidoVendedorRed.setCellValueFactory(new PropertyValueFactory<Vendedor, String>("apellidos"));
+
+		tableVendedoresRed.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+
+			vendedorSelect = newSelection;
+		});
+
 		columnNombreSolicitud.setCellValueFactory(new PropertyValueFactory<Solicitud, String>("nombreSoli"));
 		columnApellidoSolicitud.setCellValueFactory(new PropertyValueFactory<Solicitud, String>("apellidoSoli"));
 
@@ -458,6 +498,11 @@ public class MarketplaceVendedorController implements Initializable {
 		return listaAsociados;
 	}
 
+	public ObservableList<Vendedor> getListaVendedorRed() {
+		listaRedVendedoresData.addAll(modelFactoryController.obtenerVendedoresData());
+		return listaRedVendedoresData;
+	}
+
 	public void setAplicacion(Aplicacion aplicacion) {
 		this.aplicacion = aplicacion;
 		tableProductos.getItems().clear();
@@ -470,6 +515,8 @@ public class MarketplaceVendedorController implements Initializable {
 		tableSolicitudes.setItems(getListaSolicitud());
 		tableAsociados.getItems().clear();
 		tableAsociados.setItems(getListaAsociados());
+		tableVendedoresRed.getItems().clear();
+		tableVendedoresRed.setItems(getListaVendedorRed());
 
 	}
 

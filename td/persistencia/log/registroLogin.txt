@@ -1058,3 +1058,5 @@ jun. 05, 2022 4:52:22 P. M. co.uniquindio.edu.co.Marketplace.persistencia.Archiv
 INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
 jun. 05, 2022 4:54:02 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Didier Cedula: 1519, 2022-06-05
+jun. 05, 2022 5:30:03 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05

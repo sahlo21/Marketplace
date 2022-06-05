@@ -34,15 +34,13 @@ import javafx.stage.Stage;
 public class ModelFactoryController {
 	Socket miSocket;
 
-
 	ObjectOutputStream flujoSalidaObject;
 	ObjectInputStream flujoEntradaObject;
 
 	DataOutputStream flujoSalidaData;
 	DataInputStream flujoEntradaData;
 
-
-	Marketplace marketplace =new Marketplace();
+	Marketplace marketplace = new Marketplace();
 	LoginControllerN loginController;
 	Aplicacion aplicacion;
 	Vendedor vendedorLogueado;
@@ -73,7 +71,7 @@ public class ModelFactoryController {
 		// 2. Cargar los datos de los archivos
 //		cargarDatosDesdeArchivos();
 
-		//guardarRecursosMarketplace();
+		// guardarRecursosMarketplace();
 
 //		guardarRecursoXML();
 
@@ -93,40 +91,37 @@ public class ModelFactoryController {
 		admin.setCedula("21p");
 		marketplace.getListaAdministradores().add(admin);
 
-
 		if (marketplace == null) {
 			System.out.println("es null");
 
 		}
 	}
-	public void cargarMarketplaceServer(){
-		try{
-			miSocket =  new Socket("localhost", 8081);
+
+	public void cargarMarketplaceServer() {
+		try {
+			miSocket = new Socket("localhost", 8081);
 
 			System.out.println("Conectado cliente");
-
 
 			flujoSalidaObject = new ObjectOutputStream(miSocket.getOutputStream());
 			flujoEntradaObject = new ObjectInputStream(miSocket.getInputStream());
 			flujoSalidaData = new DataOutputStream(miSocket.getOutputStream());
 			flujoEntradaData = new DataInputStream(miSocket.getInputStream());
 
-			//Se reciben los datos que vienen desde el servidor
-
+			// Se reciben los datos que vienen desde el servidor
 
 			flujoSalidaData.writeInt(2);
 			flujoSalidaData.writeUTF("Datos correctamente al cliente");
-			
-			marketplace=(Marketplace) flujoEntradaObject.readObject();
-			System.out.println(marketplace);
-            listaMuro=marketplace.getListaMuro();
-            admin.setNombre("Tyler");
-    		admin.setApellidos("Joseph");
-    		admin.setUsuario("admin");
-    		admin.setContrasena("11");
-    		admin.setCedula("21p");
-    		marketplace.getListaAdministradores().add(admin);
 
+			marketplace = (Marketplace) flujoEntradaObject.readObject();
+			System.out.println(marketplace);
+			listaMuro = marketplace.getListaMuro();
+			admin.setNombre("Tyler");
+			admin.setApellidos("Joseph");
+			admin.setUsuario("admin");
+			admin.setContrasena("11");
+			admin.setCedula("21p");
+			marketplace.getListaAdministradores().add(admin);
 
 			flujoEntradaData.close();
 			flujoSalidaData.close();
@@ -389,16 +384,16 @@ public class ModelFactoryController {
 		return this.vendedorLogueado.getListaProductos();
 
 	}
+
 	public ArrayList<Mensaje> obtenerMensajes() {
 		return this.vendedorLogueado.getListaMensajes();
 	}
-
 
 	public ArrayList<Producto> obtenerMuro() {
 		return listaMuro;
 
 	}
-	
+
 	public ArrayList<Solicitud> obtenerSolicitudes() {
 		return this.vendedorLogueado.getListaSolicitud();
 	}
@@ -411,9 +406,11 @@ public class ModelFactoryController {
 		ArrayList<Comentario> liscom = new ArrayList<>();
 
 		liscom = productoActual.getListaComentarios();
-
 		return liscom;
+	}
 
+	public ArrayList<Vendedor> obtenerVendedoresData() {
+		return marketplace.getListaVendedores();
 	}
 
 	public MeGusta crearMeGusta(String codVendedorLike) {
@@ -454,7 +451,9 @@ public class ModelFactoryController {
 		return producto;
 
 	}
-	public void crearMensaje(String textoMensaje, String fechaComentario, String vendedorMensaje, Vendedor vendedorRemitente) {
+
+	public void crearMensaje(String textoMensaje, String fechaComentario, String vendedorMensaje,
+			Vendedor vendedorRemitente) {
 		// TODO Auto-generated method stub
 		Mensaje msj = null;
 		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
@@ -463,34 +462,31 @@ public class ModelFactoryController {
 			}
 		}
 	}
-	
 
 	public void crearSolicitud(Vendedor vendedorSolicitud, String vendedorDestino, boolean respuesta) {
 		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
 			if (vendedorSelect.getCedula().equals(vendedorDestino)) {
 				vendedorSelect.crearSolicitud(vendedorSolicitud, vendedorSolicitud.getNombre(),
 						vendedorSolicitud.getApellidos(), vendedorDestino, respuesta);
-				
+
 			}
 		}
-		
+
 	}
-	
+
 	public boolean validarSolicitudExistente(Vendedor vendedorSolicitud, Vendedor vendedorSelect) {
 		return vendedorSelect.validarSolicitudExistente(vendedorSolicitud, vendedorSelect);
 	}
-	
+
 	public void aceptarSolicitud(Vendedor vendedorSolicitud, Vendedor vendedorAceptaLogeado) {
 		vendedorSolicitud.aceptarSolicitud(vendedorAceptaLogeado);
 		vendedorLogueado.aceptarSolicitud(vendedorSolicitud);
 	}
-	
+
 	public void eliminarSolicitud(Solicitud solicitud, Vendedor vendedor) {
 		vendedor.eliminarSolicitud(solicitud);
 	}
 
-	
-	
 	public boolean actualizarProducto(String nombreActual, String nombre, Image imagen, Double precio, Estado estado,
 			Categoria categoria, String fechaPublicacion) {
 
@@ -539,7 +535,6 @@ public class ModelFactoryController {
 		return null;
 
 	}
-	
 
 	public Usuario ingreso(String usuario, String contrasena) {
 		Usuario user = null;
@@ -549,8 +544,8 @@ public class ModelFactoryController {
 		listaAdministradores.addAll(obtenerAdministrador());
 		for (Vendedor vendedor : listaVendedores) {
 			if (usuario.equals(vendedor.getUsuario()) && contrasena.equals(vendedor.getContrasena())) {
-				guardarRegistroLogin("Inicio de sesi�n correcto", 1, "Iniciar de sesi�n vendedor", vendedor.getNombre(),
-						vendedor.getCedula());
+				guardarRegistroLogin("Inicio de sesi�n correcto", 1, "Iniciar de sesi�n vendedor",
+						vendedor.getNombre(), vendedor.getCedula());
 				return vendedor;
 			}
 		}
@@ -628,17 +623,12 @@ public class ModelFactoryController {
 	}
 
 	public MeGusta buscarLike(String cod) {
-		System.out.println("prodmodel: +"+cod);
+		System.out.println("prodmodel: +" + cod);
 		MeGusta mg = null;
 		mg = productoActual.buscarMeGusta(cod);
-		System.out.println("mg:"+mg);
+		System.out.println("mg:" + mg);
 
 		return mg;
 	}
-
-
-
-	
-	
 
 }
