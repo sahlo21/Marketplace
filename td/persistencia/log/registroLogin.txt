@@ -1060,3 +1060,41 @@ jun. 05, 2022 4:54:02 P.�M. co.uniquindio.edu.co.Marketplace.persistencia.Archiv
 INFO: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Didier Cedula: 1519, 2022-06-05
 jun. 05, 2022 5:30:03 P.�M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFO: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun 05, 2022 5:46:50 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n administrador, Cierre de sesi�n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun 05, 2022 5:47:31 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n administrador, Cierre de sesi�n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun 05, 2022 5:48:28 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun 05, 2022 5:48:39 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n administrador, Cierre de sesi�n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun 05, 2022 5:49:11 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun 05, 2022 5:49:50 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n administrador, Cierre de sesi�n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun 05, 2022 5:50:12 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun 05, 2022 5:50:35 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n administrador, Cierre de sesi�n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun 05, 2022 5:51:47 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun 05, 2022 5:52:29 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Didier Cedula: 1519, 2022-06-05
+jun 05, 2022 5:52:48 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Didier Cedula: 1519, 2022-06-05
+jun 05, 2022 5:53:10 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Christian Cedula: 1529, 2022-06-05
+jun 05, 2022 6:26:04 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun 05, 2022 6:26:21 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Didier Cedula: 1519, 2022-06-05
+jun 05, 2022 6:30:20 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n administrador, Cierre de sesi�n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun 05, 2022 6:30:44 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun 05, 2022 6:31:01 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Didier Cedula: 1519, 2022-06-05
+jun 05, 2022 6:32:32 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Didier Cedula: 1519, 2022-06-05
+jun 05, 2022 6:32:47 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05

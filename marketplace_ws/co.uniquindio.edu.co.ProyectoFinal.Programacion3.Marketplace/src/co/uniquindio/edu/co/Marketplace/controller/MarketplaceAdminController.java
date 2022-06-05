@@ -17,8 +17,7 @@ import co.uniquindio.edu.co.Marketplace.Exceptions.NombreCortoException;
 import co.uniquindio.edu.co.Marketplace.Exceptions.PassIsEqualToUserException;
 import co.uniquindio.edu.co.Marketplace.Exceptions.VendedorExistenteException;
 import co.uniquindio.edu.co.Marketplace.Exceptions.VendedorNoSeleccionadoException;
-
-
+import co.uniquindio.edu.co.Marketplace.model.Producto;
 import co.uniquindio.edu.co.Marketplace.model.TipoUsuario;
 import co.uniquindio.edu.co.Marketplace.model.Vendedor;
 import co.uniquindio.edu.co.Marketplace.persistencia.Persistencia;
@@ -27,6 +26,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -37,6 +44,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -405,4 +413,238 @@ public class MarketplaceAdminController implements Initializable {
 			return false;
 		}
 	}
+	//-------------------------------------------METODOS ESTADISTICAS----------------------------------------------------------------
+
+		@FXML
+		void mostrarTop10Action(ActionEvent event) {
+			mostrarTop10();
+		}
+		@FXML
+		void mostrarProductosVenderdorAction(ActionEvent event) {
+			mostrarProductosVenderdor();
+		}
+		@FXML
+		void mostrarContactosVenderdorAction(ActionEvent event) {
+			mostrarContactosVenderdorAction();
+		}
+		@FXML
+		void mostrarProductosFechaAction(ActionEvent event) {
+			
+		}
+		@FXML
+		void mostrarMensajesVendedoresAction(ActionEvent event) {
+			
+		}
+		//----------------------------------Exportar estaditicas-----------------------------
+		
+		@FXML
+		void exportarMegustasStatsAction(ActionEvent event) {
+		}
+		@FXML
+		void exportarProductosVendedorStatsAction(ActionEvent event) {
+			
+		}
+		@FXML
+		void exportarContactosStatsAction(ActionEvent event) {
+		}
+		@FXML
+		void exportarProductosFechaStatsAction(ActionEvent event) {
+			
+		}
+		@FXML
+		void exportarMensajesStatsAction(ActionEvent event) {
+			
+		}
+
+		
+			private void mostrarTop10(){
+				
+
+				Stage stage = new Stage();
+				stage.setTitle("Me gustas por producto");
+				final CategoryAxis xAxis = new CategoryAxis();
+				final NumberAxis yAxis = new NumberAxis();
+				final BarChart<String,Number> bc = 
+						new BarChart<String,Number>(xAxis,yAxis);
+				bc.setTitle("Top  Me Gusta");
+
+				yAxis.setLabel("Me Gustas");
+
+				XYChart.Series series1 = new XYChart.Series();
+				series1.setName("TOP10 MeGustas");      
+				
+				for (Producto producto : modelFactoryController.getListaMuro()) {
+					
+					series1.getData().add(new XYChart.Data(producto.getNombre(),producto.getListaMeGustas().size()));
+				}
+				
+				
+
+				Scene scene  = new Scene(bc,800,600);
+				bc.getData().addAll(series1);
+
+				stage.setScene(scene);
+
+				stage.showAndWait();
+
+
+			}
+			private void mostrarProductosVenderdor(){
+			
+
+				Stage stage = new Stage();
+				stage.setTitle("Productos por vendedor");
+				final CategoryAxis xAxis = new CategoryAxis();
+				final NumberAxis yAxis = new NumberAxis();
+				final BarChart<String,Number> bc = 
+						new BarChart<String,Number>(xAxis,yAxis);
+				bc.setTitle("Productos por vendedor");
+
+				yAxis.setLabel("Productos");
+
+				XYChart.Series series1 = new XYChart.Series();
+				series1.setName("Productos por vendedor");      
+				
+				for (Vendedor vendedor : modelFactoryController.obtenerVendedor()) {
+					
+					series1.getData().add(new XYChart.Data(vendedor.getNombre(),vendedor.getListaProductos().size()));
+				}
+				
+				
+
+				Scene scene  = new Scene(bc,800,600);
+				bc.getData().addAll(series1);
+
+				stage.setScene(scene);
+
+				stage.showAndWait();
+
+
+			}
+			private void mostrarContactosVenderdorAction(){
+				
+
+				Stage stage = new Stage();
+				stage.setTitle("Contactos por vendedor");
+				final CategoryAxis xAxis = new CategoryAxis();
+				final NumberAxis yAxis = new NumberAxis();
+				final BarChart<String,Number> bc = 
+						new BarChart<String,Number>(xAxis,yAxis);
+				bc.setTitle("Contactos por vendedor");
+
+				yAxis.setLabel("Contactos");
+
+				XYChart.Series series1 = new XYChart.Series();
+				series1.setName("Contactos por vendedor");      
+				
+				for (Vendedor vendedor : modelFactoryController.obtenerVendedor()) {
+					
+					series1.getData().add(new XYChart.Data(vendedor.getNombre(),vendedor.getListaContactos().size()));
+				}
+				
+				
+
+				Scene scene  = new Scene(bc,800,600);
+				bc.getData().addAll(series1);
+
+				stage.setScene(scene);
+
+				stage.showAndWait();
+
+
+			}
+			
+
+			private void m(Stage stage) {
+				Scene scene = new Scene(new Group());
+				stage.setTitle("contactos por vendedor");
+				stage.setWidth(500);
+				stage.setHeight(500);
+
+				ObservableList<PieChart.Data> pieChartData =
+						FXCollections.observableArrayList(
+								new PieChart.Data("raul", 13),
+								new PieChart.Data("juan", 25),
+								new PieChart.Data("luisa", 10),
+								new PieChart.Data("pablo", 22),
+								new PieChart.Data("nicolas", 30));
+				final PieChart chart = new PieChart(pieChartData);
+				chart.setTitle("Contactos");
+
+				((Group) scene.getRoot()).getChildren().add(chart);
+				stage.setScene(scene);
+				stage.show();
+			}
+			private  void mostrarProductosPorMes(Stage stage) {
+				stage.setTitle("Line Chart Sample");
+				final CategoryAxis xAxis = new CategoryAxis();
+				final NumberAxis yAxis = new NumberAxis();
+				xAxis.setLabel("Mes");       
+
+				final LineChart<String,Number> lineChart = 
+						new LineChart<String,Number>(xAxis,yAxis);
+
+				lineChart.setTitle("Monitoreo de productos publicados por meses:");
+
+				XYChart.Series series = new XYChart.Series();
+				series.setName("");
+
+				series.getData().add(new XYChart.Data("Jan", 3));
+				series.getData().add(new XYChart.Data("Feb", 14));
+				series.getData().add(new XYChart.Data("Mar", 15));
+				series.getData().add(new XYChart.Data("Apr", 24));
+				series.getData().add(new XYChart.Data("May", 34));
+
+
+
+				Scene scene  = new Scene(lineChart,800,600);
+				lineChart.getData().add(series);
+
+				stage.setScene(scene);
+				stage.show();
+			}
+			private void mostrarMensajesEntreUsuarios(Stage stage) {
+				Scene scene = new Scene(new Group());
+				stage.setTitle("Mensajes entre 2 vendedores");
+				stage.setWidth(500);
+				stage.setHeight(500);
+
+				ObservableList<PieChart.Data> pieChartData =
+						FXCollections.observableArrayList(
+								new PieChart.Data("vendedor2", 13),             
+								new PieChart.Data("vendedor1", 30));
+				final PieChart chart = new PieChart(pieChartData);
+				chart.setTitle("Mensajes enviados entre 2 vendedores");
+
+				((Group) scene.getRoot()).getChildren().add(chart);
+				stage.setScene(scene);
+				stage.show();
+
+			}
+
+
+			public void mostrarPublicacionesPorUsuario(Stage stage) {
+				String usuario = "";
+				stage.setTitle("Productos publicados");
+				final CategoryAxis xAxis = new CategoryAxis();
+				final NumberAxis yAxis = new NumberAxis();
+				final BarChart<String,Number> bc = 
+						new BarChart<String,Number>(xAxis,yAxis);
+				bc.setTitle("");
+
+				yAxis.setLabel("Publicaciones");
+
+				XYChart.Series series1 = new XYChart.Series();
+				series1.setName("usuario:");       
+				series1.getData().add(new XYChart.Data(usuario,10));
+
+
+				Scene scene  = new Scene(bc,800,600);
+				bc.getData().addAll(series1);
+				stage.setScene(scene);
+				stage.show();
+			}
+
+
+		
 }

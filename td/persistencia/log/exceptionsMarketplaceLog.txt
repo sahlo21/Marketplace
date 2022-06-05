@@ -40,3 +40,5 @@ jun 04, 2022 10:12:12 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUt
 GRAVE: Actualizar vendedor, VendedorNoSeleccionadoException Usuario: Tyler Cedula: 21p, -06-04
 jun. 05, 2022 1:33:52 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 SEVERE: Inicio de sesiï¿½n, NoSeleccionTerminosException Usuario: kaka Cedula: No aplica, 2022-06-05
+jun 05, 2022 5:49:29 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Agregar vendedor, VendedorExistenteException Usuario: Tyler Cedula: 21p, 2022-06-05
