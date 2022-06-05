@@ -22,6 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -76,14 +77,19 @@ public class PerfilVendedorController implements Initializable {
 
 		Vendedor vendedorSolicitud = modelFactoryController.getVendedorLogueado();
 
-
 		if (vendedorSolicitud.getCedula() != vendedorSeleccionado.getCedula()) {
-			System.out.println("Perfil Vendedor soli "+vendedorSolicitud.getNombre());
-			System.out.println("Perfil Vendedor destino "+ vendedorSeleccionado.getNombre());
-			modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSeleccionado.getCedula(), false);
+
+			if (!(vendedorSolicitud.getListaContactos().contains(vendedorSeleccionado))) {
+				modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSeleccionado.getCedula(), false);
+				mostrarMensaje("Notifocacion de Solicitud", "Solicitud enviada",
+						"Solicitud Enviada con Exito a: " + vendedorSeleccionado.getNombre(), AlertType.INFORMATION);
+			}else {
+				mostrarMensajeError("El Usuario: " + vendedorSeleccionado.getNombre() + " Ya esta Agregado");
+			}
+		} else {
+			mostrarMensajeError("No Puedes Agregarte a Ti Mismo.");
 		}
 	}
-
 
     @FXML
     void enviarMensajeAction(ActionEvent event) {
@@ -158,7 +164,13 @@ public class PerfilVendedorController implements Initializable {
 	}
 
 
-    
+	private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
+		Alert alert = new Alert(alertType);
+		alert.setTitle(titulo);
+		alert.setHeaderText(header);
+		alert.setContentText(contenido);
+		alert.showAndWait();
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
