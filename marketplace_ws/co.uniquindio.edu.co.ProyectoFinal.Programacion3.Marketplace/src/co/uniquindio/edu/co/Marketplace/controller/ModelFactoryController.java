@@ -476,6 +476,10 @@ public class ModelFactoryController {
 		
 	}
 	
+	public boolean validarSolicitudExistente(Vendedor vendedorSolicitud, Vendedor vendedorSelect) {
+		return vendedorSelect.validarSolicitudExistente(vendedorSolicitud, vendedorSelect);
+	}
+	
 	public void aceptarSolicitud(Vendedor vendedorSolicitud, Vendedor vendedorAceptaLogeado) {
 		vendedorSolicitud.aceptarSolicitud(vendedorAceptaLogeado);
 		vendedorLogueado.aceptarSolicitud(vendedorSolicitud);

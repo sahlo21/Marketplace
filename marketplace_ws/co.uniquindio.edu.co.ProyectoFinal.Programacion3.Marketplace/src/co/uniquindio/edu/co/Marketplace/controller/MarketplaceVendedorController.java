@@ -256,16 +256,22 @@ public class MarketplaceVendedorController implements Initializable {
 
 	private void aceptarSolicitud() {
 
-		Vendedor vendedorSolicitud = soliSelec.getVendedorSolicitud();
-		Vendedor vendedorAceptaLogeado = modelFactoryController.getVendedorLogueado();
+		if (soliSelec != null) {
+			Vendedor vendedorSolicitud = soliSelec.getVendedorSolicitud();
+			Vendedor vendedorAceptaLogeado = modelFactoryController.getVendedorLogueado();
 
-		System.out.println("Vendedor Solicitud : " + vendedorSolicitud.getNombre());
-		System.out.println("VEndedor Acepta soli : " + vendedorAceptaLogeado.getNombre());
+			System.out.println("Vendedor Solicitud : " + vendedorSolicitud.getNombre());
+			System.out.println("VEndedor Acepta soli : " + vendedorAceptaLogeado.getNombre());
 
-		if ((vendedorSolicitud != null) && (vendedorAceptaLogeado != null)) {
-			modelFactoryController.aceptarSolicitud(vendedorSolicitud, vendedorAceptaLogeado);
-			eliminarSolicitud(vendedorAceptaLogeado);
+			if ((vendedorSolicitud != null) && (vendedorAceptaLogeado != null)) {
+				modelFactoryController.aceptarSolicitud(vendedorSolicitud, vendedorAceptaLogeado);
+				eliminarSolicitud(vendedorAceptaLogeado);
+			}
+		}else {
+			mostrarMensajeError("Por favor Seleciona una Solicitud");
 		}
+		
+	
 	}
 
 	public void eliminarSolicitud(Vendedor vendedorAceptaLogeado) {

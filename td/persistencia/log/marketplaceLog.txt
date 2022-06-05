@@ -388,3 +388,9 @@ jun 05, 2022 12:15:39 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUt
 INFORMACIÃ“N: Crear me gusta, Me gusta creado Usuario: Christian Cedula: 1529, 2022-06-05
 jun 05, 2022 12:15:43 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFORMACIÃ“N: Crear comentario, Comentario creado Usuario: Christian Cedula: 1529, 2022-06-05
+jun. 05, 2022 8:23:07 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun. 05, 2022 4:06:58 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun. 05, 2022 4:07:28 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Crear me gusta, Me gusta creado Usuario: Didier Cedula: 1519, 2022-06-05

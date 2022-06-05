@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 
 public class Vendedor extends Usuario implements Serializable {
@@ -338,7 +341,17 @@ public class Vendedor extends Usuario implements Serializable {
 
 		getListaSolicitud().add(soli);
 		System.out.println("lista soli: " + listaSolicitud);
-//		System.out.println(soli.toString());
+
 	}
 
+	public boolean validarSolicitudExistente(Vendedor vendedorSolicitud, Vendedor vendedorSelect) {
+		Vendedor aux;
+		for(Solicitud solicitud: vendedorSelect.getListaSolicitud()) {
+			aux = solicitud.getVendedorSolicitud();
+			if(aux.equals(vendedorSolicitud)) {
+				return false;
+			}
+		}
+		return true;
+	}
 }

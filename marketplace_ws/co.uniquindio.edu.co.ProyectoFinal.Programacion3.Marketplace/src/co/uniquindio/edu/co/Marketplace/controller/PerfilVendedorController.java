@@ -1,4 +1,5 @@
 package co.uniquindio.edu.co.Marketplace.controller;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -29,17 +30,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class PerfilVendedorController implements Initializable {
-	
+
 	ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
 	Vendedor vendedorSeleccionado;
 
+	@FXML
+	private ResourceBundle resources;
 
-    @FXML
-    private ResourceBundle resources;
+	@FXML
+	private URL location;
 
-    @FXML
-    private URL location;
-    
 	@FXML
 	private TableColumn<Producto, Image> columnImagenProducto;
 
@@ -52,48 +52,50 @@ public class PerfilVendedorController implements Initializable {
 
 	@FXML
 	private TableColumn<Producto, Estado> columnEstadoProducto;
-	
-	
 
 	@FXML
 	private TableColumn<Producto, String> columnNombreProducto;
 
-   
-    @FXML
-    private TableView<Producto> tablePublicaciones;
+	@FXML
+	private TableView<Producto> tablePublicaciones;
 
-    @FXML
-    private Label labelNombreVendedor;
+	@FXML
+	private Label labelNombreVendedor;
 
-   
-    @FXML
-    private Label labelApellidoVendedor;
-	 ModelFactoryController modelFactoryController;
+	@FXML
+	private Label labelApellidoVendedor;
+	ModelFactoryController modelFactoryController;
 
-  
-   
-    @FXML
+	@FXML
 	void agregarContactoAction(ActionEvent event) {
 
 		Vendedor vendedorSolicitud = modelFactoryController.getVendedorLogueado();
 
-		if (vendedorSolicitud.getCedula() != vendedorSeleccionado.getCedula()) {
-
-			if (!(vendedorSolicitud.getListaContactos().contains(vendedorSeleccionado))) {
-				modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSeleccionado.getCedula(), false);
-				mostrarMensaje("Notifocacion de Solicitud", "Solicitud enviada",
-						"Solicitud Enviada con Exito a: " + vendedorSeleccionado.getNombre(), AlertType.INFORMATION);
-			}else {
-				mostrarMensajeError("El Usuario: " + vendedorSeleccionado.getNombre() + " Ya esta Agregado");
+		if (validarSolicitudExistente(vendedorSolicitud, vendedorSeleccionado)) {
+			if (vendedorSolicitud.getCedula() != vendedorSeleccionado.getCedula()) {
+				if (!(vendedorSolicitud.getListaContactos().contains(vendedorSeleccionado))) {
+					modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSeleccionado.getCedula(), false);
+					mostrarMensaje("Notifocacion de Solicitud", "Solicitud enviada",
+							"Solicitud Enviada con Exito a: " + vendedorSeleccionado.getNombre(),
+							AlertType.INFORMATION);
+				} else {
+					mostrarMensajeError("El Usuario: " + vendedorSeleccionado.getNombre() + " Ya esta Agregado");
+				}
+			} else {
+				mostrarMensajeError("No Puedes Agregarte a Ti Mismo.");
 			}
-		} else {
-			mostrarMensajeError("No Puedes Agregarte a Ti Mismo.");
+		}else {
+			mostrarMensajeError("Ya enviaste una solicitud a este Usuario");
 		}
 	}
 
-    @FXML
-    void enviarMensajeAction(ActionEvent event) {
-    	try {
+	public boolean validarSolicitudExistente(Vendedor vendedorSolicitud, Vendedor vendedorSelect) {
+		return modelFactoryController.validarSolicitudExistente(vendedorSolicitud, vendedorSelect);
+	}
+
+	@FXML
+	void enviarMensajeAction(ActionEvent event) {
+		try {
 			// Cargo la vista
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/ChatVendedorView.fxml"));
 
@@ -103,12 +105,7 @@ public class PerfilVendedorController implements Initializable {
 			ChatVendedorController controlador = loader.getController();
 			controlador.setVendedorSeleccionado(vendedorSeleccionado);
 
-			//           controlador.initAttributtes(personas);
-
-			
-
-			
-
+			// controlador.initAttributtes(personas);
 
 			// Creo el Scene
 			Scene scene = new Scene(root);
@@ -117,8 +114,6 @@ public class PerfilVendedorController implements Initializable {
 			stage.setScene(scene);
 			stage.setTitle("Chat");
 			stage.getIcons().add(new Image(getClass().getResourceAsStream("../resources/email.png")));
-
-			
 
 			stage.showAndWait();
 
@@ -129,26 +124,26 @@ public class PerfilVendedorController implements Initializable {
 			alert.setContentText(ex.getMessage());
 			alert.showAndWait();
 		}
-    }
-   
+	}
 
-    public void initAttributtes(Vendedor vendedorSeleccionado) {
-		if(vendedorSeleccionado!=null){
-	    	this.vendedorSeleccionado=vendedorSeleccionado;
+	public void initAttributtes(Vendedor vendedorSeleccionado) {
+		if (vendedorSeleccionado != null) {
+			this.vendedorSeleccionado = vendedorSeleccionado;
 
-		System.out.println("productoSeleccionado: "+vendedorSeleccionado);
-		labelNombreVendedor.setText(labelNombreVendedor.getText() + vendedorSeleccionado.getNombre());
-		labelApellidoVendedor.setText(labelApellidoVendedor.getText() + vendedorSeleccionado.getApellidos());
-		listaProductosData.addAll(vendedorSeleccionado.getListaProductos());
-		tablePublicaciones.getItems().clear();
-		tablePublicaciones.setItems(listaProductosData);
+			System.out.println("productoSeleccionado: " + vendedorSeleccionado);
+			labelNombreVendedor.setText(labelNombreVendedor.getText() + vendedorSeleccionado.getNombre());
+			labelApellidoVendedor.setText(labelApellidoVendedor.getText() + vendedorSeleccionado.getApellidos());
+			listaProductosData.addAll(vendedorSeleccionado.getListaProductos());
+			tablePublicaciones.getItems().clear();
+			tablePublicaciones.setItems(listaProductosData);
 //		
-		}else{
+		} else {
 			mostrarMensajeError("Producto no seleccionado\nDebe seleccionar un producto");
 
 		}
 	}
-    private boolean mostrarMensajeError(String mensaje) {
+
+	private boolean mostrarMensajeError(String mensaje) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setHeaderText(null);
@@ -162,7 +157,6 @@ public class PerfilVendedorController implements Initializable {
 			return false;
 		}
 	}
-
 
 	private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
 		Alert alert = new Alert(alertType);
@@ -182,5 +176,5 @@ public class PerfilVendedorController implements Initializable {
 		columnEstadoProducto.setCellValueFactory(new PropertyValueFactory<Producto, Estado>("estado"));
 		columnCategoriaProducto.setCellValueFactory(new PropertyValueFactory<Producto, Categoria>("categoria"));
 		columnFechaPublicacion.setCellValueFactory(new PropertyValueFactory<Producto, Date>("fechaPublicacion"));
-    }
+	}
 }
