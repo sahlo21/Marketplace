@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import javafx.scene.image.Image;
 
 public class Marketplace implements Serializable{
+	
+	ArrayList<Producto> listaMuro = new ArrayList<>();
+
 
 	/**
 	 * 
@@ -15,8 +18,6 @@ public class Marketplace implements Serializable{
 	
 	String nombre;
 	String nit;
-	ArrayList<Producto> listaMuro = new ArrayList<>();
-
 	ArrayList<Vendedor> listaVendedores = new ArrayList<>();
 	ArrayList<Administrador> listaAdministradores = new ArrayList<Administrador>();
 
@@ -34,6 +35,18 @@ public class Marketplace implements Serializable{
 	}
 
 	/**
+	 * @return the listaMuro
+	 */
+	public ArrayList<Producto> getListaMuro() {
+		return listaMuro;
+	}
+	/**
+	 * @param listaMuro the listaMuro to set
+	 */
+	public void setListaMuro(ArrayList<Producto> listaMuro) {
+		this.listaMuro = listaMuro;
+	}
+	/**
 	 * @return the nombre
 	 */
 	public String getNombre() {
@@ -49,18 +62,6 @@ public class Marketplace implements Serializable{
 	}
 
 
-	/**
-	 * @return the listaMuro
-	 */
-	public ArrayList<Producto> getListaMuro() {
-		return listaMuro;
-	}
-	/**
-	 * @param listaMuro the listaMuro to set
-	 */
-	public void setListaMuro(ArrayList<Producto> listaMuro) {
-		this.listaMuro = listaMuro;
-	}
 	/**
 	 * @return the nit
 	 */
@@ -105,6 +106,7 @@ public class Marketplace implements Serializable{
 	public void setListaAdministradores(ArrayList<Administrador> listaAdministradores) {
 		this.listaAdministradores = listaAdministradores;
 	}
+	
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

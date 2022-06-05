@@ -36,3 +36,5 @@ jun 04, 2022 4:06:17 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 GRAVE: Inicio de sesi�n, NoSeleccionTerminosException Usuario:  Cedula: No aplica, -06-04
 jun 04, 2022 4:09:54 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 GRAVE: Inicio de sesi�n, NoSeleccionTerminosException Usuario:  Cedula: No aplica, -06-04
+jun 04, 2022 10:12:12 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Actualizar vendedor, VendedorNoSeleccionadoException Usuario: Tyler Cedula: 21p, -06-04

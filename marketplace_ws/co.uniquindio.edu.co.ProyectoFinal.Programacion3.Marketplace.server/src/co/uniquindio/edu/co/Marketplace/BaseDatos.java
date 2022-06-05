@@ -33,10 +33,11 @@ public class BaseDatos {
 
 
 
-	public static void  inicializarDatos() {
+	
+	public static void inicializarDatos() {
 
 		marketplace = new Marketplace("Fakebook Marketplace", "178");
-		Administrador admin=new Administrador();
+		Administrador admin = new Administrador();
 		admin.setNombre("Tyler");
 		admin.setApellidos("Joseph");
 		admin.setUsuario("admin");
@@ -46,7 +47,6 @@ public class BaseDatos {
 		/**
 		 * Vendedor 1
 		 */
-
 
 		Vendedor vendedor = new Vendedor();
 		vendedor.setNombre("Kevin");
@@ -76,7 +76,6 @@ public class BaseDatos {
 		producto.getListaComentarios().add(comentario);
 		vendedor.getListaProductos().add(producto);
 		marketplace.getListaMuro().add(producto);
-
 
 		marketplace.getListaVendedores().add(vendedor);
 

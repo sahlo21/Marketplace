@@ -113,14 +113,14 @@ public  class ArchivoUtil {
 
 		String diaN = "";
 		String mesN = "";
-		String anioN = "";
+		String anoN = "";
 
 		Calendar cal1 = Calendar.getInstance();
 
 
 		int  dia = cal1.get(Calendar.DATE);
 		int mes = cal1.get(Calendar.MONTH)+1;
-		int anio = cal1.get(Calendar.YEAR);
+		int ano = cal1.get(Calendar.YEAR);
 		int hora = cal1.get(Calendar.HOUR);
 		int minuto = cal1.get(Calendar.MINUTE);
 
@@ -140,7 +140,7 @@ public  class ArchivoUtil {
 
 		//		fecha_Actual+= a�o+"-"+mesN+"-"+ diaN;
 		//		fechaSistema = a�o+"-"+mesN+"-"+diaN+"-"+hora+"-"+minuto;
-		fechaSistema = anioN+"-"+mesN+"-"+diaN;
+		fechaSistema = ano+"-"+mesN+"-"+diaN;
 		//		horaFechaSistema = hora+"-"+minuto;
 	}
 

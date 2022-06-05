@@ -1,7 +1,5 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
-import java.io.Serializable;
-
-public enum Categoria implements Serializable{
+public enum Categoria {
 	HOGAR, ELECTRODOMESTICOS, TECNOLOGIA, VEHICULOS, ACCESORIOS;
 }

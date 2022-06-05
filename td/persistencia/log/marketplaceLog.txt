@@ -328,3 +328,47 @@ jun. 04, 2022 5:59:02 P.�M. co.uniquindio.edu.co.Marketplace.persistencia.Archiv
 INFO: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, -06-04
 jun. 04, 2022 6:02:50 P.�M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFO: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 6:16:15 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 7:43:10 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 7:51:38 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 7:51:49 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 7:52:40 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 7:53:52 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 7:53:54 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 8:29:16 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 8:29:19 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 8:31:06 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 10:05:06 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 10:05:09 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 10:33:39 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 10:33:43 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Kevin Cedula: 1006341989, -06-04
+jun 04, 2022 11:16:01 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 11:16:04 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 11:19:01 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 11:19:03 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 11:48:26 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 11:48:28 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear comentario, Comentario creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 11:48:45 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Didier Cedula: 1519, -06-04
+jun 04, 2022 11:50:44 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, 2022-06-04

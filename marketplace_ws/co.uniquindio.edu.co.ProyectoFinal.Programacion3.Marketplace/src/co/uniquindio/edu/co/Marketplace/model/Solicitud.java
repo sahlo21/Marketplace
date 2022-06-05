@@ -1,17 +1,7 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
-import java.io.Serializable;
+public class Solicitud {
 
-public class Solicitud implements Serializable{
-	
-	
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	
 	Vendedor vendedorSolicutud;
 	String nombreSoli;
 	String apellidoSoli;
@@ -82,7 +72,7 @@ public class Solicitud implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Solicitud [Vendedor solicitud " + vendedorSolicutud + "Nombre Solicitud: "+ nombreSoli + " "+ apellidoSoli + ", Codigo solicitud Destino=" + codVendedorDestino
+		return "Solicitud [Vendedor solicitud" + vendedorSolicutud + "Nombre Solicitud: "+ nombreSoli + " "+ apellidoSoli + ", Codigo solicitud Destino=" + codVendedorDestino
 				+ ", Respuesta solicitud=" + respuesta + "]";
 	}
 

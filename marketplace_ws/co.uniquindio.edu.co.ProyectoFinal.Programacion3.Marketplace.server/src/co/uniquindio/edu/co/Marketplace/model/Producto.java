@@ -184,7 +184,6 @@ public class Producto implements Serializable{
 	/**
 	 * @param listaComentarios the listaComentarios to set
 	 */
-	
 	public void setListaComentarios(ArrayList<Comentario> listaComentarios) {
 		this.listaComentarios = listaComentarios;
 	}
@@ -275,15 +274,11 @@ public class Producto implements Serializable{
 
 
 
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Producto [nombre=" + nombre + ", imagen=" + imagen + ", precio=" + precio + ", estado=" + estado
 				+ ", categoria=" + categoria + ", fechaPublicacion=" + fechaPublicacion + ", codVendedor=" + codVendedor
-				+ ", id=" + id + ", listaMeGustas=" + listaMeGustas + ", listaComentarios=" + listaComentarios + "]";
+				+ ", id=" + id + "]";
 	}
 	/*
 	 * (non-Javadoc)

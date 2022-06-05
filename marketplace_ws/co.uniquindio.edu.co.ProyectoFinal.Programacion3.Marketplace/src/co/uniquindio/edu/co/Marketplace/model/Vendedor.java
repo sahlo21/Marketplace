@@ -135,7 +135,7 @@ public class Vendedor extends Usuario implements Serializable {
 	}
 
 	/**
-	 * @param listaSolicitud the listaSolicitud to set
+	 * @param ListaSolicitud to set
 	 */
 	public void setListaSolicitud(ArrayList<Solicitud> listaSolicitud) {
 		this.listaSolicitud = listaSolicitud;
@@ -314,12 +314,12 @@ public class Vendedor extends Usuario implements Serializable {
 
 	}
 
+	public void aceptarSolicitud() {
+
+	}
+
 	public void crearSolicitud(Vendedor vendedorSolicitud, String nombreSoli, String apellidoSoli,
 			String codVendedorDestino, boolean respuesta) {
-
-		System.out.println("Vendedor Vendedor soli " + vendedorSolicitud.getNombre());
-		System.out.println("Vendedor Vendedor destino Cod  " + codVendedorDestino);
-
 		Solicitud soli = null;
 
 		soli = new Solicitud(vendedorSolicitud, vendedorSolicitud.getNombre(), vendedorSolicitud.getApellidos(),
@@ -331,12 +331,9 @@ public class Vendedor extends Usuario implements Serializable {
 		soli.setCodVendedorDestino(codVendedorDestino);
 		soli.setRespuesta(respuesta);
 
-		System.out.println(soli.toString());
-
 		getListaSolicitud().add(soli);
-
-		System.out.println("Lista Soli: " + listaSolicitud);
-
+		System.out.println("lista soli: " + listaSolicitud);
+//		System.out.println(soli.toString());
 	}
 
 }

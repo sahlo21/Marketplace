@@ -50,8 +50,8 @@ public class ServerController implements Runnable {
 	@FXML
 	private TextArea informes;
 
-	 boolean runHilo;
-	 
+	boolean runHilo;
+
 
 
 
@@ -65,7 +65,7 @@ public class ServerController implements Runnable {
 
 
 		hiloServicio_servidor.start();
-	
+
 	}
 	@FXML
 	void off(ActionEvent event) {
@@ -74,8 +74,8 @@ public class ServerController implements Runnable {
 
 
 
-	
-	
+
+
 
 	/**
 	 * @return the runHilo
@@ -95,11 +95,11 @@ public class ServerController implements Runnable {
 
 
 
-	
+
 
 	@Override
 	public void run() {
-		 market=Persistencia.cargarRecursoMarketplaceXML();
+		market=Persistencia.cargarRecursoMarketplaceXML();
 
 		try{
 
@@ -107,10 +107,10 @@ public class ServerController implements Runnable {
 			System.out.println("Esperando cliente");
 
 			while(true){
-				
+
 
 				socket = server.accept();
-				
+
 				flujoEntrada = new DataInputStream(socket.getInputStream());
 				flujoSalida = new DataOutputStream(socket.getOutputStream());
 				flujoSalidaObject = new ObjectOutputStream(socket.getOutputStream());
@@ -124,7 +124,22 @@ public class ServerController implements Runnable {
 					String user=flujoEntrada.readUTF();
 					String password=flujoEntrada.readUTF();
 					Usuario usuarioObtenido=ingreso(user, password);
-					flujoSalidaObject.writeObject(usuarioObtenido);
+					if (usuarioObtenido instanceof Vendedor) {
+						Vendedor vendedor = (Vendedor) usuarioObtenido;
+						flujoSalida.writeUTF(vendedor.getCedula());
+						System.out.println(vendedor.getCedula());
+
+
+					} else if (usuarioObtenido instanceof Administrador) {
+						Administrador admin = (Administrador) usuarioObtenido;
+
+						flujoSalida.writeUTF(admin.getCedula());
+						System.out.println(admin.getCedula());
+					}else {
+						System.out.println("Usuario invalido");
+
+					}
+					flujoSalida.writeUTF("false");
 					System.out.println("llego?");
 					if(usuarioObtenido!=null){
 						texto="El usuario: "+user+" ha ingresado";
@@ -137,24 +152,24 @@ public class ServerController implements Runnable {
 					break;
 				case 2:
 					texto=flujoEntrada.readUTF();
-					
+
 
 					System.out.println(market);
-					
+
 					flujoSalidaObject.writeObject(market);
-					
-					
+
+
 					informes.appendText("\n"+""+texto);
 
 					break;
-			
+
 				default:
 
 					break;
 				}
-				
 
-				
+
+
 				flujoEntrada.close();
 				flujoSalida.close();
 				socket.close();
@@ -178,22 +193,22 @@ public class ServerController implements Runnable {
 		listaAdministradores.addAll(obtenerAdministrador());
 		for (Vendedor vendedor : listaVendedores) {
 			if (usuario.equals(vendedor.getUsuario()) && contrasena.equals(vendedor.getContrasena())) {
-//				guardarRegistroLogin("Inicio de sesi�n correcto", 1, "Iniciar de sesi�n vendedor", vendedor.getNombre(),
-//						vendedor.getCedula());
+				//				guardarRegistroLogin("Inicio de sesi�n correcto", 1, "Iniciar de sesi�n vendedor", vendedor.getNombre(),
+				//						vendedor.getCedula());
 				return vendedor;
 			}
 		}
 		for (Administrador administrador : listaAdministradores) {
 			if (administrador.getUsuario().equals(usuario) && administrador.getContrasena().equals(contrasena)) {
-						
+
 				return administrador;
 			} else {
-//				guardarRegistroLogin("Inicio de sesi�n fallido", 1, "Iniciar de sesi�n ", usuario, "No aplica");
+				//				guardarRegistroLogin("Inicio de sesi�n fallido", 1, "Iniciar de sesi�n ", usuario, "No aplica");
 			}
 		}
 		return user;
 	}
-	
+
 	public ArrayList<Vendedor> obtenerVendedor() {
 
 		return this.market.getListaVendedores();

@@ -1,13 +1,8 @@
 package co.uniquindio.edu.co.Marketplace.model;
 
-import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 
-public class Mensaje implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class Mensaje {
 	String texto;
 	String fecha;
 	String nombreVendedor;

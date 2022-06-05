@@ -38,7 +38,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable{
+public class LoginController2 implements Initializable{
 
 
 
@@ -48,6 +48,10 @@ public class LoginController implements Initializable{
 
 	@FXML
 	private Button buttonLogin;
+	@FXML
+	private Button buttonCargar;
+
+
 
 	@FXML
 	private TextField txtContrasenaIngreso;
@@ -72,12 +76,17 @@ public class LoginController implements Initializable{
 	boolean estadoCargareServer=false;
 	private int flagCargar;
 
-	@FXML
-	private Button buttonCargar;
-	public LoginController() {
 
+
+
+
+	public LoginController2() {
 
 	}
+
+
+
+
 
 	@FXML
 	void cbCondiciones(ActionEvent event) {
@@ -86,12 +95,9 @@ public class LoginController implements Initializable{
 
 	@FXML
 	private Label wrongLogIn;
-	public void cargarMarketplaceServerAction(ActionEvent event) {
 
-		modelFactoryController.cargarMarketplaceServer();
-		buttonCargar.setDisable(true);
 
-	}
+
 
 
 	public void iniciarSesionAction(ActionEvent event) throws IOException{
@@ -104,15 +110,80 @@ public class LoginController implements Initializable{
 		}
 
 	}
+	public void cargarMarketplaceServerAction(ActionEvent event) {
+
+		modelFactoryController.cargarMarketplaceServer();
+		buttonCargar.setDisable(true);
+
+	}
+
 
 	void inicioSesion() throws IOException, NoSeleccionTerminosException, IngresoIncorrectoException {
-
+		if (!estadoCargareServer) {
+			mostrarMensajeInformacion("Le sugerimos cargar el programa para un mejor funcionamiento");
+		}
 		String usuario = txtUsuarioIngreso.getText().toString();
 		String contrasena = txtContrasenaIngreso.getText().toString();
 
-		Usuario usuarioObtenido = null;
+		String codeuUsuarioObtenido ="";
+		Usuario usuarioObtenido=null;
+		try{
+			miSocket =  new Socket("localhost", 8081);
 
-		usuarioObtenido = modelFactoryController.ingreso(usuario, contrasena);
+			System.out.println("Conectado cliente");
+
+
+			flujoSalidaObject = new ObjectOutputStream(miSocket.getOutputStream());
+			flujoEntradaObject = new ObjectInputStream(miSocket.getInputStream());
+			flujoSalidaData = new DataOutputStream(miSocket.getOutputStream());
+			flujoEntradaData = new DataInputStream(miSocket.getInputStream());
+
+			//Se reciben los datos que vienen desde el servidor
+
+
+
+			flujoSalidaData.writeInt(1);
+			flujoSalidaData.writeUTF(usuario);
+			flujoSalidaData.writeUTF(contrasena);
+
+			codeuUsuarioObtenido= flujoEntradaData.readUTF();
+		
+
+			System.out.println(modelFactoryController.obtenerAdministrador());
+
+			for (Vendedor vendedor : modelFactoryController.obtenerVendedor()) {
+				if (vendedor.getCedula().equals(codeuUsuarioObtenido)) {
+					
+					
+//					usuarioObtenido = (Usuario) vendedor;
+//					System.out.println(usuarioObtenido);
+
+					usuarioObtenido=vendedor;
+					System.out.println(usuarioObtenido);
+				}
+				
+			}
+			for (Administrador admin : modelFactoryController.obtenerAdministrador()) {
+				if (admin.getCedula().equals(codeuUsuarioObtenido)) {
+//					usuarioObtenido = (Usuario) admin;
+//					System.out.println(usuarioObtenido);
+
+					usuarioObtenido=admin;
+					System.out.println(usuarioObtenido);
+				}
+			}
+
+
+			flujoEntradaData.close();
+			flujoSalidaData.close();
+			flujoEntradaObject.close();
+			flujoSalidaObject.close();
+			miSocket.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(cbCondiciones.isSelected()){
 			if (usuarioObtenido != null) {
 				if (usuarioObtenido instanceof Vendedor) {
@@ -125,7 +196,7 @@ public class LoginController implements Initializable{
 					mostrarMensajeInformacion("Bienvenido administrador");
 					aplicacion.showAdministrador();
 				}else {
-		            Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesi�n", usuario, "No aplica");
+					Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesi�n", usuario, "No aplica");
 
 					throw new IngresoIncorrectoException("Ha ingresado mal el usuario y/o contrase�a.");
 
@@ -137,7 +208,7 @@ public class LoginController implements Initializable{
 				mostrarMensajeError("Ha ingresado mal el usuario y/o contrase�a.");		}
 
 		}else{
-            Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesi�n", usuario, "No aplica");
+			Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesi�n", usuario, "No aplica");
 
 			throw new NoSeleccionTerminosException("Por favor, acepte los terminos y condiciones.");
 		}
@@ -149,7 +220,7 @@ public class LoginController implements Initializable{
 
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setHeaderText(null);
-		alert.setTitle("Confirmacion");
+		alert.setTitle("Información");
 		alert.setContentText(mensaje);
 		Optional<ButtonType> action = alert.showAndWait();
 
@@ -196,7 +267,6 @@ public class LoginController implements Initializable{
 
 		}
 	}
-
 
 
 

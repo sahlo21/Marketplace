@@ -2,7 +2,7 @@ package co.uniquindio.edu.co.Marketplace.model;
 
 import java.io.Serializable;
 
-public class Usuario implements Serializable {
+public class Usuario implements Serializable{
 	/**
 	 * 
 	 */
