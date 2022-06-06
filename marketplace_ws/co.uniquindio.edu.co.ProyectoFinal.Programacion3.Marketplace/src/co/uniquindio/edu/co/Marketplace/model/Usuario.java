@@ -76,7 +76,7 @@ public class Usuario implements Serializable{
 		return contrasena;
 	}
 	/**
-	 * @param contrasena the contrase�a to set
+	 * @param contrasena the contrasenia to set
 	 */
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
@@ -86,7 +86,7 @@ public class Usuario implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", apellidos=" + apellidos + ", usuario=" + usuario + ", contrase�a="
+		return "Persona [nombre=" + nombre + ", apellidos=" + apellidos + ", usuario=" + usuario + ", contrasenia="
 				+ contrasena + "]";
 	}
 	/* (non-Javadoc)

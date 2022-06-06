@@ -216,6 +216,17 @@ public class Vendedor extends Usuario implements Serializable {
 		return true;
 	}
 
+	/** 
+	 * metodo que crea un producto
+	 * @param nombre
+	 * @param imagen
+	 * @param precio
+	 * @param estado
+	 * @param categoria
+	 * @param fechaPublicacion
+	 * @param codVendedor
+	 * @return
+	 */
 	public Producto crearProducto(String nombre, Image imagen, Double precio, Estado estado, Categoria categoria,
 			String fechaPublicacion, String codVendedor) {
 		Producto producto = null;
@@ -246,7 +257,11 @@ public class Vendedor extends Usuario implements Serializable {
 
 		}
 	}
-
+/**
+ * metodo que elimina el producto
+ * @param nombreProducto
+ * @return
+ */
 	public boolean eliminarProducto(String nombreProducto) {
 		Producto producto = null;
 
@@ -263,6 +278,11 @@ public class Vendedor extends Usuario implements Serializable {
 
 	}
 
+	/**
+	 * metodo que busca producto por el nombre
+	 * @param nombre
+	 * @return
+	 */
 	private Producto buscarProducto(String nombre) {
 
 		for (Producto producto : listaProductos) {
@@ -275,6 +295,17 @@ public class Vendedor extends Usuario implements Serializable {
 
 	}
 
+	/**
+	 * metodo que actualiza un producto
+	 * @param nombreActual
+	 * @param nombre
+	 * @param imagen
+	 * @param precio
+	 * @param estado
+	 * @param categoria
+	 * @param fechaPublicacion
+	 * @return
+	 */
 	public boolean actualizarProducto(String nombreActual, String nombre, Image imagen, Double precio, Estado estado,
 			Categoria categoria, String fechaPublicacion) {
 
@@ -300,6 +331,12 @@ public class Vendedor extends Usuario implements Serializable {
 
 		}
 	}
+	/**
+	 * metodo que crea un mensaje nuevo 
+	 * @param textoMensaje
+	 * @param fechaComentario
+	 * @param vendedorRemitente
+	 */
 
 	public void crearMensaje(String textoMensaje, String fechaComentario, Vendedor vendedorRemitente) {
 
@@ -317,11 +354,18 @@ public class Vendedor extends Usuario implements Serializable {
 
 	}
 
+	/**
+	 *  agrega un nuevo contacto a la lista de contactos
+	 * @param vendedorAsociado
+	 */
 	public void aceptarSolicitud(Vendedor vendedorAsociado) {
 		getListaContactos().add(vendedorAsociado);
 		System.out.println("Lista socios: " + listaContactos);
 	}
-
+/**
+ * elimina solicitud de la lista de solicitudes
+ * @param solicitud
+ */
 	public void eliminarSolicitud(Solicitud solicitud) {
 		getListaSolicitud().remove(solicitud);
 	}
@@ -353,7 +397,12 @@ public class Vendedor extends Usuario implements Serializable {
 		System.out.println("lista soli: " + listaSolicitud);
 
 	}
-
+/**
+ * verifica que si exista tal solicitud en la lista de solicitudes
+ * @param vendedorSolicitud
+ * @param vendedorSelect
+ * @return
+ */
 	public boolean validarSolicitudExistente(Vendedor vendedorSolicitud, Vendedor vendedorSelect) {
 		Vendedor aux;
 		for (Solicitud solicitud : vendedorSelect.getListaSolicitud()) {

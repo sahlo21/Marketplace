@@ -31,7 +31,10 @@ public class ChatVendedorController {
     private TextField txtMensaje;
 
     
-
+    /**
+     * 
+     * @param event
+     */
     @FXML
     void enviarMensajeAction(ActionEvent event) {
     	String textoMensaje = txtMensaje.getText();

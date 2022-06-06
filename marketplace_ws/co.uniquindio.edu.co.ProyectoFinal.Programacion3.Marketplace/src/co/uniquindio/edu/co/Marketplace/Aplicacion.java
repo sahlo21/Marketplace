@@ -51,6 +51,9 @@ public class Aplicacion extends Application {
 		launch(args);
 	}
 
+	/**
+	 * carga la vista del loggin
+	 */
 	public void showLogin() {
 		
 
@@ -65,7 +68,7 @@ public class Aplicacion extends Application {
 		
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Inicio de sesi�n");
+			primaryStage.setTitle("Inicio de sesion");
 			primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("resources/iconMarketplace.png")));
 
 			/*

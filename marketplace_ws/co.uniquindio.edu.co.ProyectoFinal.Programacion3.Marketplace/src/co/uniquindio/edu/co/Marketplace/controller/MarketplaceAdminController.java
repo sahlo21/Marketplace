@@ -207,6 +207,12 @@ public class MarketplaceAdminController implements Initializable {
 		txtNombreVendedor.setText("");
 
 	}
+	/**
+	 * metodo para agregar un nuevo vendedor
+	 * @throws NombreCortoException
+	 * @throws VendedorExistenteException
+	 * @throws PassIsEqualToUserException
+	 */
 
 	private void agregarVendedor() throws NombreCortoException, VendedorExistenteException, PassIsEqualToUserException {
 		String nombre = txtNombreVendedor.getText();
@@ -227,7 +233,7 @@ public class MarketplaceAdminController implements Initializable {
 			if (usuario.equals(contrasena)) {
                 Persistencia.guardarExceptionsLog("PassIsEqualToUserException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
 
-				throw new PassIsEqualToUserException("Por su seguridad el nombre de usuario y la contrase�a no pueden ser iguales");
+				throw new PassIsEqualToUserException("Por su seguridad el nombre de usuario y la contrasenia no pueden ser iguales");
 			}
 			
 			Vendedor vendedor = modelFactoryController.crearVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion);
@@ -236,7 +242,7 @@ public class MarketplaceAdminController implements Initializable {
 
 				listaVendedoresData.add(vendedor);
 				limpiarCasillasVendedores();
-				mostrarMensaje("Notificaci�n Vendedor", null, "El vendedor se ha creado con �xito",AlertType.INFORMATION);
+				mostrarMensaje("Notificacion Vendedor", null, "El vendedor se ha creado con exito",AlertType.INFORMATION);
 
 			} else {
                 Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
@@ -249,6 +255,11 @@ public class MarketplaceAdminController implements Initializable {
 
 
 	}
+	/** 
+	 * metodo para actualizar un vendedor
+	 * @throws VendedorNoSeleccionadoException
+	 * @throws VendedorExistenteException
+	 */
 
 	private void actualizarVendedor() throws VendedorNoSeleccionadoException, VendedorExistenteException {
 
@@ -272,7 +283,7 @@ public class MarketplaceAdminController implements Initializable {
 
 							tableVendedores.refresh();
 
-							mostrarMensaje("Notificaci�n Vendedor", null, "El vendedor se ha actualizado con �xito",
+							mostrarMensaje("Notificacion Vendedor", null, "El vendedor se ha actualizado con Exito",
 									AlertType.INFORMATION);
 						}else {
 			                Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Actualizar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
@@ -295,7 +306,10 @@ public class MarketplaceAdminController implements Initializable {
 		}
 
 	}
-
+/**
+ * metodo que elimina a un vendedor de la lista de vendedores
+ * @throws VendedorNoSeleccionadoException
+ */
 	private void eliminarVendedor() throws VendedorNoSeleccionadoException {
 
 		boolean flagVendedorEliminado = false;
@@ -312,10 +326,10 @@ public class MarketplaceAdminController implements Initializable {
 					tableVendedores.getSelectionModel().clearSelection();
 					limpiarCasillasVendedores();
 					mostrarMensaje("Notificaci�n Vendedor", "Vendedor eliminado",
-							"El vendedor se ha eliminado con �xito", AlertType.INFORMATION);
+							"El vendedor se ha eliminado con Exito", AlertType.INFORMATION);
 
 				} else {
-					mostrarMensaje("Notificaci�n Vendedor", "Vendedor no eliminado", "El vendedor no  existe",
+					mostrarMensaje("Notificacion Vendedor", "Vendedor no eliminado", "El vendedor no  existe",
 							AlertType.ERROR);
 
 				}
@@ -330,6 +344,16 @@ public class MarketplaceAdminController implements Initializable {
 
 	}
 
+	/**
+	 * verificacion de credenciales 
+	 * @param nombre
+	 * @param apellidos
+	 * @param usuario
+	 * @param contrasena
+	 * @param cedula
+	 * @param direccion
+	 * @return
+	 */
 	private boolean datosValidosVendedor(String nombre, String apellidos, String usuario, String contrasena,
 			String cedula, String direccion) {
 
@@ -345,16 +369,16 @@ public class MarketplaceAdminController implements Initializable {
 			mensaje += "El usuario del vendedor es invalido \n";
 
 		if (contrasena == null || contrasena.equals(""))
-			mensaje += "La contrase�a del vendedor es invalida \n";
+			mensaje += "La contrasenia del vendedor es invalida \n";
 
 
 		if (direccion == null || direccion.equals(""))
-			mensaje += "La direcci�n del vendedor es invalida \n";
+			mensaje += "La direccion del vendedor es invalida \n";
 
 		if (mensaje.equals("")) {
 			return true;
 		} else {
-			mostrarMensaje("Notificaci�n vendedor", "Datos invalidos", mensaje, AlertType.WARNING);
+			mostrarMensaje("Notificacion vendedor", "Datos invalidos", mensaje, AlertType.WARNING);
 			return false;
 		}
 	}
@@ -381,7 +405,7 @@ public class MarketplaceAdminController implements Initializable {
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
-		alert.setTitle("Confirmaci�n");
+		alert.setTitle("Confirmacion");
 		alert.setContentText(mensaje);
 		Optional<ButtonType> action = alert.showAndWait();
 
@@ -456,7 +480,9 @@ public class MarketplaceAdminController implements Initializable {
 			
 		}
 
-		
+		/**
+		 * muestra el top10 de productos con mas MeGusta
+		 */
 			private void mostrarTop10(){
 				
 
@@ -489,6 +515,9 @@ public class MarketplaceAdminController implements Initializable {
 
 
 			}
+			/**
+			 * muestra las publicaciones del vendedor estadisticamente
+			 */
 			private void mostrarProductosVenderdor(){
 			
 
@@ -521,6 +550,9 @@ public class MarketplaceAdminController implements Initializable {
 
 
 			}
+			/**
+			 * mueestra los contactos que tiene el vendedor
+			 */
 			private void mostrarContactosVenderdorAction(){
 				
 
@@ -575,6 +607,10 @@ public class MarketplaceAdminController implements Initializable {
 				stage.setScene(scene);
 				stage.show();
 			}
+			/**
+			 * muestra graficamente los productos por mes
+			 * @param stage
+			 */
 			private  void mostrarProductosPorMes(Stage stage) {
 				stage.setTitle("Line Chart Sample");
 				final CategoryAxis xAxis = new CategoryAxis();
@@ -603,6 +639,10 @@ public class MarketplaceAdminController implements Initializable {
 				stage.setScene(scene);
 				stage.show();
 			}
+			/**
+			 * muestra graficamente los mensajes entre usuarios
+			 * @param stage
+			 */
 			private void mostrarMensajesEntreUsuarios(Stage stage) {
 				Scene scene = new Scene(new Group());
 				stage.setTitle("Mensajes entre 2 vendedores");
@@ -622,7 +662,10 @@ public class MarketplaceAdminController implements Initializable {
 
 			}
 
-
+/**
+ * metodo que muestra la estadistica grafica de las publicaciones hechas por usuario
+ * @param stage
+ */
 			public void mostrarPublicacionesPorUsuario(Stage stage) {
 				String usuario = "";
 				stage.setTitle("Productos publicados");

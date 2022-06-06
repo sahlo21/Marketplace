@@ -13,16 +13,25 @@ public class MeGusta implements Serializable {
 	public MeGusta() {
 
 	}
-
+/**
+ * 
+ * @param codVendedor
+ */
 	public MeGusta(String codVendedor) {
 		super();
 		this.codVendedor = codVendedor;
 	}
-
+/**
+ * 
+ * @return
+ */
 	public String getCodVendedor() {
 		return codVendedor;
 	}
-
+/**
+ * 
+ * @param codVendedor
+ */
 	public void setCodVendedor(String codVendedor) {
 		this.codVendedor = codVendedor;
 	}

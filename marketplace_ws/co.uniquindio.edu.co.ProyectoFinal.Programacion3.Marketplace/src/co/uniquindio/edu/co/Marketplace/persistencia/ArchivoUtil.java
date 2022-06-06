@@ -64,7 +64,15 @@ public  class ArchivoUtil {
 		return contenido;
 	}
 
-
+/**
+ * guarda el logg en un archivo 
+ * @param mensajeLog
+ * @param nivel
+ * @param accion
+ * @param rutaArchivo
+ * @param nombreUsuario
+ * @param codigo
+ */
 	public static void guardarRegistroLog(String mensajeLog, int nivel, String accion, String rutaArchivo, String nombreUsuario, String codigo)
 	{
 		String log = "";
@@ -178,6 +186,12 @@ public  class ArchivoUtil {
 	}
 
 
+	/**
+	 * 
+	 * @param rutaArchivo
+	 * @param object
+	 * @throws Exception
+	 */
 	public static void salvarRecursoSerializado(String rutaArchivo, Object object)	throws Exception {
 		ObjectOutputStream oos = null;
 		try {
@@ -194,6 +208,12 @@ public  class ArchivoUtil {
 
 
 
+	/**
+	 * metodo que carga el archivo serializado
+	 * @param rutaArchivo
+	 * @return
+	 * @throws IOException
+	 */
 	public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
 
 		XMLDecoder decodificadorXML;

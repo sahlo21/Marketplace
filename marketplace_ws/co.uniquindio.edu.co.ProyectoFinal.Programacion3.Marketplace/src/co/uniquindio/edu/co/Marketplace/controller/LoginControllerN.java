@@ -105,6 +105,12 @@ public class LoginControllerN implements Initializable{
 
 	}
 
+	/**
+	 * loggin
+	 * @throws IOException
+	 * @throws NoSeleccionTerminosException
+	 * @throws IngresoIncorrectoException
+	 */
 	void inicioSesion() throws IOException, NoSeleccionTerminosException, IngresoIncorrectoException {
 
 		String usuario = txtUsuarioIngreso.getText().toString();
@@ -125,19 +131,19 @@ public class LoginControllerN implements Initializable{
 					mostrarMensajeInformacion("Bienvenido administrador");
 					aplicacion.showAdministrador();
 				}else {
-		            Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesi�n", usuario, "No aplica");
+		            Persistencia.guardarExceptionsLog("IngresoIncorrectoException", 3, "Inicio de sesion", usuario, "No aplica");
 
-					throw new IngresoIncorrectoException("Ha ingresado mal el usuario y/o contrase�a.");
+					throw new IngresoIncorrectoException("Ha ingresado mal el usuario y/o contrasenia.");
 
 
 				}
 
 
 			} else {
-				mostrarMensajeError("Ha ingresado mal el usuario y/o contrase�a.");		}
+				mostrarMensajeError("Ha ingresado mal el usuario y/o contrasenia.");		}
 
 		}else{
-            Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesi�n", usuario, "No aplica");
+            Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesion", usuario, "No aplica");
 
 			throw new NoSeleccionTerminosException("Por favor, acepte los terminos y condiciones.");
 		}

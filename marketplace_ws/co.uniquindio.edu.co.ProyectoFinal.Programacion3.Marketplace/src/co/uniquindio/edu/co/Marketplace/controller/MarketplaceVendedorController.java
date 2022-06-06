@@ -242,7 +242,7 @@ public class MarketplaceVendedorController implements Initializable {
 				if (vendedorSolicitud.getCedula() != vendedorSelect.getCedula()) {
 					if (!(vendedorSolicitud.getListaContactos().contains(vendedorSelect))) {
 						modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSelect.getCedula());
-						mostrarMensaje("Notifocacion de Solicitud", "Solicitud enviada",
+						mostrarMensaje("Notificacion de Solicitud", "Solicitud enviada",
 								"Solicitud Enviada con Exito a: " + vendedorSelect.getNombre(), AlertType.INFORMATION);
 					} else {
 						mostrarMensajeError("El Usuario: " + vendedorSelect.getNombre() + " Ya esta Agregado");
@@ -531,6 +531,11 @@ public class MarketplaceVendedorController implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo que agrega un producto nuevo
+	 * @throws ProductoExistenteException
+	 * @throws ValorNoNumericException
+	 */
 	private void agregarProducto() throws ProductoExistenteException, ValorNoNumericException {
 
 		String nombre = txtNombreProducto.getText();
@@ -564,8 +569,8 @@ public class MarketplaceVendedorController implements Initializable {
 				listaProductosData.add(producto);
 				listaMuro.add(producto);
 				limpiarCasillasProductos();
-				mostrarMensaje("Notificaci�n Producto", "Producto publicado",
-						"El producto se ha publicado con �xito", AlertType.INFORMATION);
+				mostrarMensaje("Notificacion Producto", "Producto publicado",
+						"El producto se ha publicado con Exito", AlertType.INFORMATION);
 			} else {
 				Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Agregar producto",
 						modelFactoryController.getVendedorLogueado().getNombre(),
@@ -578,6 +583,11 @@ public class MarketplaceVendedorController implements Initializable {
 		}
 	}
 
+	/**
+	 * metodo para actualizar producto 
+	 * @throws ProductoNoSeleccionadoException
+	 * @throws ProductoExistenteException
+	 */
 	private void actualizarProducto() throws ProductoNoSeleccionadoException, ProductoExistenteException {
 
 		String nombre = txtNombreProducto.getText();
@@ -606,8 +616,8 @@ public class MarketplaceVendedorController implements Initializable {
 						tableProductos.refresh();
 						tableMuro.refresh();
 						// limpiarCasillasProductos();
-						mostrarMensaje("Notificaci�n Producto", "Producto actualizado",
-								"El producto se ha actualizado con �xito", AlertType.INFORMATION);
+						mostrarMensaje("Notificacion Producto", "Producto actualizado",
+								"El producto se ha actualizado con Exito", AlertType.INFORMATION);
 					} else {
 						Persistencia.guardarExceptionsLog("ProductoExistenteException", 3, "Actualizar producto",
 								modelFactoryController.getVendedorLogueado().getNombre(),
@@ -618,7 +628,7 @@ public class MarketplaceVendedorController implements Initializable {
 					}
 				} else {
 
-					mostrarMensaje("Notificaci�n Producto", "Producto no ha sido publicado",
+					mostrarMensaje("Notificacion Producto", "Producto no ha sido publicado",
 							"El producto no se puede actualizar", AlertType.ERROR);
 				}
 			}
@@ -633,6 +643,10 @@ public class MarketplaceVendedorController implements Initializable {
 
 	}
 
+	/** 
+	 * metodo para eliminar producto de la lista del muro del marketplace 
+	 * @throws ProductoNoSeleccionadoException
+	 */
 	private void eliminarProducto() throws ProductoNoSeleccionadoException {
 
 		boolean flagProductoEliminado = false;
@@ -652,8 +666,8 @@ public class MarketplaceVendedorController implements Initializable {
 					listaMuro.addAll(modelFactoryController.obtenerMuro());
 					tableMuro.setItems(listaMuro);
 
-					mostrarMensaje("Notificaci�n Producto", "Producto eliminado",
-							"El producto se ha eliminado con �xito", AlertType.INFORMATION);
+					mostrarMensaje("Notificacion Producto", "Producto eliminado",
+							"El producto se ha eliminado con Exito", AlertType.INFORMATION);
 
 				}
 			}
@@ -684,6 +698,14 @@ public class MarketplaceVendedorController implements Initializable {
 		}
 	}
 
+	/**
+	 * verificacion del producto
+	 * @param nombre
+	 * @param imagen
+	 * @param precioAux
+	 * @param categoria
+	 * @return
+	 */
 	private boolean datosValidosProducto(String nombre, Image imagen, String precioAux, Categoria categoria) {
 
 		String mensaje = "";
@@ -706,11 +728,14 @@ public class MarketplaceVendedorController implements Initializable {
 		if (mensaje.equals("")) {
 			return true;
 		} else {
-			mostrarMensaje("Notificaci�n producto", "Datos invalidos", mensaje, AlertType.WARNING);
+			mostrarMensaje("Notificacion producto", "Datos invalidos", mensaje, AlertType.WARNING);
 			return false;
 		}
 	}
 
+	/**
+	 * metodo para limpiar los archivos TXT
+	 */
 	private void limpiarCasillasProductos() {
 
 		txtNombreProducto.setText("");
@@ -724,7 +749,7 @@ public class MarketplaceVendedorController implements Initializable {
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setHeaderText(null);
-		alert.setTitle("Confirmaci�n");
+		alert.setTitle("Confirmacion");
 		alert.setContentText(mensaje);
 		Optional<ButtonType> action = alert.showAndWait();
 

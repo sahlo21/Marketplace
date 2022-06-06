@@ -9,6 +9,7 @@ public class Mensaje {
 	
 	Vendedor vendedorRemitente ;
 	/**
+	 * constructor 
 	 * @param texto
 	 * @param fecha
 	 * @param vendedorReceptor

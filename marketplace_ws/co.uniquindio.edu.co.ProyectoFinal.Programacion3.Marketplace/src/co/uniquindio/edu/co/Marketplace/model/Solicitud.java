@@ -7,6 +7,13 @@ public class Solicitud {
 	String apellidoSoli;
 	String codVendedorDestino;
 
+	/**
+	 * constructor 
+	 * @param vendedorSolicitud
+	 * @param nombreSoli
+	 * @param apellidoSoli
+	 * @param codVendedorDestino
+	 */
 	public Solicitud(Vendedor vendedorSolicitud, String nombreSoli, String apellidoSoli, String codVendedorDestino) {
 		super();
 		this.vendedorSolicutud = vendedorSolicitud;
@@ -18,7 +25,10 @@ public class Solicitud {
 	public Solicitud() {
 
 	}
-
+/**
+ * GETTERS AND SETTERS
+ * @return
+ */
 	public Vendedor getVendedorSolicitud() {
 		return vendedorSolicutud;
 	}

@@ -28,6 +28,7 @@ public class Producto implements Serializable{
 	ArrayList<Comentario> listaComentarios = new ArrayList<>();
 
 	/**
+	 * constructor
 	 * @param nombre
 	 * @param imagen
 	 * @param precio
@@ -188,7 +189,13 @@ public class Producto implements Serializable{
 		this.listaComentarios = listaComentarios;
 	}
 
-	//
+	
+	/**
+	 * metodo para crear MeGusta
+	 * @param codVendedorLike
+	 * @return
+	 */
+	
 	public MeGusta crearMeGusta(String codVendedorLike) {
 		MeGusta meGusta = null;
 		meGusta = buscarMeGusta(codVendedorLike);
@@ -238,7 +245,13 @@ public class Producto implements Serializable{
 		return null;
 
 	}
-
+/**
+ * metodo que crea un comentario 
+ * @param texto
+ * @param fecha
+ * @param userVendedor
+ * @return
+ */
 	public Comentario crearComentario(String texto, String fecha, String userVendedor) {
 
 		if (texto != null) {

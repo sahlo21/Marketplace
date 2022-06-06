@@ -101,6 +101,9 @@ public class ProductoController implements Initializable {
 	}
 
 
+	/**
+	 * metodo para abrir el perfil del usuario 
+	 */
 	void abrirPerfil() {
 
 		try {
@@ -144,6 +147,9 @@ public class ProductoController implements Initializable {
 
 	}
 
+	/**
+	 * metoo que crea un nuevo comentario sobre un producto 
+	 */
 	public void crearComentarioProducto() {
 		String textoComenatario = textAreaComentario.getText();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");

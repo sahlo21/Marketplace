@@ -240,7 +240,7 @@ public class ModelFactoryController {
 		producto.setCodVendedor(vendedor.getCedula());
 		producto.setId("1");
 
-		Comentario comentario = new Comentario("Fino se�ores", fechaPublicacion, vendedor.getNombre());
+		Comentario comentario = new Comentario("Fino seniores", fechaPublicacion, vendedor.getNombre());
 		comentario.setId("1");
 		producto.getListaComentarios().add(comentario);
 		vendedor.getListaProductos().add(producto);
@@ -344,6 +344,16 @@ public class ModelFactoryController {
 
 	}
 
+	/**
+	 * metodo que crea un nuevo vendedor
+	 * @param nombre
+	 * @param apellidos
+	 * @param usuario
+	 * @param contrasena
+	 * @param cedula
+	 * @param direccion
+	 * @return
+	 */
 	public Vendedor crearVendedor(String nombre, String apellidos, String usuario, String contrasena, String cedula,
 			String direccion) {
 
@@ -357,6 +367,17 @@ public class ModelFactoryController {
 
 	}
 
+	/**
+	 * metodo que actualiza el vendedor
+	 * @param codigoActual
+	 * @param nombre
+	 * @param apellidos
+	 * @param usuario
+	 * @param contrasena
+	 * @param cedula
+	 * @param direccion
+	 * @return
+	 */
 	public boolean actualizarVendedor(String codigoActual, String nombre, String apellidos, String usuario,
 			String contrasena, String cedula, String direccion) {
 
@@ -373,6 +394,11 @@ public class ModelFactoryController {
 
 	}
 
+	/**
+	 * metodo que elimina un vendedor del market place 
+	 * @param codigoVendedor
+	 * @return
+	 */
 	public boolean eliminarVendedor(String codigoVendedor) {
 		guardarMarketplaceLog("Vendedor eliminado", 1, "Eliminar vendedor", admin.getNombre(), admin.getCedula());
 
@@ -423,6 +449,13 @@ public class ModelFactoryController {
 		return meGusta;
 	}
 
+	/**
+	 * crea un nuevo comentario 
+	 * @param texto
+	 * @param fecha
+	 * @param userVendedor
+	 * @return
+	 */
 	public Comentario crearComentario(String texto, String fecha, String userVendedor) {
 		Comentario comentario = null;
 		comentario = productoActual.crearComentario(texto, fecha, userVendedor);
@@ -433,6 +466,17 @@ public class ModelFactoryController {
 		return comentario;
 	}
 
+	/**
+	 * se agrega un nuevo producto a la lista del muro del marketplace
+	 * @param nombre
+	 * @param imagen
+	 * @param precio
+	 * @param estado
+	 * @param categoria
+	 * @param fechaPublicacion
+	 * @param codVendedor
+	 * @return
+	 */
 	public Producto crearProducto(String nombre, Image imagen, Double precio, Estado estado, Categoria categoria,
 			String fechaPublicacion, String codVendedor) {
 
@@ -452,6 +496,13 @@ public class ModelFactoryController {
 
 	}
 
+	/**
+	 * metodo que crea un mensaje con fecha 
+	 * @param textoMensaje
+	 * @param fechaComentario
+	 * @param vendedorMensaje
+	 * @param vendedorRemitente
+	 */
 	public void crearMensaje(String textoMensaje, String fechaComentario, String vendedorMensaje,
 			Vendedor vendedorRemitente) {
 		// TODO Auto-generated method stub
@@ -462,6 +513,11 @@ public class ModelFactoryController {
 			}
 		}
 	}
+	/**
+	 * metodo que crea una solicitud nueva 
+	 * @param vendedorSolicitud
+	 * @param vendedorDestino
+	 */
 
 	public void crearSolicitud(Vendedor vendedorSolicitud, String vendedorDestino) {
 		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
@@ -478,15 +534,36 @@ public class ModelFactoryController {
 		return vendedorSelect.validarSolicitudExistente(vendedorSolicitud, vendedorSelect);
 	}
 
+	/**
+	 * metodo que acepta una solicitud nueva 
+	 * @param vendedorSolicitud
+	 * @param vendedorAceptaLogeado
+	 */
 	public void aceptarSolicitud(Vendedor vendedorSolicitud, Vendedor vendedorAceptaLogeado) {
 		vendedorSolicitud.aceptarSolicitud(vendedorAceptaLogeado);
 		vendedorLogueado.aceptarSolicitud(vendedorSolicitud);
 	}
 
+	/**
+	 * metodo que elimina solicitud 
+	 * @param solicitud
+	 * @param vendedor
+	 */
 	public void eliminarSolicitud(Solicitud solicitud, Vendedor vendedor) {
 		vendedor.eliminarSolicitud(solicitud);
 	}
 
+	/**
+	 * metodo que actualiza un producto 
+	 * @param nombreActual
+	 * @param nombre
+	 * @param imagen
+	 * @param precio
+	 * @param estado
+	 * @param categoria
+	 * @param fechaPublicacion
+	 * @return
+	 */
 	public boolean actualizarProducto(String nombreActual, String nombre, Image imagen, Double precio, Estado estado,
 			Categoria categoria, String fechaPublicacion) {
 
@@ -503,12 +580,21 @@ public class ModelFactoryController {
 
 	}
 
+	/**
+	 * metodo que elimina un me gusta
+	 * @param codVendedorLike
+	 */
 	public void eliminarMeGusta(String codVendedorLike) {
 		guardarMarketplaceLog("Me gusta eliminado", 1, "Eliminar me gusta", vendedorLogueado.getNombre(),
 				vendedorLogueado.getCedula());
 		productoActual.eliminarMeGusta(codVendedorLike);
 
 	}
+	/**
+	 * metodo que elimina un producto 
+	 * @param nombreProducto
+	 * @return
+	 */
 
 	public boolean eliminarProducto(String nombreProducto) {
 		Producto producto = null;
@@ -524,6 +610,11 @@ public class ModelFactoryController {
 		return vendedorLogueado.eliminarProducto(nombreProducto);
 	}
 
+	/**
+	 * metodo que recorre el muro para buscar un producto 
+	 * @param nombre
+	 * @return
+	 */
 	private Producto buscarProducto(String nombre) {
 
 		for (Producto producto : listaMuro) {
@@ -536,6 +627,12 @@ public class ModelFactoryController {
 
 	}
 
+	/**
+	 * loggin del usuario
+	 * @param usuario
+	 * @param contrasena
+	 * @return
+	 */
 	public Usuario ingreso(String usuario, String contrasena) {
 		Usuario user = null;
 		listaVendedores.clear();
@@ -544,18 +641,18 @@ public class ModelFactoryController {
 		listaAdministradores.addAll(obtenerAdministrador());
 		for (Vendedor vendedor : listaVendedores) {
 			if (usuario.equals(vendedor.getUsuario()) && contrasena.equals(vendedor.getContrasena())) {
-				guardarRegistroLogin("Inicio de sesi�n correcto", 1, "Iniciar de sesi�n vendedor",
+				guardarRegistroLogin("Inicio de sesion correcto", 1, "Iniciar de sesion vendedor",
 						vendedor.getNombre(), vendedor.getCedula());
 				return vendedor;
 			}
 		}
 		for (Administrador administrador : listaAdministradores) {
 			if (administrador.getUsuario().equals(usuario) && administrador.getContrasena().equals(contrasena)) {
-				guardarRegistroLogin("Inicio de sesi�n correcto", 1, "Iniciar de sesi�n administrador",
+				guardarRegistroLogin("Inicio de sesion correcto", 1, "Iniciar de sesion administrador",
 						administrador.getNombre(), administrador.getCedula());
 				return administrador;
 			} else {
-				guardarRegistroLogin("Inicio de sesi�n fallido", 1, "Iniciar de sesi�n ", usuario, "No aplica");
+				guardarRegistroLogin("Inicio de sesion fallido", 1, "Iniciar de sesion ", usuario, "No aplica");
 			}
 		}
 		return user;
@@ -587,14 +684,14 @@ public class ModelFactoryController {
 	}
 
 	void cerrarSesionVendedor(Aplicacion aplicacion2) {
-		guardarRegistroLogin("Cierre de sesi�n correcto", 1, "Cerrar sesi�n vendedor", vendedorLogueado.getNombre(),
+		guardarRegistroLogin("Cierre de sesion correcto", 1, "Cerrar sesion vendedor", vendedorLogueado.getNombre(),
 				vendedorLogueado.getCedula());
 
 		aplicacion2.showLogin();
 	}
 
 	void cerrarSesionAdmin(Aplicacion aplicacion2) {
-		guardarRegistroLogin("Cierre de sesi�n fallido", 1, "Cerrar sesi�n administrador", admin.getNombre(),
+		guardarRegistroLogin("Cierre de sesion fallido", 1, "Cerrar sesion administrador", admin.getNombre(),
 				admin.getCedula());
 
 		aplicacion2.showLogin();

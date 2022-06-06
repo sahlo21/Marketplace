@@ -152,6 +152,16 @@ public class Marketplace implements Serializable{
 		return true;
 	}
 
+	/**
+	 * metodo con el que crea el objeto vendedor
+	 * @param nombre
+	 * @param apellidos
+	 * @param usuario
+	 * @param contrasena
+	 * @param cedula
+	 * @param direccion
+	 * @return
+	 */
 	public Vendedor crearVendedor(String nombre, String apellidos, String usuario, String contrasena, String cedula, String direccion) {
 		Vendedor vendedor = null;
 
@@ -181,7 +191,11 @@ public class Marketplace implements Serializable{
 
 		}
 	}
-
+/**
+ * metodo para eliminar vendedor crud
+ * @param codigoActual
+ * @return
+ */
 	public boolean eliminarVendedor(String codigoActual) {
 		Vendedor vendedor = null;
 
@@ -203,7 +217,18 @@ public class Marketplace implements Serializable{
 
 
 
-
+/**
+ * metodo del crud para actualizar Vendedor
+ * 
+ * @param codigoActual
+ * @param nombre
+ * @param apellidos
+ * @param usuario
+ * @param contrasena
+ * @param cedula
+ * @param direccion
+ * @return
+ */
 	public boolean actualizarVendedor(String codigoActual, String nombre, String apellidos, String usuario, String contrasena, String cedula, String direccion) {
 		Vendedor vendedor = null;
 
@@ -225,7 +250,11 @@ public class Marketplace implements Serializable{
 
 		}
 	}
-
+/**
+ * metodo que permite buscar vendedor mediante su cedula
+ * @param cedulaActual
+ * @return
+ */
 	private Vendedor buscarVendedor(String cedulaActual) {
 
 		for (Vendedor vendedor : listaVendedores) {
@@ -237,6 +266,14 @@ public class Marketplace implements Serializable{
 		return null;
 
 	}
+	/** 
+	 * loggin como admin o vendedor
+	 * 
+	 * @param Nomusuario
+	 * @param contrasenia
+	 * @param tipoUsuario
+	 * @return
+	 */
 	public Usuario ingresar(String Nomusuario, String contrasenia, TipoUsuario tipoUsuario) {
 		Usuario usuario = null;
 
