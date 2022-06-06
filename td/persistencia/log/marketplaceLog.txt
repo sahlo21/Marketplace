@@ -434,3 +434,5 @@ jun. 06, 2022 12:32:06 A. M. co.uniquindio.edu.co.Marketplace.persistencia.Archi
 INFO: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, 2022-06-06
 jun. 06, 2022 12:32:06 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFO: Eliminar me gusta, Me gusta eliminado Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun 06, 2022 1:15:57 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÃ“N: Crear me gusta, Me gusta creado Usuario: Kevin Cedula: 1006341989, 2022-06-06

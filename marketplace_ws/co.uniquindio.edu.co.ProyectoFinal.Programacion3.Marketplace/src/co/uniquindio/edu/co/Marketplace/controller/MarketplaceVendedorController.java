@@ -28,6 +28,8 @@ import co.uniquindio.edu.co.Marketplace.model.Vendedor;
 import co.uniquindio.edu.co.Marketplace.persistencia.Persistencia;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -68,6 +70,7 @@ public class MarketplaceVendedorController implements Initializable {
 	ObservableList<Solicitud> listaSolicitud = FXCollections.observableArrayList();
 	ObservableList<Vendedor> listaAsociados = FXCollections.observableArrayList();
 	ObservableList<Vendedor> listaRedVendedoresData = FXCollections.observableArrayList();
+	FilteredList<Vendedor> filteredVendedorData;
 
 	private ModelFactoryController modelFactoryController;
 
@@ -79,6 +82,9 @@ public class MarketplaceVendedorController implements Initializable {
 
 	@FXML
 	private TextField txtPrecioProducto;
+	
+	@FXML
+	private TextField filterFieldVendedor;
 
 	@FXML
 	private TableColumn<Producto, Image> columnImagenProducto;
@@ -232,6 +238,7 @@ public class MarketplaceVendedorController implements Initializable {
 		aceptarSolicitud();
 	}
 
+
 	@FXML
 	void enviarSolicitudAction(ActionEvent event) {
 
@@ -295,6 +302,10 @@ public class MarketplaceVendedorController implements Initializable {
 			if ((vendedorSolicitud != null) && (vendedorAceptaLogeado != null)) {
 				modelFactoryController.aceptarSolicitud(vendedorSolicitud, vendedorAceptaLogeado);
 				eliminarSolicitud(vendedorAceptaLogeado);
+				tableAsociados.refresh();
+				listaAsociados.add(vendedorSolicitud);
+				tableAsociados.setItems(listaAsociados);
+				tableAsociados.refresh();
 			}
 		} else {
 			mostrarMensajeError("Por favor Seleciona una Solicitud");
@@ -461,6 +472,33 @@ public class MarketplaceVendedorController implements Initializable {
 			vendedorSelect = newSelection;
 
 		});
+		
+		// 1. Wrap the ObservableList in a FilteredList (initially display all data).
+				filteredVendedorData = new FilteredList<>(listaRedVendedoresData, p -> true);
+
+
+		    	// 2. Set the filter Predicate whenever the filter changes.
+				filterFieldVendedor.textProperty().addListener((observable, oldValue, newValue) -> {
+					filteredVendedorData.setPredicate(vendedor-> {
+						// If filter text is empty, display all persons.
+						if (newValue == null || newValue.isEmpty()) {
+							return true;
+						}
+
+						// Compare first name and last name of every person with filter text.
+						String lowerCaseFilter = newValue.toLowerCase();
+
+						if (vendedor.getNombre().toLowerCase().contains(lowerCaseFilter)) {
+							return true; // Filter matches first name.
+						} else if (vendedor.getApellidos().toLowerCase().contains(lowerCaseFilter)) {
+							return true; // Filter matches last name.
+						} else if (vendedor.getCedula().toLowerCase().contains(lowerCaseFilter)) {
+							return true; // Filter matches last name.
+						}
+						return false; // Does not match.
+					});
+				});
+
 	}
 
 	public ObservableList<Producto> getListaProductoData() {
@@ -517,6 +555,13 @@ public class MarketplaceVendedorController implements Initializable {
 		tableAsociados.setItems(getListaAsociados());
 		tableVendedoresRed.getItems().clear();
 		tableVendedoresRed.setItems(getListaVendedorRed());
+		SortedList<Vendedor> sortedDataCliente = new SortedList<>(filteredVendedorData);
+
+    	// 4. Bind the SortedList comparator to the TableView comparator.
+		sortedDataCliente.comparatorProperty().bind(tableVendedoresRed.comparatorProperty());
+
+    	// 5. Add sorted (and filtered) data to the table.
+		tableVendedoresRed.setItems(sortedDataCliente);
 
 	}
 

@@ -1122,3 +1122,19 @@ jun. 06, 2022 12:31:36 A.�M. co.uniquindio.edu.co.Marketplace.persistencia.Archi
 INFO: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Didier Cedula: 1519, 2022-06-06
 jun. 06, 2022 12:45:50 A.�M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFO: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun 06, 2022 1:16:12 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun 06, 2022 1:16:26 AM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesi�n vendedor, Cierre de sesi�n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun 06, 2022 1:11:44 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesion vendedor, Cierre de sesion correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun 06, 2022 1:13:09 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesion vendedor, Cierre de sesion correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun 06, 2022 1:13:34 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesion vendedor, Cierre de sesion correcto Usuario: Didier Cedula: 1519, 2022-06-06
+jun 06, 2022 1:15:00 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesion vendedor, Cierre de sesion correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun 06, 2022 1:18:15 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesion vendedor, Cierre de sesion correcto Usuario: Didier Cedula: 1519, 2022-06-06
+jun 06, 2022 1:18:46 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesion vendedor, Cierre de sesion correcto Usuario: Christian Cedula: 1529, 2022-06-06
