@@ -138,13 +138,13 @@ public class ModelFactoryController {
 		}
 	}
 
-	private void cargarResourceXML() {
-		Persistencia.cargarRecursoMarketplaceXML();
-	}
-
-	private void guardarResourceXML() {
-		Persistencia.guardarRecursoMarketPlaceXML(marketplace);
-	}
+//	private void cargarResourceXML() {
+//		Persistencia.cargarRecursoMarketplaceXML();
+//	}
+//
+//	private void guardarResourceXML() {
+//		Persistencia.guardarRecursoMarketPlaceXML(marketplace);
+//	}
 
 	private void cargarResourceBinario() {
 		Persistencia.cargarRecursosMarketplaceBinario();
@@ -463,11 +463,11 @@ public class ModelFactoryController {
 		}
 	}
 
-	public void crearSolicitud(Vendedor vendedorSolicitud, String vendedorDestino, boolean respuesta) {
+	public void crearSolicitud(Vendedor vendedorSolicitud, String vendedorDestino) {
 		for (Vendedor vendedorSelect : marketplace.getListaVendedores()) {
 			if (vendedorSelect.getCedula().equals(vendedorDestino)) {
 				vendedorSelect.crearSolicitud(vendedorSolicitud, vendedorSolicitud.getNombre(),
-						vendedorSolicitud.getApellidos(), vendedorDestino, respuesta);
+						vendedorSolicitud.getApellidos(), vendedorDestino);
 
 			}
 		}

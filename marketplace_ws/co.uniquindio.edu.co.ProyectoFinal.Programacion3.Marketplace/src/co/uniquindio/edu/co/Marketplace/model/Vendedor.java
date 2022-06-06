@@ -326,18 +326,28 @@ public class Vendedor extends Usuario implements Serializable {
 		getListaSolicitud().remove(solicitud);
 	}
 
+	/**
+	 * Se crea una nueva solicitud y se guarda en la lista de solicitudes del
+	 * vendedor.
+	 * 
+	 * 
+	 * @param vendedorSolicitud
+	 * @param nombreSoli
+	 * @param apellidoSoli
+	 * @param codVendedorDestino
+	 */
+
 	public void crearSolicitud(Vendedor vendedorSolicitud, String nombreSoli, String apellidoSoli,
-			String codVendedorDestino, boolean respuesta) {
+			String codVendedorDestino) {
 		Solicitud soli = null;
 
 		soli = new Solicitud(vendedorSolicitud, vendedorSolicitud.getNombre(), vendedorSolicitud.getApellidos(),
-				codVendedorDestino, respuesta);
+				codVendedorDestino);
 
 		soli.setVendedorSolicitud(vendedorSolicitud);
 		soli.setNombreSoli(vendedorSolicitud.getNombre());
 		soli.setApellidoSoli(vendedorSolicitud.getApellidos());
 		soli.setCodVendedorDestino(codVendedorDestino);
-		soli.setRespuesta(respuesta);
 
 		getListaSolicitud().add(soli);
 		System.out.println("lista soli: " + listaSolicitud);
@@ -346,9 +356,9 @@ public class Vendedor extends Usuario implements Serializable {
 
 	public boolean validarSolicitudExistente(Vendedor vendedorSolicitud, Vendedor vendedorSelect) {
 		Vendedor aux;
-		for(Solicitud solicitud: vendedorSelect.getListaSolicitud()) {
+		for (Solicitud solicitud : vendedorSelect.getListaSolicitud()) {
 			aux = solicitud.getVendedorSolicitud();
-			if(aux.equals(vendedorSolicitud)) {
+			if (aux.equals(vendedorSolicitud)) {
 				return false;
 			}
 		}

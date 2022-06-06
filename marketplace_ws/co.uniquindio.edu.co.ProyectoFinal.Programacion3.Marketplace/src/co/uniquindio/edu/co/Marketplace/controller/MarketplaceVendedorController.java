@@ -236,12 +236,12 @@ public class MarketplaceVendedorController implements Initializable {
 	void enviarSolicitudAction(ActionEvent event) {
 
 		Vendedor vendedorSolicitud = modelFactoryController.getVendedorLogueado();
-		
+
 		if (vendedorSelect != null) {
 			if (validarSolicitudExistente(vendedorSolicitud, vendedorSelect)) {
 				if (vendedorSolicitud.getCedula() != vendedorSelect.getCedula()) {
 					if (!(vendedorSolicitud.getListaContactos().contains(vendedorSelect))) {
-						modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSelect.getCedula(), false);
+						modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSelect.getCedula());
 						mostrarMensaje("Notifocacion de Solicitud", "Solicitud enviada",
 								"Solicitud Enviada con Exito a: " + vendedorSelect.getNombre(), AlertType.INFORMATION);
 					} else {
@@ -253,7 +253,7 @@ public class MarketplaceVendedorController implements Initializable {
 			} else {
 				mostrarMensajeError("Ya enviaste una solicitud a este Usuario");
 			}
-		}else {
+		} else {
 			mostrarMensajeError("Por favor Seleciona un Vendedor de La Red");
 		}
 	}

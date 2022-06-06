@@ -41,7 +41,7 @@
       </object>
      </void>
      <void property="fechaPublicacion">
-      <string>2022/06/05</string>
+      <string>2022/06/06</string>
      </void>
      <void property="id">
       <string>1</string>
@@ -50,7 +50,7 @@
       <void method="add">
        <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
         <void property="fecha">
-         <string>2022/06/05</string>
+         <string>2022/06/06</string>
         </void>
         <void property="id">
          <string>1</string>
@@ -87,7 +87,7 @@
       <object idref="Estado0"/>
      </void>
      <void property="fechaPublicacion">
-      <string>2022/06/05</string>
+      <string>2022/06/06</string>
      </void>
      <void property="id">
       <string>2</string>
@@ -96,7 +96,7 @@
       <void method="add">
        <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
         <void property="fecha">
-         <string>2022/06/05</string>
+         <string>2022/06/06</string>
         </void>
         <void property="id">
          <string>2</string>
@@ -130,7 +130,7 @@
       <object idref="Estado0"/>
      </void>
      <void property="fechaPublicacion">
-      <string>2022/06/05</string>
+      <string>2022/06/06</string>
      </void>
      <void property="id">
       <string>3</string>
@@ -139,7 +139,7 @@
       <void method="add">
        <object class="co.uniquindio.edu.co.Marketplace.model.Comentario">
         <void property="fecha">
-         <string>2022/06/05</string>
+         <string>2022/06/06</string>
         </void>
         <void property="id">
          <string>3</string>

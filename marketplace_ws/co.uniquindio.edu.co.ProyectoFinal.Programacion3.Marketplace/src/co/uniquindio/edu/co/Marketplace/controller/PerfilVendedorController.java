@@ -74,7 +74,7 @@ public class PerfilVendedorController implements Initializable {
 		if (validarSolicitudExistente(vendedorSolicitud, vendedorSeleccionado)) {
 			if (vendedorSolicitud.getCedula() != vendedorSeleccionado.getCedula()) {
 				if (!(vendedorSolicitud.getListaContactos().contains(vendedorSeleccionado))) {
-					modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSeleccionado.getCedula(), false);
+					modelFactoryController.crearSolicitud(vendedorSolicitud, vendedorSeleccionado.getCedula());
 					mostrarMensaje("Notifocacion de Solicitud", "Solicitud enviada",
 							"Solicitud Enviada con Exito a: " + vendedorSeleccionado.getNombre(),
 							AlertType.INFORMATION);
@@ -84,7 +84,7 @@ public class PerfilVendedorController implements Initializable {
 			} else {
 				mostrarMensajeError("No Puedes Agregarte a Ti Mismo.");
 			}
-		}else {
+		} else {
 			mostrarMensajeError("Ya enviaste una solicitud a este Usuario");
 		}
 	}

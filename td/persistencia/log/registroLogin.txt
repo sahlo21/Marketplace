@@ -1098,3 +1098,27 @@ jun 05, 2022 6:32:32 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUti
 INFORMACIÃ“N: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Didier Cedula: 1519, 2022-06-05
 jun 05, 2022 6:32:47 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFORMACIÃ“N: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun. 05, 2022 7:09:37 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n administrador, Cierre de sesiï¿½n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun. 05, 2022 7:09:51 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun. 05, 2022 7:10:41 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n administrador, Cierre de sesiï¿½n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun. 05, 2022 7:11:37 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n administrador, Cierre de sesiï¿½n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun. 05, 2022 7:12:43 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n administrador, Cierre de sesiï¿½n fallido Usuario: Tyler Cedula: 21p, 2022-06-05
+jun. 05, 2022 7:13:17 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Christian Cedula: 1529, 2022-06-05
+jun. 05, 2022 9:36:46 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-05
+jun. 06, 2022 12:29:12 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Didier Cedula: 1519, 2022-06-06
+jun. 06, 2022 12:30:00 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
+jun. 06, 2022 12:30:38 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Christian Cedula: 1529, 2022-06-06
+jun. 06, 2022 12:31:36 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Didier Cedula: 1519, 2022-06-06
+jun. 06, 2022 12:45:50 A. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFO: Cerrar sesiï¿½n vendedor, Cierre de sesiï¿½n correcto Usuario: Kevin Cedula: 1006341989, 2022-06-06
