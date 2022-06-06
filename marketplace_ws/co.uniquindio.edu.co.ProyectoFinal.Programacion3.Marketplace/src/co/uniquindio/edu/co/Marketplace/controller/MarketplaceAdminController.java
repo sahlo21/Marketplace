@@ -1,14 +1,20 @@
 package co.uniquindio.edu.co.Marketplace.controller;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Formatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
 
 //import javax.jws.WebParam.Mode;
 
@@ -55,7 +61,7 @@ public class MarketplaceAdminController implements Initializable {
 	Aplicacion aplicacion;
 	Vendedor vendedorSeleccionado;
 	ObservableList<Vendedor> listaVendedoresData = FXCollections.observableArrayList();
-	//	ModelFactoryController modelFactoryController= new ModelFactoryController();
+	// ModelFactoryController modelFactoryController= new ModelFactoryController();
 	private ModelFactoryController modelFactoryController;
 	/**
 	 *
@@ -130,23 +136,24 @@ public class MarketplaceAdminController implements Initializable {
 	}
 
 	@FXML
-	void actualizarVendedorAction(ActionEvent event)   {
-		try{
+	void actualizarVendedorAction(ActionEvent event) {
+		try {
 			actualizarVendedor();
-		}catch (VendedorNoSeleccionadoException | VendedorExistenteException e) {
+		} catch (VendedorNoSeleccionadoException | VendedorExistenteException e) {
 			mostrarMensajeError(e.getMessage());
 		}
 
 	}
 
 	@FXML
-	void eliminarVendedorAction(ActionEvent event)   {
+	void eliminarVendedorAction(ActionEvent event) {
 		try {
 			eliminarVendedor();
 		} catch (VendedorNoSeleccionadoException e) {
 			mostrarMensajeError(e.getMessage());
 		}
 	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		modelFactoryController = ModelFactoryController.getInstance();
@@ -207,8 +214,10 @@ public class MarketplaceAdminController implements Initializable {
 		txtNombreVendedor.setText("");
 
 	}
+
 	/**
 	 * metodo para agregar un nuevo vendedor
+	 * 
 	 * @throws NombreCortoException
 	 * @throws VendedorExistenteException
 	 * @throws PassIsEqualToUserException
@@ -221,42 +230,53 @@ public class MarketplaceAdminController implements Initializable {
 		String contrasena = txtContrasenaVendedor.getText();
 		String cedula = txtCedulaVendedor.getText();
 		String direccion = txtDireccionVendedor.getText();
-		TipoUsuario tipoUsuario=TipoUsuario.VENDEDOR;
+		TipoUsuario tipoUsuario = TipoUsuario.VENDEDOR;
 
 		if (datosValidosVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion) == true) {
-			if(nombre.length()<=2){
-                Persistencia.guardarExceptionsLog("NombreCortoException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
+			if (nombre.length() <= 2) {
+				Persistencia.guardarExceptionsLog("NombreCortoException", 3, "Agregar vendedor",
+						modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
 				throw new NombreCortoException("El nombre del  estudiante es muy corto");
 
 			}
-			
+
 			if (usuario.equals(contrasena)) {
-                Persistencia.guardarExceptionsLog("PassIsEqualToUserException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
+				Persistencia.guardarExceptionsLog("PassIsEqualToUserException", 3, "Agregar vendedor",
+						modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
 
-				throw new PassIsEqualToUserException("Por su seguridad el nombre de usuario y la contrasenia no pueden ser iguales");
+				throw new PassIsEqualToUserException(
+						"Por su seguridad el nombre de usuario y la contrasenia no pueden ser iguales");
 			}
-			
-			Vendedor vendedor = modelFactoryController.crearVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion);
+			if (modelFactoryController.obtenerVendedor().size() <10) {
 
-			if (vendedor != null) {
+				Vendedor vendedor = modelFactoryController.crearVendedor(nombre, apellidos, usuario, contrasena, cedula,
+						direccion);
 
-				listaVendedoresData.add(vendedor);
-				limpiarCasillasVendedores();
-				mostrarMensaje("Notificacion Vendedor", null, "El vendedor se ha creado con exito",AlertType.INFORMATION);
+				if (vendedor != null) {
 
+					listaVendedoresData.add(vendedor);
+					limpiarCasillasVendedores();
+					mostrarMensaje("Notificacion Vendedor", null, "El vendedor se ha creado con exito",
+							AlertType.INFORMATION);
+
+				} else {
+					Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Agregar vendedor",
+							modelFactoryController.getAdmin().getNombre(),
+							modelFactoryController.getAdmin().getCedula());
+
+					throw new VendedorExistenteException("El vendedor: " + cedula + " ya se encuentra registrado");
+
+				}
 			} else {
-                Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Agregar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
-
-				throw new VendedorExistenteException("El vendedor: " + cedula + " ya se encuentra registrado");
-
+				mostrarMensajeError("No se pueden agregar mas vendedores");
 			}
 		}
 
-
-
 	}
-	/** 
+
+	/**
 	 * metodo para actualizar un vendedor
+	 * 
 	 * @throws VendedorNoSeleccionadoException
 	 * @throws VendedorExistenteException
 	 */
@@ -274,42 +294,47 @@ public class MarketplaceAdminController implements Initializable {
 
 		if (vendedorSeleccionado != null) {
 			if (mostrarMensajeConfirmacion("Desea actualizar a: " + vendedorSeleccionado.getNombre())) {
-				
-					if (datosValidosVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion)) {
 
-						flagcProductoActualizado = modelFactoryController.actualizarVendedor(vendedorSeleccionado.getCedula(),
-								nombre, apellidos, usuario, contrasena, cedula, direccion);
-						if (flagcProductoActualizado == true) {
+				if (datosValidosVendedor(nombre, apellidos, usuario, contrasena, cedula, direccion)) {
 
-							tableVendedores.refresh();
+					flagcProductoActualizado = modelFactoryController.actualizarVendedor(
+							vendedorSeleccionado.getCedula(), nombre, apellidos, usuario, contrasena, cedula,
+							direccion);
+					if (flagcProductoActualizado == true) {
 
-							mostrarMensaje("Notificacion Vendedor", null, "El vendedor se ha actualizado con Exito",
-									AlertType.INFORMATION);
-						}else {
-			                Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Actualizar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
+						tableVendedores.refresh();
 
-							throw new VendedorExistenteException("El vendedor: " + cedula + " ya se encuentra registrado");
-
-						}
+						mostrarMensaje("Notificacion Vendedor", null, "El vendedor se ha actualizado con Exito",
+								AlertType.INFORMATION);
 					} else {
+						Persistencia.guardarExceptionsLog("VendedorExistenteException", 3, "Actualizar vendedor",
+								modelFactoryController.getAdmin().getNombre(),
+								modelFactoryController.getAdmin().getCedula());
 
-						mostrarMensaje("Notificaciï¿½n Vendedor", "Vendedor no ha sido actualizado", null,
-								AlertType.ERROR);
+						throw new VendedorExistenteException("El vendedor: " + cedula + " ya se encuentra registrado");
+
 					}
-				
+				} else {
+
+					mostrarMensaje("Notificaciï¿½n Vendedor", "Vendedor no ha sido actualizado", null, AlertType.ERROR);
+				}
+
 			}
 
 		} else {
-            Persistencia.guardarExceptionsLog("VendedorNoSeleccionadoException", 3, "Actualizar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
+			Persistencia.guardarExceptionsLog("VendedorNoSeleccionadoException", 3, "Actualizar vendedor",
+					modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
 
 			throw new VendedorNoSeleccionadoException("Vendedor no seleccionado\\nDebe seleccionar un Vendedor");
 		}
 
 	}
-/**
- * metodo que elimina a un vendedor de la lista de vendedores
- * @throws VendedorNoSeleccionadoException
- */
+
+	/**
+	 * metodo que elimina a un vendedor de la lista de vendedores
+	 * 
+	 * @throws VendedorNoSeleccionadoException
+	 */
 	private void eliminarVendedor() throws VendedorNoSeleccionadoException {
 
 		boolean flagVendedorEliminado = false;
@@ -335,9 +360,9 @@ public class MarketplaceAdminController implements Initializable {
 				}
 			}
 
-
 		} else {
-            Persistencia.guardarExceptionsLog("VendedorNoSeleccionadoException", 3, "Eliminar vendedor", modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
+			Persistencia.guardarExceptionsLog("VendedorNoSeleccionadoException", 3, "Eliminar vendedor",
+					modelFactoryController.getAdmin().getNombre(), modelFactoryController.getAdmin().getCedula());
 
 			throw new VendedorNoSeleccionadoException("Vendedor no seleccionado\\nDebe seleccionar un vendedor");
 		}
@@ -345,7 +370,8 @@ public class MarketplaceAdminController implements Initializable {
 	}
 
 	/**
-	 * verificacion de credenciales 
+	 * verificacion de credenciales
+	 * 
 	 * @param nombre
 	 * @param apellidos
 	 * @param usuario
@@ -370,7 +396,6 @@ public class MarketplaceAdminController implements Initializable {
 
 		if (contrasena == null || contrasena.equals(""))
 			mensaje += "La contrasenia del vendedor es invalida \n";
-
 
 		if (direccion == null || direccion.equals(""))
 			mensaje += "La direccion del vendedor es invalida \n";
@@ -423,6 +448,7 @@ public class MarketplaceAdminController implements Initializable {
 		alert.setContentText(contenido);
 		alert.showAndWait();
 	}
+
 	private boolean mostrarMensajeError(String mensaje) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -437,257 +463,352 @@ public class MarketplaceAdminController implements Initializable {
 			return false;
 		}
 	}
-	//-------------------------------------------METODOS ESTADISTICAS----------------------------------------------------------------
+	// -------------------------------------------METODOS
+	// ESTADISTICAS----------------------------------------------------------------
 
-		@FXML
-		void mostrarTop10Action(ActionEvent event) {
-			mostrarTop10();
+	@FXML
+	void mostrarTop10Action(ActionEvent event) {
+		mostrarTop10();
+	}
+
+	@FXML
+	void mostrarProductosVenderdorAction(ActionEvent event) {
+		mostrarProductosVenderdor();
+	}
+
+	@FXML
+	void mostrarContactosVenderdorAction(ActionEvent event) {
+		mostrarContactosVenderdorAction();
+	}
+
+	@FXML
+	void mostrarProductosFechaAction(ActionEvent event) {
+
+	}
+
+	@FXML
+	void mostrarMensajesVendedoresAction(ActionEvent event) {
+
+	}
+	// ----------------------------------Exportar
+	// estaditicas-----------------------------
+
+	@FXML
+	void exportarMegustasStatsAction(ActionEvent event) {
+		crearArchivoMeGustas();
+	}
+
+	@FXML
+	void exportarProductosVendedorStatsAction(ActionEvent event) {
+		crearArchivoProductos();
+	}
+
+	@FXML
+	void exportarContactosStatsAction(ActionEvent event) {
+		crearArchivoContacto();
+	}
+
+	@FXML
+	void exportarProductosFechaStatsAction(ActionEvent event) {
+
+	}
+
+	@FXML
+	void exportarMensajesStatsAction(ActionEvent event) {
+
+	}
+
+	private static void crearArchivoMeGustas() {
+
+		String rutaArchivo, formato, nombre;
+		int edad, peso;
+		double altura;
+		ArrayList<String> listaDatosSalida = new ArrayList<String>();
+
+		listaDatosSalida.add("Linea 1");
+		listaDatosSalida.add("Linea 2");
+		listaDatosSalida.add("Linea 3");
+		listaDatosSalida.add("Linea 4");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String fechaPublicacion = sdf.format(new Date());
+
+		rutaArchivo = "src/co/uniquindio/edu/co/Marketplace/resources/reporteMeGustas.txt";
+
+		formato = "Reporte de estadistica me gustas\r\n" + "Fecha: %s"
+				+ "Reporte realizado por: <Nombre de usuario>\r\n" + "\r\n"
+				+ "Información del reporte: <es el contenido del reporte>\r\n";
+
+		nombre = "algo";
+		edad = 21;
+		altura = 1.73;
+		peso = 50;
+
+		try {
+
+			Persistencia.almacenarDatos(rutaArchivo, formato, nombre, edad, altura, peso);
+			// Persistencia.escribirArchivo(rutaArchivo, listaDatosSalida, false);
+			JOptionPane.showMessageDialog(null, "El archivo se creo correctamente");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		@FXML
-		void mostrarProductosVenderdorAction(ActionEvent event) {
-			mostrarProductosVenderdor();
-		}
-		@FXML
-		void mostrarContactosVenderdorAction(ActionEvent event) {
-			mostrarContactosVenderdorAction();
-		}
-		@FXML
-		void mostrarProductosFechaAction(ActionEvent event) {
-			
-		}
-		@FXML
-		void mostrarMensajesVendedoresAction(ActionEvent event) {
-			
-		}
-		//----------------------------------Exportar estaditicas-----------------------------
-		
-		@FXML
-		void exportarMegustasStatsAction(ActionEvent event) {
-		}
-		@FXML
-		void exportarProductosVendedorStatsAction(ActionEvent event) {
-			
-		}
-		@FXML
-		void exportarContactosStatsAction(ActionEvent event) {
-		}
-		@FXML
-		void exportarProductosFechaStatsAction(ActionEvent event) {
-			
-		}
-		@FXML
-		void exportarMensajesStatsAction(ActionEvent event) {
-			
+
+	}
+
+	private static void crearArchivoProductos() {
+
+		String rutaArchivo, formato, nombre;
+		int edad, peso;
+		double altura;
+		ArrayList<String> listaDatosSalida = new ArrayList<String>();
+
+		listaDatosSalida.add("Linea 1");
+		listaDatosSalida.add("Linea 2");
+		listaDatosSalida.add("Linea 3");
+		listaDatosSalida.add("Linea 4");
+
+		rutaArchivo = "src/co/uniquindio/edu/co/Marketplace/resources/reporteProductos.txt";
+
+		formato = "El estudiante %s de edad %d y altura %2.2f es apto para jugar %d\n";
+		nombre = "algo";
+		edad = 21;
+		altura = 1.73;
+		peso = 50;
+
+		try {
+
+			Persistencia.almacenarDatos(rutaArchivo, formato, nombre, edad, altura, peso);
+			// Persistencia.escribirArchivo(rutaArchivo, listaDatosSalida, false);
+			JOptionPane.showMessageDialog(null, "El archivo se creo correctamente");
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
-		/**
-		 * muestra el top10 de productos con mas MeGusta
-		 */
-			private void mostrarTop10(){
-				
+	}
 
-				Stage stage = new Stage();
-				stage.setTitle("Me gustas por producto");
-				final CategoryAxis xAxis = new CategoryAxis();
-				final NumberAxis yAxis = new NumberAxis();
-				final BarChart<String,Number> bc = 
-						new BarChart<String,Number>(xAxis,yAxis);
-				bc.setTitle("Top  Me Gusta");
+	private static void crearArchivoContacto() {
 
-				yAxis.setLabel("Me Gustas");
+		String rutaArchivo, formato, nombre;
+		int edad, peso;
+		double altura;
+		ArrayList<String> listaDatosSalida = new ArrayList<String>();
 
-				XYChart.Series series1 = new XYChart.Series();
-				series1.setName("TOP10 MeGustas");      
-				
-				for (Producto producto : modelFactoryController.getListaMuro()) {
-					
-					series1.getData().add(new XYChart.Data(producto.getNombre(),producto.getListaMeGustas().size()));
-				}
-				
-				
+		listaDatosSalida.add("Linea 1");
+		listaDatosSalida.add("Linea 2");
+		listaDatosSalida.add("Linea 3");
+		listaDatosSalida.add("Linea 4");
 
-				Scene scene  = new Scene(bc,800,600);
-				bc.getData().addAll(series1);
+		rutaArchivo = "src/co/uniquindio/edu/co/Marketplace/resources/reporteContacto.txt";
 
-				stage.setScene(scene);
+		formato = "El estudiante %s de edad %d y altura %2.2f es apto para jugar %d\n";
+		nombre = "algo";
+		edad = 21;
+		altura = 1.73;
+		peso = 50;
 
-				stage.showAndWait();
+		try {
 
+			Persistencia.almacenarDatos(rutaArchivo, formato, nombre, edad, altura, peso);
+			// Persistencia.escribirArchivo(rutaArchivo, listaDatosSalida, false);
+			JOptionPane.showMessageDialog(null, "El archivo se creo correctamente");
 
-			}
-			/**
-			 * muestra las publicaciones del vendedor estadisticamente
-			 */
-			private void mostrarProductosVenderdor(){
-			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-				Stage stage = new Stage();
-				stage.setTitle("Productos por vendedor");
-				final CategoryAxis xAxis = new CategoryAxis();
-				final NumberAxis yAxis = new NumberAxis();
-				final BarChart<String,Number> bc = 
-						new BarChart<String,Number>(xAxis,yAxis);
-				bc.setTitle("Productos por vendedor");
+	}
 
-				yAxis.setLabel("Productos");
+	/**
+	 * muestra el top10 de productos con mas MeGusta
+	 */
+	private void mostrarTop10() {
 
-				XYChart.Series series1 = new XYChart.Series();
-				series1.setName("Productos por vendedor");      
-				
-				for (Vendedor vendedor : modelFactoryController.obtenerVendedor()) {
-					
-					series1.getData().add(new XYChart.Data(vendedor.getNombre(),vendedor.getListaProductos().size()));
-				}
-				
-				
+		Stage stage = new Stage();
+		stage.setTitle("Me gustas por producto");
+		final CategoryAxis xAxis = new CategoryAxis();
+		final NumberAxis yAxis = new NumberAxis();
+		final BarChart<String, Number> bc = new BarChart<String, Number>(xAxis, yAxis);
+		bc.setTitle("Top  Me Gusta");
 
-				Scene scene  = new Scene(bc,800,600);
-				bc.getData().addAll(series1);
+		yAxis.setLabel("Me Gustas");
 
-				stage.setScene(scene);
+		XYChart.Series series1 = new XYChart.Series();
+		series1.setName("TOP10 MeGustas");
 
-				stage.showAndWait();
+		for (Producto producto : modelFactoryController.getListaMuro()) {
 
+			series1.getData().add(new XYChart.Data(producto.getNombre(), producto.getListaMeGustas().size()));
+		}
 
-			}
-			/**
-			 * mueestra los contactos que tiene el vendedor
-			 */
-			private void mostrarContactosVenderdorAction(){
-				
+		Scene scene = new Scene(bc, 800, 600);
+		bc.getData().addAll(series1);
 
-				Stage stage = new Stage();
-				stage.setTitle("Contactos por vendedor");
-				final CategoryAxis xAxis = new CategoryAxis();
-				final NumberAxis yAxis = new NumberAxis();
-				final BarChart<String,Number> bc = 
-						new BarChart<String,Number>(xAxis,yAxis);
-				bc.setTitle("Contactos por vendedor");
+		stage.setScene(scene);
 
-				yAxis.setLabel("Contactos");
+		stage.showAndWait();
 
-				XYChart.Series series1 = new XYChart.Series();
-				series1.setName("Contactos por vendedor");      
-				
-				for (Vendedor vendedor : modelFactoryController.obtenerVendedor()) {
-					
-					series1.getData().add(new XYChart.Data(vendedor.getNombre(),vendedor.getListaContactos().size()));
-				}
-				
-				
+	}
 
-				Scene scene  = new Scene(bc,800,600);
-				bc.getData().addAll(series1);
+	/**
+	 * muestra las publicaciones del vendedor estadisticamente
+	 */
+	private void mostrarProductosVenderdor() {
 
-				stage.setScene(scene);
+		Stage stage = new Stage();
+		stage.setTitle("Productos por vendedor");
+		final CategoryAxis xAxis = new CategoryAxis();
+		final NumberAxis yAxis = new NumberAxis();
+		final BarChart<String, Number> bc = new BarChart<String, Number>(xAxis, yAxis);
+		bc.setTitle("Productos por vendedor");
 
-				stage.showAndWait();
+		yAxis.setLabel("Productos");
 
+		XYChart.Series series1 = new XYChart.Series();
+		series1.setName("Productos por vendedor");
 
-			}
-			
+		for (Vendedor vendedor : modelFactoryController.obtenerVendedor()) {
 
-			private void m(Stage stage) {
-				Scene scene = new Scene(new Group());
-				stage.setTitle("contactos por vendedor");
-				stage.setWidth(500);
-				stage.setHeight(500);
+			series1.getData().add(new XYChart.Data(vendedor.getNombre(), vendedor.getListaProductos().size()));
+		}
 
-				ObservableList<PieChart.Data> pieChartData =
-						FXCollections.observableArrayList(
-								new PieChart.Data("raul", 13),
-								new PieChart.Data("juan", 25),
-								new PieChart.Data("luisa", 10),
-								new PieChart.Data("pablo", 22),
-								new PieChart.Data("nicolas", 30));
-				final PieChart chart = new PieChart(pieChartData);
-				chart.setTitle("Contactos");
+		Scene scene = new Scene(bc, 800, 600);
+		bc.getData().addAll(series1);
 
-				((Group) scene.getRoot()).getChildren().add(chart);
-				stage.setScene(scene);
-				stage.show();
-			}
-			/**
-			 * muestra graficamente los productos por mes
-			 * @param stage
-			 */
-			private  void mostrarProductosPorMes(Stage stage) {
-				stage.setTitle("Line Chart Sample");
-				final CategoryAxis xAxis = new CategoryAxis();
-				final NumberAxis yAxis = new NumberAxis();
-				xAxis.setLabel("Mes");       
+		stage.setScene(scene);
 
-				final LineChart<String,Number> lineChart = 
-						new LineChart<String,Number>(xAxis,yAxis);
+		stage.showAndWait();
 
-				lineChart.setTitle("Monitoreo de productos publicados por meses:");
+	}
 
-				XYChart.Series series = new XYChart.Series();
-				series.setName("");
+	/**
+	 * mueestra los contactos que tiene el vendedor
+	 */
+	private void mostrarContactosVenderdorAction() {
 
-				series.getData().add(new XYChart.Data("Jan", 3));
-				series.getData().add(new XYChart.Data("Feb", 14));
-				series.getData().add(new XYChart.Data("Mar", 15));
-				series.getData().add(new XYChart.Data("Apr", 24));
-				series.getData().add(new XYChart.Data("May", 34));
+		Stage stage = new Stage();
+		stage.setTitle("Contactos por vendedor");
+		final CategoryAxis xAxis = new CategoryAxis();
+		final NumberAxis yAxis = new NumberAxis();
+		final BarChart<String, Number> bc = new BarChart<String, Number>(xAxis, yAxis);
+		bc.setTitle("Contactos por vendedor");
 
+		yAxis.setLabel("Contactos");
 
+		XYChart.Series series1 = new XYChart.Series();
+		series1.setName("Contactos por vendedor");
 
-				Scene scene  = new Scene(lineChart,800,600);
-				lineChart.getData().add(series);
+		for (Vendedor vendedor : modelFactoryController.obtenerVendedor()) {
 
-				stage.setScene(scene);
-				stage.show();
-			}
-			/**
-			 * muestra graficamente los mensajes entre usuarios
-			 * @param stage
-			 */
-			private void mostrarMensajesEntreUsuarios(Stage stage) {
-				Scene scene = new Scene(new Group());
-				stage.setTitle("Mensajes entre 2 vendedores");
-				stage.setWidth(500);
-				stage.setHeight(500);
+			series1.getData().add(new XYChart.Data(vendedor.getNombre(), vendedor.getListaContactos().size()));
+		}
 
-				ObservableList<PieChart.Data> pieChartData =
-						FXCollections.observableArrayList(
-								new PieChart.Data("vendedor2", 13),             
-								new PieChart.Data("vendedor1", 30));
-				final PieChart chart = new PieChart(pieChartData);
-				chart.setTitle("Mensajes enviados entre 2 vendedores");
+		Scene scene = new Scene(bc, 800, 600);
+		bc.getData().addAll(series1);
 
-				((Group) scene.getRoot()).getChildren().add(chart);
-				stage.setScene(scene);
-				stage.show();
+		stage.setScene(scene);
 
-			}
+		stage.showAndWait();
 
-/**
- * metodo que muestra la estadistica grafica de las publicaciones hechas por usuario
- * @param stage
- */
-			public void mostrarPublicacionesPorUsuario(Stage stage) {
-				String usuario = "";
-				stage.setTitle("Productos publicados");
-				final CategoryAxis xAxis = new CategoryAxis();
-				final NumberAxis yAxis = new NumberAxis();
-				final BarChart<String,Number> bc = 
-						new BarChart<String,Number>(xAxis,yAxis);
-				bc.setTitle("");
+	}
 
-				yAxis.setLabel("Publicaciones");
+	private void m(Stage stage) {
+		Scene scene = new Scene(new Group());
+		stage.setTitle("contactos por vendedor");
+		stage.setWidth(500);
+		stage.setHeight(500);
 
-				XYChart.Series series1 = new XYChart.Series();
-				series1.setName("usuario:");       
-				series1.getData().add(new XYChart.Data(usuario,10));
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(new PieChart.Data("raul", 13),
+				new PieChart.Data("juan", 25), new PieChart.Data("luisa", 10), new PieChart.Data("pablo", 22),
+				new PieChart.Data("nicolas", 30));
+		final PieChart chart = new PieChart(pieChartData);
+		chart.setTitle("Contactos");
 
+		((Group) scene.getRoot()).getChildren().add(chart);
+		stage.setScene(scene);
+		stage.show();
+	}
 
-				Scene scene  = new Scene(bc,800,600);
-				bc.getData().addAll(series1);
-				stage.setScene(scene);
-				stage.show();
-			}
+	/**
+	 * muestra graficamente los productos por mes
+	 * 
+	 * @param stage
+	 */
+	private void mostrarProductosPorMes(Stage stage) {
+		stage.setTitle("Line Chart Sample");
+		final CategoryAxis xAxis = new CategoryAxis();
+		final NumberAxis yAxis = new NumberAxis();
+		xAxis.setLabel("Mes");
 
+		final LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
 
-		
+		lineChart.setTitle("Monitoreo de productos publicados por meses:");
+
+		XYChart.Series series = new XYChart.Series();
+		series.setName("");
+
+		series.getData().add(new XYChart.Data("Jan", 3));
+		series.getData().add(new XYChart.Data("Feb", 14));
+		series.getData().add(new XYChart.Data("Mar", 15));
+		series.getData().add(new XYChart.Data("Apr", 24));
+		series.getData().add(new XYChart.Data("May", 34));
+
+		Scene scene = new Scene(lineChart, 800, 600);
+		lineChart.getData().add(series);
+
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	/**
+	 * muestra graficamente los mensajes entre usuarios
+	 * 
+	 * @param stage
+	 */
+	private void mostrarMensajesEntreUsuarios(Stage stage) {
+		Scene scene = new Scene(new Group());
+		stage.setTitle("Mensajes entre 2 vendedores");
+		stage.setWidth(500);
+		stage.setHeight(500);
+
+		ObservableList<PieChart.Data> pieChartData = FXCollections
+				.observableArrayList(new PieChart.Data("vendedor2", 13), new PieChart.Data("vendedor1", 30));
+		final PieChart chart = new PieChart(pieChartData);
+		chart.setTitle("Mensajes enviados entre 2 vendedores");
+
+		((Group) scene.getRoot()).getChildren().add(chart);
+		stage.setScene(scene);
+		stage.show();
+
+	}
+
+	/**
+	 * metodo que muestra la estadistica grafica de las publicaciones hechas por
+	 * usuario
+	 * 
+	 * @param stage
+	 */
+	public void mostrarPublicacionesPorUsuario(Stage stage) {
+		String usuario = "";
+		stage.setTitle("Productos publicados");
+		final CategoryAxis xAxis = new CategoryAxis();
+		final NumberAxis yAxis = new NumberAxis();
+		final BarChart<String, Number> bc = new BarChart<String, Number>(xAxis, yAxis);
+		bc.setTitle("");
+
+		yAxis.setLabel("Publicaciones");
+
+		XYChart.Series series1 = new XYChart.Series();
+		series1.setName("usuario:");
+		series1.getData().add(new XYChart.Data(usuario, 10));
+
+		Scene scene = new Scene(bc, 800, 600);
+		bc.getData().addAll(series1);
+		stage.setScene(scene);
+		stage.show();
+	}
+
 }

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.Marketplace.controller.PerfilVendedorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.Marketplace.controller.PerfilVendedorController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="48.0" style="-fx-background-color: #0080ff;" BorderPane.alignment="CENTER" />
    </left>
@@ -44,7 +48,6 @@
             <Separator layoutX="27.0" layoutY="189.0" prefHeight="0.0" prefWidth="653.0" style="-fx-background-color: #0080ff;" />
             <TableView fx:id="tablePublicaciones" layoutX="63.0" layoutY="253.0" prefHeight="247.0" prefWidth="580.0" style="-fx-border-color: #0080ff; -fx-border-width: 3px 3px;">
                <columns>
-                  <TableColumn fx:id="columnImagenProducto" prefWidth="111.0" text="Producto" />
                   <TableColumn fx:id="columnNombreProducto" prefWidth="112.0" text="Nombre" />
                   <TableColumn fx:id="columnPrecioProducto" prefWidth="88.0" text="Precio" />
                   <TableColumn fx:id="columnCategoriaProducto" prefWidth="117.0" text="Categoria" />

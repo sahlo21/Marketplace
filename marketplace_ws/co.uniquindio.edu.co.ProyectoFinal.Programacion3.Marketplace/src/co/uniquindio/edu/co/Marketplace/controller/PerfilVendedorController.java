@@ -172,7 +172,6 @@ public class PerfilVendedorController implements Initializable {
 
 		columnPrecioProducto.setCellValueFactory(new PropertyValueFactory<Producto, String>("precio"));
 		columnNombreProducto.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
-		columnImagenProducto.setCellValueFactory(new PropertyValueFactory<Producto, Image>("imagen"));
 		columnEstadoProducto.setCellValueFactory(new PropertyValueFactory<Producto, Estado>("estado"));
 		columnCategoriaProducto.setCellValueFactory(new PropertyValueFactory<Producto, Categoria>("categoria"));
 		columnFechaPublicacion.setCellValueFactory(new PropertyValueFactory<Producto, Date>("fechaPublicacion"));
