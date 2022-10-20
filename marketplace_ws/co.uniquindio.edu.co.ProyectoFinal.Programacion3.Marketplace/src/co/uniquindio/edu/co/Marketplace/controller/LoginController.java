@@ -205,7 +205,10 @@ public class LoginController implements Initializable{
 
 
 			} else {
-				mostrarMensajeError("Ha ingresado mal el usuario y/o contrasenia.");		}
+//				mostrarMensajeError("Ha ingresado mal el usuario y/o contrasenia.");		}
+
+			mostrarMensaje("Ha ingresado mal el usuario y/o cont", "asd", "asa",Alert.AlertType.INFORMATION );	
+			}
 
 		}else{
 			Persistencia.guardarExceptionsLog("NoSeleccionTerminosException", 3, "Inicio de sesionn", usuario, "No aplica");
@@ -216,33 +219,36 @@ public class LoginController implements Initializable{
 	}
 
 
-	private boolean mostrarMensajeInformacion(String mensaje) {
+//	private boolean mostrarMensajeInformacion(String mensaje) {
+//
+//		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//		alert.setHeaderText(null);
+//		alert.setTitle("Informacion");
+//		alert.setContentText(mensaje);
+//		Optional<ButtonType> action = alert.showAndWait();
+//
+//		if (action.get() == ButtonType.OK) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+	private void mostrarMensajeInformacion(String mensaje) {
 
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setHeaderText(null);
 		alert.setTitle("Informacion");
 		alert.setContentText(mensaje);
-		Optional<ButtonType> action = alert.showAndWait();
-
-		if (action.get() == ButtonType.OK) {
-			return true;
-		} else {
-			return false;
-		}
+		alert.showAndWait();
 	}
-	private boolean mostrarMensajeError(String mensaje) {
+	private void mostrarMensajeError(String mensaje) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setHeaderText(null);
 		alert.setTitle("Confirmacion");
 		alert.setContentText(mensaje);
-		Optional<ButtonType> action = alert.showAndWait();
-
-		if (action.get() == ButtonType.OK) {
-			return true;
-		} else {
-			return false;
-		}
+		alert.showAndWait();
+		
 	}
 	private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
 		Alert alert = new Alert(alertType);

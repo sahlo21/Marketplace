@@ -1,0 +1,4 @@
+Reporte de estadistica me gustas
+Fecha: algoReporte realizado por: <Nombre de usuario>
+
+Información del reporte: <es el contenido del reporte>

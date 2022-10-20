@@ -426,11 +426,12 @@ public class MarketplaceAdminController implements Initializable {
 		}
 	}
 
+
 	private boolean mostrarMensajeConfirmacion(String mensaje) {
 
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setHeaderText(null);
-		alert.setTitle("Confirmacion");
+		alert.setTitle("Informacion");
 		alert.setContentText(mensaje);
 		Optional<ButtonType> action = alert.showAndWait();
 
@@ -440,7 +441,23 @@ public class MarketplaceAdminController implements Initializable {
 			return false;
 		}
 	}
+	private void mostrarMensajeInformacion(String mensaje) {
 
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Informacion");
+		alert.setContentText(mensaje);
+		alert.showAndWait();
+	}
+	private void mostrarMensajeError(String mensaje) {
+
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setHeaderText(null);
+		alert.setTitle("Confirmacion");
+		alert.setContentText(mensaje);
+		alert.showAndWait();
+		
+	}
 	private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
 		Alert alert = new Alert(alertType);
 		alert.setTitle(titulo);
@@ -449,20 +466,6 @@ public class MarketplaceAdminController implements Initializable {
 		alert.showAndWait();
 	}
 
-	private boolean mostrarMensajeError(String mensaje) {
-
-		Alert alert = new Alert(Alert.AlertType.ERROR);
-		alert.setHeaderText(null);
-		alert.setTitle("Confirmacion");
-		alert.setContentText(mensaje);
-		Optional<ButtonType> action = alert.showAndWait();
-
-		if (action.get() == ButtonType.OK) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 	// -------------------------------------------METODOS
 	// ESTADISTICAS----------------------------------------------------------------
 
@@ -536,7 +539,7 @@ public class MarketplaceAdminController implements Initializable {
 
 		formato = "Reporte de estadistica me gustas\r\n" + "Fecha: %s"
 				+ "Reporte realizado por: <Nombre de usuario>\r\n" + "\r\n"
-				+ "Información del reporte: <es el contenido del reporte>\r\n";
+				+ "Informaciï¿½n del reporte: <es el contenido del reporte>\r\n";
 
 		nombre = "algo";
 		edad = 21;

@@ -1,28 +1,17 @@
 package co.uniquindio.edu.co.Marketplace;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
 
 import co.uniquindio.edu.co.Marketplace.controller.LoginController;
-import co.uniquindio.edu.co.Marketplace.controller.LoginControllerN;
 import co.uniquindio.edu.co.Marketplace.controller.MarketplaceAdminController;
 import co.uniquindio.edu.co.Marketplace.controller.MarketplaceVendedorController;
 import co.uniquindio.edu.co.Marketplace.controller.ModelFactoryController;
-import co.uniquindio.edu.co.Marketplace.controller.ProductoController;
-import co.uniquindio.edu.co.Marketplace.model.Categoria;
-import co.uniquindio.edu.co.Marketplace.model.Estado;
-import co.uniquindio.edu.co.Marketplace.model.Marketplace;
-import co.uniquindio.edu.co.Marketplace.model.Producto;
-import co.uniquindio.edu.co.Marketplace.model.Vendedor;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class Aplicacion extends Application {
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="397.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.edu.co.Marketplace.controller.ServerController">
+   <center>
+      <AnchorPane prefHeight="325.0" prefWidth="273.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="#0080ff" layoutX="121.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Servidor" wrappingWidth="123.654296875">
+               <font>
+                  <Font name="Tahoma Bold" size="28.0" />
+               </font>
+            </Text>
+            <Separator layoutX="82.0" layoutY="135.0" prefHeight="12.0" prefWidth="200.0" style="-fx-background-color: #0080ff;" />
+            <TextArea fx:id="informes" layoutX="21.0" layoutY="148.0" prefHeight="162.0" prefWidth="316.0" />
+            <Separator layoutX="82.0" layoutY="316.0" prefHeight="12.0" prefWidth="200.0" style="-fx-background-color: #0080ff;" />
+            <Button layoutX="147.0" layoutY="338.0" mnemonicParsing="false" onAction="#off" style="-fx-background-color: #0080ff;" text="Apagar" textFill="#fcf8f8">
+               <font>
+                  <Font name="Tahoma Bold" size="14.0" />
+               </font></Button>
+            <ImageView fitHeight="64.0" fitWidth="66.0" layoutX="150.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/iconMarketplace.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <AnchorPane prefHeight="325.0" prefWidth="32.0" style="-fx-background-color: #0080ff;" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <AnchorPane prefHeight="200.0" prefWidth="36.0" style="-fx-background-color: #0080ff;" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

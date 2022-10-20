@@ -71,25 +71,44 @@ public class ChatVendedorController {
 		// TODO Auto-generated method stub
 		
 	}
-	 private boolean mostrarMensajeError(String mensaje) {
 
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setHeaderText(null);
-			alert.setTitle("Error");
-			alert.setContentText(mensaje);
-			Optional<ButtonType> action = alert.showAndWait();
+//	private boolean mostrarMensajeInformacion(String mensaje) {
+//
+//		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//		alert.setHeaderText(null);
+//		alert.setTitle("Informacion");
+//		alert.setContentText(mensaje);
+//		Optional<ButtonType> action = alert.showAndWait();
+//
+//		if (action.get() == ButtonType.OK) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
+	private void mostrarMensajeInformacion(String mensaje) {
 
-			if (action.get() == ButtonType.OK) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-	 private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
-			Alert alert = new Alert(alertType);
-			alert.setTitle(titulo);
-			alert.setHeaderText(header);
-			alert.setContentText(contenido);
-			alert.showAndWait();
-		}
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+		alert.setHeaderText(null);
+		alert.setTitle("Informacion");
+		alert.setContentText(mensaje);
+		alert.showAndWait();
+	}
+	private void mostrarMensajeError(String mensaje) {
+
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setHeaderText(null);
+		alert.setTitle("Confirmacion");
+		alert.setContentText(mensaje);
+		alert.showAndWait();
+		
+	}
+	private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
+		Alert alert = new Alert(alertType);
+		alert.setTitle(titulo);
+		alert.setHeaderText(header);
+		alert.setContentText(contenido);
+		alert.showAndWait();
+	}
+
 }

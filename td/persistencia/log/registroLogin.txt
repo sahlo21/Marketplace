@@ -1162,3 +1162,7 @@ jun. 06, 2022 2:26:30 P. M. co.uniquindio.edu.co.Marketplace.persistencia.Archiv
 INFO: Cerrar sesion vendedor, Cierre de sesion correcto Usuario: Christian Cedula: 1529, 2022-06-06
 jun. 06, 2022 2:27:52 P. M. co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
 INFO: Cerrar sesion administrador, Cierre de sesion fallido Usuario: Tyler Cedula: 21p, 2022-06-06
+jul 13, 2022 1:59:53 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÃ“N: Cerrar sesion administrador, Cierre de sesion fallido Usuario: Tyler Cedula: 21p, 2022-07-13
+oct 11, 2022 10:56:10 PM co.uniquindio.edu.co.Marketplace.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Cerrar sesion administrador, Cierre de sesion fallido Usuario: Tyler Cedula: 21p, 2022-10-11

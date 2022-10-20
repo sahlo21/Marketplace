@@ -10,21 +10,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-
 import co.uniquindio.edu.co.Marketplace.MainServer;
 import co.uniquindio.edu.co.Marketplace.model.Administrador;
 import co.uniquindio.edu.co.Marketplace.model.Marketplace;
-import co.uniquindio.edu.co.Marketplace.model.Producto;
 import co.uniquindio.edu.co.Marketplace.model.Usuario;
 import co.uniquindio.edu.co.Marketplace.model.Vendedor;
 import co.uniquindio.edu.co.Marketplace.persistencia.Persistencia;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 public class ServerController implements Runnable {
 	Thread hiloServicio_servidor;
